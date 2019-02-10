@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<package>
+  <metadata>
+    <id>LazZiya.ImageResize</id>
+    <version>1.0.0</version>
+    <title>LazZiya.ImageResize</title>
+    <authors>Ziyad.info</authors>
+    <owners>Ziya Mollamahmut</owners>
+    <license type="file">license.txt</license>
+    <projectUrl>http://www.ziyad.info/en/articles/29-LazZiya_ImageResize</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/LazZiya/ImageResize/master/LazZiya.ImageResize/files/icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Simple tool for image resize, and add text over image for ASP.NET Core</description>
+    <releaseNotes>v1.0.0: Image resize, crop, scale, text watermark, image watermark</releaseNotes>
+    <copyright>Copyright 2019 Ziyad.info</copyright>
+    <tags>asp.net-core, image, resize, crop, scale, text, watermark, image watermark</tags>
+    <dependencies>
+      
+    </dependencies>
+    <summary> Simple tool for image resize, and add text over image for ASP.NET Core </summary>
+  </metadata>
+  <files>
+    <file src="files\license.txt" />
+    <file src="files\icon.png" />
+    <file src="files\icon.ico" />
+  </files>
+</package>

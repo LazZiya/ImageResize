@@ -7,37 +7,67 @@ namespace LazZiya.ImageResize
 {
     public static class ImageResize
     {
-        public static Image Resize(string filePath, int newWidth, int newHeight, ResizeMethod method = ResizeMethod.Crop, CroppingSpot spot = CroppingSpot.Center)
+        /// <summary>
+        /// receives image file from specific path and resize, you may need to save the file with a different name or you may get memory error (due to file in use)
+        /// </summary>
+        /// <param name="filePath">the full path to the file e.g. D:\\Hosting\\MyWebSite\\wwwroot\\images\\xx.jpg</param>
+        /// <param name="newWidth"></param>
+        /// <param name="newHeight"></param>
+        /// <param name="method">resize method</param>
+        /// <param name="spot">reference cropping spot</param>
+        /// <returns>System.Drawing.Image</returns>
+        public static Image Resize(string filePath, int newWidth, int newHeight, ResizeMethod method = ResizeMethod.Crop, TargetSpot spot = TargetSpot.Center)
         {
             var img = Image.FromFile(filePath);
             return Resize(img, newWidth, newHeight, method, spot);
         }
 
-        public static Image Resize(Stream stream, int newWidth, int newHeight, ResizeMethod method = ResizeMethod.Crop, CroppingSpot spot = CroppingSpot.Center)
+        /// <summary>
+        /// receives image file from stream (e.g. upload stream) and resize
+        /// </summary>
+        /// <param name="stream">upload stream, file stream, memory stream...</param>
+        /// <param name="newWidth"></param>
+        /// <param name="newHeight"></param>
+        /// <param name="method">resize method</param>
+        /// <param name="spot">reference cropping spot</param>
+        /// <returns>System.Drawing.Image</returns>
+        public static Image Resize(Stream stream, int newWidth, int newHeight, ResizeMethod method = ResizeMethod.Crop, TargetSpot spot = TargetSpot.Center)
         {
             var img = Image.FromStream(stream);
             return Resize(img, newWidth, newHeight, method, spot);
         }
 
-        public static Image Resize(Image img, int newWidth, int newHeight, ResizeMethod method = ResizeMethod.Crop, CroppingSpot spot = CroppingSpot.Center)
+        /// <summary>
+        /// receives System.Drawing.Image and resize, you may need to save the file with a different name or you may get memory error (due to file in use)
+        /// </summary>
+        /// <param name="img">System.Drwing.Image to be resized</param>
+        /// <param name="newWidth"></param>
+        /// <param name="newHeight"></param>
+        /// <param name="method">resize method</param>
+        /// <param name="spot">reference cropping spot</param>
+        /// <returns>System.Drawing.Image</returns>
+        public static Image Resize(Image img, int newWidth, int newHeight, ResizeMethod method = ResizeMethod.Crop, TargetSpot spot = TargetSpot.Center)
         {
             if (newWidth == 0 && newHeight == 0)
             {
                 newWidth = img.Width;
                 newHeight = img.Height;
             }
-            // if only height is defined, then find new width accordingly
             else if (newWidth <= 0 && newHeight > 0)
             {
+                // if only height is defined, then find new width and keep aspect ratio
                 newWidth = GetNewWidth(img.Width, img.Height, newHeight);
             }
-            // if only width is defined, then find new height accordingly
             else if (newWidth > 0 && newHeight <= 0)
             {
+                // if only width is defined, then find new height and keep aspect ratio
                 newHeight = GetNewHeight(img.Width, img.Height, newWidth);
             }
 
+            // the rect pos and size to read from the original image
             var srcRect = new Rectangle(0, 0, img.Width, img.Height);
+
+            // the target rrect pos and size to draw the resized image on
             var targetRect = new Rectangle(0, 0, newWidth, newHeight);
 
             if (method == ResizeMethod.Contain)
@@ -51,7 +81,7 @@ namespace LazZiya.ImageResize
             {
                 srcRect = CropSourceImage(img.Width, img.Height, newWidth, newHeight, spot);
             }
-            // DirectCrop
+            // spot crop, no scale
             else if(method == ResizeMethod.SpotCrop)
             {
                 srcRect = DirectCropSourceImage(img.Width, img.Height, newWidth, newHeight, spot);
@@ -115,28 +145,32 @@ namespace LazZiya.ImageResize
         }
 
         /// <summary>
-        /// define the max rect size to read from source image
+        /// define the max rect size and pos to read from source image
         /// </summary>
         /// <param name="imgWidth"></param>
         /// <param name="imgHeight"></param>
         /// <param name="newWidth"></param>
         /// <param name="newHeight"></param>
         /// <returns></returns>
-        private static Rectangle CropSourceImage(int imgWidth, int imgHeight, int newWidth, int newHeight, CroppingSpot spot)
+        private static Rectangle CropSourceImage(int imgWidth, int imgHeight, int newWidth, int newHeight, TargetSpot spot)
         {
+            // aspect ratio of the resized image
             float croppedRatio = (float)newWidth / (float)newHeight;
+
+            // aspect ratio of original image
             float orgRatio = (float)imgWidth / (float)imgHeight;
 
+            // find aspect ratio difference
             float diffRatio = croppedRatio / orgRatio;
 
             var _srcWidth = (float)imgWidth;
             var _srcHeight = (float)imgHeight;
 
-            // new W > org W ==> crop org H
             if (diffRatio > 1)
+                // new W > org W ==> crop org H
                 _srcHeight = _srcWidth / croppedRatio;
-            // new H > org H ==> crop org W
             else
+                // new H > org H ==> crop org W
                 _srcWidth = _srcHeight * croppedRatio;
 
             // image will be cropped after scaling, so we send source rect size
@@ -145,7 +179,16 @@ namespace LazZiya.ImageResize
             return new Rectangle(x, y, (int)_srcWidth, (int)_srcHeight);
         }
 
-        private static Rectangle DirectCropSourceImage(int imgWidth, int imgHeight, int newWidth, int newHeight, CroppingSpot spot)
+        /// <summary>
+        /// just crop, don't scale the image
+        /// </summary>
+        /// <param name="imgWidth"></param>
+        /// <param name="imgHeight"></param>
+        /// <param name="newWidth"></param>
+        /// <param name="newHeight"></param>
+        /// <param name="spot"></param>
+        /// <returns></returns>
+        private static Rectangle DirectCropSourceImage(int imgWidth, int imgHeight, int newWidth, int newHeight, TargetSpot spot)
         {
             // image will be scaled after being cropped, so we send new image size as source rect size
             (int x, int y) = GetCroppingPos(imgWidth, imgHeight, newWidth, newHeight, spot);
@@ -153,22 +196,31 @@ namespace LazZiya.ImageResize
             return new Rectangle(x, y, (int)newWidth, (int)newHeight);
         }
 
-        private static (int x, int y) GetCroppingPos(int imgWidth, int imgHeight, int srcWidth, int srcHeight, CroppingSpot spot)
+        /// <summary>
+        /// define x and y of source rect to read the image data from original image depending on CroppingSpot
+        /// </summary>
+        /// <param name="imgWidth"></param>
+        /// <param name="imgHeight"></param>
+        /// <param name="srcWidth"></param>
+        /// <param name="srcHeight"></param>
+        /// <param name="spot"></param>
+        /// <returns></returns>
+        private static (int x, int y) GetCroppingPos(int imgWidth, int imgHeight, int srcWidth, int srcHeight, TargetSpot spot)
         {
             float x, y = 0;
             switch (spot)
             {
-                case CroppingSpot.Center: x = (imgWidth - srcWidth) / 2; y = (imgHeight - srcHeight) / 2; break;
-                case CroppingSpot.TopMiddle: x = (imgWidth - srcWidth) / 2; y = 0; break;
-                case CroppingSpot.BottomMiddle: x = (imgWidth - srcWidth) / 2; y = imgHeight - srcHeight; break;
+                case TargetSpot.Center: x = (imgWidth - srcWidth) / 2; y = (imgHeight - srcHeight) / 2; break;
+                case TargetSpot.TopMiddle: x = (imgWidth - srcWidth) / 2; y = 0; break;
+                case TargetSpot.BottomMiddle: x = (imgWidth - srcWidth) / 2; y = imgHeight - srcHeight; break;
 
-                case CroppingSpot.MiddleRight: x = imgWidth - srcWidth; y = (imgHeight - srcHeight) / 2; break;
-                case CroppingSpot.BottomRight: x = imgWidth - srcWidth; y = imgHeight - srcHeight; break;
-                case CroppingSpot.TopRight: x = imgWidth - srcWidth; y = 0; break;
+                case TargetSpot.MiddleRight: x = imgWidth - srcWidth; y = (imgHeight - srcHeight) / 2; break;
+                case TargetSpot.BottomRight: x = imgWidth - srcWidth; y = imgHeight - srcHeight; break;
+                case TargetSpot.TopRight: x = imgWidth - srcWidth; y = 0; break;
 
-                case CroppingSpot.MiddleLeft: x = 0; y = (imgHeight - srcHeight) / 2; break;
-                case CroppingSpot.BottomLeft: x = 0; y = imgHeight - srcHeight * 1; break;
-                case CroppingSpot.TopLeft:
+                case TargetSpot.MiddleLeft: x = 0; y = (imgHeight - srcHeight) / 2; break;
+                case TargetSpot.BottomLeft: x = 0; y = imgHeight - srcHeight * 1; break;
+                case TargetSpot.TopLeft:
                 default: x = 0; y = 0; break;
             }
 
@@ -189,6 +241,11 @@ namespace LazZiya.ImageResize
             return (int)(imgWidth * fractionalPercentage);
         }
 
+        /// <summary>
+        /// return image format by comparing the ImageFormat.Guid param
+        /// </summary>
+        /// <param name="guid"></param>
+        /// <returns>System.Drawing.Imaging.ImageFormat</returns>
         public static ImageFormat GetImageFormat(Guid guid)
         {
             return
@@ -210,6 +267,11 @@ namespace LazZiya.ImageResize
                 });
         }
 
+        /// <summary>
+        /// return image format by reading file extension
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns>System.Drawing.Imaging.ImageFormat</returns>
         public static ImageFormat GetImageFormat(string fileName)
         {
             var dotIndex = fileName.LastIndexOf('.');
