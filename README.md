@@ -21,8 +21,6 @@ foreach (var file in Request.Form.Files)
     {        
         using (var stream = file.OpenReadStream())
         {
-            var result = false;
-
             var img = ImageResize.Resize(stream, 800, 600, ResizeMethod.Contain, TargetSpot.Center);
 
             img.SaveAs($"wwwroot\\images\\{file.FileName}");
