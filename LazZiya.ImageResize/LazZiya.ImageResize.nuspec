@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>LazZiya.ImageResize</id>
+    <version>1.0.0</version>
+    <title>LazZiya.ImageResize</title>
+    <authors>Ziyad.info</authors>
+    <owners>Ziya Mollamahmut</owners>
+    <license type="file">license.txt</license>
+    <projectUrl>http://ziyad.info/en/articles/29-Image_Resize_for_dotNetCore</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/LazZiya/ImageResize/master/LazZiya.ImageResize/files/icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Simple tool for image resize, and add text over image for ASP.NET Core</description>
+    <releaseNotes>v1.0.0: Resize uploaded images, add text watermark</releaseNotes>
+    <copyright>­­2019 Ziyad.info</copyright>
+    <tags>asp.net,core,.net,dotnet,image,resize,text,watermark</tags>
+    <repository url="https://github.com/LazZiya/ImageResize" />
+    <dependencies>
+      <group targetFramework=".NETCoreApp2.1">
+        <dependency id="System.Drawing.Common" version="4.5.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="D:\MyWorks\WebDev\LazZiya\ImageResize\LazZiya.ImageResize\bin\Release\netcoreapp2.1\LazZiya.ImageResize.dll" target="lib\netcoreapp2.1\LazZiya.ImageResize.dll" />
+    <file src="files\license.txt" />
+    <file src="files\icon.png" />
+    <file src="files\icon.ico" />
+  </files>
+</package>

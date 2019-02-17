@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
@@ -55,50 +54,6 @@ namespace LazZiya.ImageResize
             graphics.DrawString(text, textFont, textBrush, drawPoint);
 
             graphics.Dispose();
-        }
-
-        public static void ImageWatermark(this Image img, string wmFileName, TargetSpot spot = TargetSpot.TopRight, bool stickToBorder = false)
-        {
-            Graphics graphics = Graphics.FromImage(img);
-
-            graphics.SmoothingMode = SmoothingMode.None;
-            graphics.CompositingMode = CompositingMode.SourceOver;
-
-            var wmImage = Image.FromFile(wmFileName);
-
-            var wmW = wmImage.Width;
-            var wmH = wmImage.Height;
-
-            var drwingPoint = ImageWatermarkPos(img.Width, img.Height, wmW, wmH, spot, stickToBorder);
-
-            graphics.DrawImage(wmImage, new PointF(0, 0));
-
-            graphics.Dispose();
-        }
-
-        private static PointF ImageWatermarkPos(int imgWidth, int imgHeight, int wmWidth, int wmHeight, TargetSpot spot, bool stickToBorder)
-        {
-            float marginW = stickToBorder ? 0F : imgWidth * 0.05F;
-            float marginH = stickToBorder ? 0F : imgHeight * 0.05F;
-
-            PointF point;
-
-            switch (spot)
-            {
-                case TargetSpot.BottomLeft: point = new PointF(marginW, imgHeight - wmHeight - marginH); break;
-                case TargetSpot.BottomMiddle: point = new PointF(imgWidth / 2 - wmWidth / 2, imgHeight - wmHeight - marginH); break;
-                case TargetSpot.BottomRight: point = new PointF(imgWidth - wmWidth - marginW, imgHeight - wmHeight - marginH); break;
-                case TargetSpot.MiddleLeft: point = new PointF(marginW, imgHeight / 2 - wmHeight / 2); break;
-                case TargetSpot.Center: point = new PointF(imgWidth / 2 - wmWidth / 2, imgHeight / 2 - wmHeight / 2); break;
-                case TargetSpot.MiddleRight: point = new PointF(imgWidth - wmWidth - marginW, imgHeight / 2 - wmHeight / 2); break;
-                case TargetSpot.TopLeft: point = new PointF(marginW, marginH); break;
-                case TargetSpot.TopMiddle: point = new PointF(imgWidth / 2 - wmWidth / 2, marginH); break;
-
-                case TargetSpot.TopRight:
-                default: point = new PointF(imgWidth - wmWidth - marginW, marginH); break;
-            }
-
-            return point;
         }
 
         /// <summary>
