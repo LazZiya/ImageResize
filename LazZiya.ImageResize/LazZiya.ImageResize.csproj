@@ -10,9 +10,11 @@
     <PackageTags>asp.net,core,.net,dotnet,image,resize,text,overlay</PackageTags>
     <RepositoryUrl>https://github.com/LazZiya/ImageResize</RepositoryUrl>
     <PackageProjectUrl>http://ziyad.info/en/articles/29-Image_Resize_for_dotNetCore</PackageProjectUrl>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="LazZiya.ImageResize.1.0.0.nupkg" />
     <None Remove="LazZiya.ImageResize.nuspec" />
   </ItemGroup>
 

@@ -1,7 +1,7 @@
 ﻿MIT License
 
 
-Copyright (c) 2018 [Ziya Mollamahmut](http://ziyad.info)
+Copyright (c) 2019 [Ziya Mollamahmut](http://ziyad.info)
 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
