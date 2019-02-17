@@ -22,7 +22,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="D:\MyWorks\WebDev\LazZiya\ImageResize\LazZiya.ImageResize\bin\Release\netcoreapp2.1\LazZiya.ImageResize.dll" target="lib\netcoreapp2.1\LazZiya.ImageResize.dll" />
     <file src="files\license.txt" />
     <file src="files\icon.png" />
     <file src="files\icon.ico" />
