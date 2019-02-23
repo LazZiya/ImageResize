@@ -33,7 +33,7 @@ namespace LazZiya.ImageResize
         /// </summary>
         /// 
         [Display(Name = "Scale & crop")]
-        Crop,
+        ScaleCrop,
 
         /// <summary>
         /// the image will not be scaled down,
@@ -41,7 +41,7 @@ namespace LazZiya.ImageResize
         /// </summary>
         /// 
         [Display(Name = "Crop")]
-        SpotCrop
+        Crop
     }
 
     /// <summary>

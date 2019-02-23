@@ -13,8 +13,8 @@ namespace LazZiya.ImageResize
         /// </summary>
         /// <param name="img"></param>
         /// <param name="text"></param>
-        /// <param name="color">hex8 Color e.g. #ddaaaaaa</param>
-        /// <param name="bgColor">hex8 Color e.g. #aadddddd</param>
+        /// <param name="color">hex8 Color e.g. #77FFFFFF</param>
+        /// <param name="bgColor">hex8 Color e.g. #00000000</param>
         /// <param name="fontFamily"></param>
         /// <param name="size"></param>
         /// <param name="align"></param>
@@ -22,9 +22,9 @@ namespace LazZiya.ImageResize
         /// <param name="style"></param>
         public static void TextWatermark(this Image img,
             string text,
-            string color = "#ddaaaaaa", string bgColor = "#aadddddd",
+            string color = "#77FFFFFF", string bgColor = "#00000000",
             string fontFamily = "Arial", int size = 24,
-            TargetSpot spot = TargetSpot.BottomLeft, FontStyle style = FontStyle.Regular, bool stick = false)
+            TargetSpot spot = TargetSpot.BottomLeft, FontStyle style = FontStyle.Regular, int margin = 10)
         {
             var graphics = Graphics.FromImage(img);
 
@@ -38,7 +38,7 @@ namespace LazZiya.ImageResize
             var bgBrush = new SolidBrush(
                 Color.FromArgb(_bgAlpha, ColorTranslator.FromHtml($"#{_bgColor}")));
 
-            var rectPos = SetBGPos(img.Width, img.Height, size, spot, stick);
+            var rectPos = SetBGPos(img.Width, img.Height, size, spot, margin);
             graphics.FillRectangle(bgBrush, rectPos);
 
             var textFont = new Font(fontFamily, size, style, GraphicsUnit.Pixel);
@@ -119,11 +119,10 @@ namespace LazZiya.ImageResize
         /// <param name="fontSize"></param>
         /// <param name="pos"></param>
         /// <returns></returns>
-        private static Rectangle SetBGPos(int imgWidth, int imgHeight, int fontSize, TargetSpot spot, bool stick)
+        private static Rectangle SetBGPos(int imgWidth, int imgHeight, int fontSize, TargetSpot spot, int margin)
         {
             Rectangle rect;
 
-            var margin = stick ? 0 : fontSize;
             var bgHeight = fontSize * 2;
 
             switch (spot)

@@ -16,7 +16,7 @@ namespace LazZiya.ImageResize
         /// <param name="method">resize method</param>
         /// <param name="spot">reference cropping spot</param>
         /// <returns>System.Drawing.Image</returns>
-        public static Image Resize(string filePath, int newWidth, int newHeight, ResizeMethod method = ResizeMethod.Crop, TargetSpot spot = TargetSpot.Center)
+        public static Image Resize(string filePath, int newWidth, int newHeight, ResizeMethod method = ResizeMethod.ScaleCrop, TargetSpot spot = TargetSpot.Center)
         {
             var img = Image.FromFile(filePath);
             return Resize(img, newWidth, newHeight, method, spot);
@@ -31,7 +31,7 @@ namespace LazZiya.ImageResize
         /// <param name="method">resize method</param>
         /// <param name="spot">reference cropping spot</param>
         /// <returns>System.Drawing.Image</returns>
-        public static Image Resize(Stream stream, int newWidth, int newHeight, ResizeMethod method = ResizeMethod.Crop, TargetSpot spot = TargetSpot.Center)
+        public static Image Resize(Stream stream, int newWidth, int newHeight, ResizeMethod method = ResizeMethod.ScaleCrop, TargetSpot spot = TargetSpot.Center)
         {
             var img = Image.FromStream(stream);
             return Resize(img, newWidth, newHeight, method, spot);
@@ -46,7 +46,7 @@ namespace LazZiya.ImageResize
         /// <param name="method">resize method</param>
         /// <param name="spot">reference cropping spot</param>
         /// <returns>System.Drawing.Image</returns>
-        public static Image Resize(Image img, int newWidth, int newHeight, ResizeMethod method = ResizeMethod.Crop, TargetSpot spot = TargetSpot.Center)
+        public static Image Resize(Image img, int newWidth, int newHeight, ResizeMethod method = ResizeMethod.ScaleCrop, TargetSpot spot = TargetSpot.Center)
         {
             if (newWidth == 0 && newHeight == 0)
             {
@@ -77,12 +77,12 @@ namespace LazZiya.ImageResize
                 targetRect = ReDefineNewImageSize(img.Width, img.Height, newWidth, newHeight);
             }
             // crop
-            else if (method == ResizeMethod.Crop)
+            else if (method == ResizeMethod.ScaleCrop)
             {
                 srcRect = CropSourceImage(img.Width, img.Height, newWidth, newHeight, spot);
             }
             // spot crop, no scale
-            else if(method == ResizeMethod.SpotCrop)
+            else if(method == ResizeMethod.Crop)
             {
                 srcRect = DirectCropSourceImage(img.Width, img.Height, newWidth, newHeight, spot);
             }
