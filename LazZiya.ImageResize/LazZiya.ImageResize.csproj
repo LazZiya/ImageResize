@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -11,8 +11,8 @@
     <RepositoryUrl>https://github.com/LazZiya/ImageResize</RepositoryUrl>
     <PackageProjectUrl>http://ziyad.info/en/articles/29-Image_Resize_for_dotNetCore</PackageProjectUrl>
     <Platforms>AnyCPU;x64</Platforms>
-    <AssemblyVersion>1.2.1.40</AssemblyVersion>
-    <FileVersion>1.2.1.34</FileVersion>
+    <AssemblyVersion>1.2.2.41</AssemblyVersion>
+    <FileVersion>1.2.2.35</FileVersion>
     <Version>1.1.1</Version>
     <PackageReleaseNotes>image watermark with opacity settings</PackageReleaseNotes>
     <PackageIconUrl>https://raw.githubusercontent.com/LazZiya/ImageResize/master/LazZiya.ImageResize/files/icon.png</PackageIconUrl>
