@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace LazZiya.ImageResize
+namespace LazZiya.ImageResize.Watermark
 {
     // https://stackoverflow.com/a/8843188/5519026
     public class ImageOpacity

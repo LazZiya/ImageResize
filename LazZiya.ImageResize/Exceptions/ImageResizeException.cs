@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LazZiya.ImageResize
+namespace LazZiya.ImageResize.Exceptions
 {
     public class ImageResizeException : Exception
     {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace LazZiya.ImageResize
+﻿namespace LazZiya.ImageResize.Exceptions
 {
     public class ImageResizeResult
     {
