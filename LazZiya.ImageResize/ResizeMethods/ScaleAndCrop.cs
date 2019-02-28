@@ -9,8 +9,6 @@ namespace LazZiya.ImageResize.ResizeMethods
     /// </summary>
     public class ScaleAndCrop : IResizeMethod
     {
-        private Image _img { get; set; }
-
         private Size _sourceSize { get; set; }
         private Size _targetSize { get; set; }
 
@@ -20,15 +18,13 @@ namespace LazZiya.ImageResize.ResizeMethods
         public Rectangle SourceRect => new Rectangle(_sourceOrigin, _sourceSize);
         public Rectangle TargetRect => new Rectangle(_targetOrigin, _targetSize);
 
-        public ScaleAndCrop(Image img, Size targetSize, TargetSpot targetSpot)
+        public ScaleAndCrop(Size imgSize, Size targetSize, TargetSpot targetSpot)
         {
-            _img = img;
-
             _targetSize = targetSize;
             _targetOrigin = new Point(0, 0);
 
-            _sourceSize = SourceSize(img.Size, targetSize);
-            _sourceOrigin = SourceOrigin.GetSourceOrigin(img.Size, _sourceSize, targetSpot);
+            _sourceSize = SourceSize(imgSize, targetSize);
+            _sourceOrigin = SourceOrigin.GetSourceOrigin(imgSize, _sourceSize, targetSpot);
         }
 
         /// <summary>

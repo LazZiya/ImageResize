@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>$assemblyversion$</version>
+    <version>$version$</version>
     <title>$title$</title>
     <authors>$authors$</authors>
     <owners>$company$</owners>
