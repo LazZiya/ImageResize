@@ -98,7 +98,7 @@ img.SaveAs($"wwwroot\\images\\{file.FileName}");
 ## TargetSpot :
 Specifies that target spot used for cropping or placing text and image watermarks.
 ````cs
-public enum TargetSpot { TopLeft, TopMiddle, TopRight, MiddleLeft, Center, MiddleRight, BottomLeft, BottomMiddle, BottimRight }
+public enum TargetSpot { TopLeft, TopMiddle, TopRight, MiddleLeft, Center, MiddleRight, BottomLeft, BottomMiddle, BottomRight }
 ````
 
 goto project website: http://ziyad.info/en/articles/29-LazZiya_ImageResize
