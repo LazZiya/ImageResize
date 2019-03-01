@@ -14,7 +14,7 @@ Install-Package LazZiya.ImageResize -Version 2.0.0
 
 ### Upload and resize an image
 Handling uploaded files and resizing the images:
-````
+````cs
 foreach (var file in Request.Form.Files)
 {
     if (file.Length > 0)
@@ -36,23 +36,33 @@ All resizing methods will return a `System.Drawing.Image` file that can be saved
 
 - Scale :
 Auto scales image by width or height, and keeps aspect ratio same as original image
-`var img = ImageResize.Scale(uploadedImage, 800, 600);`
+````cs 
+var img = ImageResize.Scale(uploadedImage, 800, 600);
+````
 
 - Scale by width :
 Scales image by provided width value, auto adjusts new height according to aspect ratio.
-`var img = ImageResize.ScaleByWidth(uploadedImage, 800);`
+````cs
+var img = ImageResize.ScaleByWidth(uploadedImage, 800);
+````
 
 - Scale by height :
 Scales image by provided height value, auto adjusts new width according to aspect ratio.
-`var img = ImageResize.ScaleByHeight(uploadedImage, 600);`
+````cs
+var img = ImageResize.ScaleByHeight(uploadedImage, 600);
+````
 
 - Scale and crop :
 Scalesthe image to fit new width or new height (which fits first), then crops out the rest of the image.
-`var img = ImageResize.ScaleAndCrop(uploadedImage, 800, 600, TargetSpot.Center);`
+````cs
+var img = ImageResize.ScaleAndCrop(uploadedImage, 800, 600, TargetSpot.Center);
+````
 
 - Crop :
 Directly crop a specified spot of the image, without scaling.
-`var img = ImageResize.Crop(uploadedImage, 800, 600, TargetSpot.Center);`
+````cs 
+var img = ImageResize.Crop(uploadedImage, 800, 600, TargetSpot.Center);
+````
 
 ## Adding Watermark
 ImageResize supports adding text and image watermarks, both can be placed to any specified spot with ability to change opacity of the text or the image.
@@ -62,7 +72,7 @@ ImageResize supports adding text and image watermarks, both can be placed to any
 ### Add text watermark to the uploaded image
 Below code will draw a colored text with a transparent background in the bottom left corner of the uploaded image:
 
-````
+````cs
 img.TextWatermark("http://ziyad.info", 
                   "#DDAA9955",   //font color, hex8 value. DD is for opacity (00 - FF)
                   "#55AA9955",   //background color, hex8 value. 55 is for opacity (00 - FF)
@@ -76,7 +86,7 @@ img.SaveAs($"wwwroot\\images\\{file.FileName}");
 ````
 
 ### Add image watermark and adjust opacity :
-````
+````cs
 img.ImageWatermark("wwwroot\\images\\myimage.png",   //local path to the image watermark
                    TargetSpot.BottomRight, //add the image watermark to the bottom right area of the uploaded image
                    10,                     //keep 10px margin from the borders
@@ -87,16 +97,8 @@ img.SaveAs($"wwwroot\\images\\{file.FileName}");
 
 ## TargetSpot :
 Specifies that target spot used for cropping or placing text and image watermarks.
-````
-- TargetSpot.TopLeft
-- TargetSpot.TopMiddle
-- TargetSpot.TopRight
-- TargetSpot.MiddleLeft
-- TargetSpot.Center
-- TargetSpot.MiddleRight
-- TargetSpot.BottomLeft
-- TargetSpot.BottomMiddle
-- TargetSpot.BottimRight
+````cs
+public enum TargetSpot { TopLeft, TopMiddle, TopRight, MiddleLeft, Center, MiddleRight, BottomLeft, BottomMiddle, BottimRight }
 ````
 
 goto project website: http://ziyad.info/en/articles/29-LazZiya_ImageResize
