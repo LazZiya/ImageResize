@@ -15,6 +15,9 @@ Install-Package LazZiya.ImageResize -Version 2.0.0
 ### Upload and resize an image
 Handling uploaded files and resizing the images:
 ````cs
+using System.Drawing;
+using LazZiya.ImageResize;
+
 foreach (var file in Request.Form.Files)
 {
     if (file.Length > 0)
@@ -67,12 +70,16 @@ var img = ImageResize.Crop(uploadedImage, 800, 600, TargetSpot.Center);
 ## Adding Watermark
 ImageResize supports adding text and image watermarks, both can be placed to any specified spot with ability to change opacity of the text or the image.
 
-`TextWatermark` and `ImageWatermark`are extension methods to `System.Drawing.Image`.
+`TextWatermark` and `ImageWatermark`are extension methods to `System.Drawing.Image` and they are located under `LazZiya.ImageResize.Watermark` namespace.
 
 ### Add text watermark to the uploaded image
 Below code will draw a colored text with a transparent background in the bottom left corner of the uploaded image:
 
 ````cs
+using System.Drawing;
+using LazZiya.ImageResize;
+using LazZiya.ImageResize.Watermark;
+
 img.TextWatermark("http://ziyad.info", 
                   "#DDAA9955",   //font color, hex8 value. DD is for opacity (00 - FF)
                   "#55AA9955",   //background color, hex8 value. 55 is for opacity (00 - FF)
@@ -87,6 +94,10 @@ img.SaveAs($"wwwroot\\images\\{file.FileName}");
 
 ### Add image watermark and adjust opacity :
 ````cs
+using System.Drawing;
+using LazZiya.ImageResize;
+using LazZiya.ImageResize.Watermark;
+
 img.ImageWatermark("wwwroot\\images\\myimage.png",   //local path to the image watermark
                    TargetSpot.BottomRight, //add the image watermark to the bottom right area of the uploaded image
                    10,                     //keep 10px margin from the borders
