@@ -1,8 +1,11 @@
 # LazZiya.ImageResize
 Image resizing tool for ASP.Net Core 2.x with support to add text water mark 
 
-## Project site:
+### Project site:
 http://ziyad.info/en/articles/29-LazZiya_ImageResize
+
+### Samples:
+http://demo.ziyad.info/en/ImageResize
 
 ## Installation:
 
