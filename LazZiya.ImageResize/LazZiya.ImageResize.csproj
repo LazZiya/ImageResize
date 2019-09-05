@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>Ziya Mollamahmut</Authors>
     <Company>Ziyad.info</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -11,20 +11,16 @@
     <RepositoryUrl>https://github.com/LazZiya/ImageResize</RepositoryUrl>
     <PackageProjectUrl>http://ziyad.info/en/articles/29-Image_Resize_for_dotNetCore</PackageProjectUrl>
     <Platforms>AnyCPU;x64</Platforms>
-    <AssemblyVersion>2.2.5.61</AssemblyVersion>
-    <FileVersion>2.2.5.55</FileVersion>
-    <Version>2.0</Version>
+    <Version>3.0.0-preview1</Version>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
+    <FileVersion>3.0.0.0</FileVersion>
     <PackageReleaseNotes>image watermark with opacity settings</PackageReleaseNotes>
     <PackageIconUrl>https://raw.githubusercontent.com/LazZiya/ImageResize/master/LazZiya.ImageResize/files/icon.png</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="LazZiya.ImageResize.1.0.0.nupkg" />
-    <None Remove="LazZiya.ImageResize.nuspec" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
+    <PackageReference Include ="System.Drawing.Common" Version="4.5.1" />
   </ItemGroup>
 
   <ItemGroup>
