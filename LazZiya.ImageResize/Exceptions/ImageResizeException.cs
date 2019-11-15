@@ -2,10 +2,19 @@
 
 namespace LazZiya.ImageResize.Exceptions
 {
+    /// <summary>
+    /// Raise an image resize exeption
+    /// </summary>
     public class ImageResizeException : Exception
     {
+        /// <summary>
+        /// Image resize result
+        /// </summary>
         public ImageResizeResult Result { get; }
 
+        /// <summary>
+        /// Raise an image resize exeption
+        /// </summary>
         public ImageResizeException(ImageResizeResult result) : base(BuildMessage(result))
         {
             Result = result;

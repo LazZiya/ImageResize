@@ -4,6 +4,9 @@ using System.Drawing.Imaging;
 
 namespace LazZiya.ImageResize
 {
+    /// <summary>
+    /// Available image formats and GUID values
+    /// </summary>
     public class ImageFormats
     {
         /// <summary>

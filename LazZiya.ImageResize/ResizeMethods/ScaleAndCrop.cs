@@ -9,28 +9,42 @@ namespace LazZiya.ImageResize.ResizeMethods
     /// </summary>
     public class ScaleAndCrop : IResizeMethod
     {
-        private Size _sourceSize { get; set; }
-        private Size _targetSize { get; set; }
+        private Size SourceSize { get; set; }
+        private Size TargetSize { get; set; }
 
-        private Point _sourceOrigin { get; set; }
-        private Point _targetOrigin { get; set; }
+        private Point SourceOrigin { get; set; }
+        private Point TargetOrigin { get; set; }
 
-        public Rectangle SourceRect => new Rectangle(_sourceOrigin, _sourceSize);
-        public Rectangle TargetRect => new Rectangle(_targetOrigin, _targetSize);
+        /// <summary>
+        /// The source reading rectangle from the source image
+        /// </summary>
+        public Rectangle SourceRect => new Rectangle(SourceOrigin, SourceSize);
 
+        /// <summary>
+        /// the target image size and position
+        /// </summary>
+        public Rectangle TargetRect => new Rectangle(TargetOrigin, TargetSize);
+
+        /// <summary>
+        /// Scale and crop the image,
+        /// If the final width or heghit is out of the target area it will be cropped out.
+        /// </summary>
+        /// <param name="imgSize">Source image size</param>
+        /// <param name="targetSize">Target image size</param>
+        /// <param name="targetSpot">The target spot to read from the source image. See <see cref="TargetSpot"/></param>
         public ScaleAndCrop(Size imgSize, Size targetSize, TargetSpot targetSpot)
         {
-            _targetSize = targetSize;
-            _targetOrigin = new Point(0, 0);
+            TargetSize = targetSize;
+            TargetOrigin = new Point(0, 0);
 
-            _sourceSize = SourceSize(imgSize, targetSize);
-            _sourceOrigin = SourceOrigin.GetSourceOrigin(imgSize, _sourceSize, targetSpot);
+            SourceSize = GetSourceSize(imgSize, targetSize);
+            SourceOrigin = ResizeMethods.SourceOrigin.GetSourceOrigin(imgSize, SourceSize, targetSpot);
         }
 
         /// <summary>
         /// define the max rect size and pos to read from source image
         /// </summary>
-        private Size SourceSize(Size imgSize, Size targetSize)
+        private Size GetSourceSize(Size imgSize, Size targetSize)
         {
             // aspect ratio of the resized image
             float croppedRatio = (float)targetSize.Width / (float)targetSize.Height;

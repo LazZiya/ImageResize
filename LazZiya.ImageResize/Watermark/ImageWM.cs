@@ -3,15 +3,19 @@ using System.Drawing.Drawing2D;
 
 namespace LazZiya.ImageResize.Watermark
 {
+    /// <summary>
+    /// Add image watermark over another image
+    /// </summary>
     public static class ImageWM
     {
         /// <summary>
-        /// add image watermark over the uploaded image
+        /// Add image watermark over another image.
         /// </summary>
-        /// <param name="img"></param>
-        /// <param name="wmFileName"></param>
-        /// <param name="spot"></param>
-        /// <param name="stickToBorder"></param>
+        /// <param name="img">The main image</param>
+        /// <param name="wmFileName">full path to the image that will be used as watermark</param>
+        /// <param name="spot">The taret spot on the main image to draw the watermark over. See <see cref="TargetSpot"/></param>
+        /// <param name="margin">The distance of the watermark image in pixels from the nearest border.</param>
+        /// <param name="opacity">The opacity of the watermark image (0 - 100)</param>
         public static void ImageWatermark(this Image img, string wmFileName, TargetSpot spot = TargetSpot.TopRight, int margin = 10, int opacity = 35)
         {
             if (opacity > 0)

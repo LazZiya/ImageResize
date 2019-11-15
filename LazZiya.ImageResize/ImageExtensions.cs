@@ -4,8 +4,16 @@ using System.Drawing.Imaging;
 
 namespace LazZiya.ImageResize
 {
+    /// <summary>
+    /// Image extnsion methods to get encoder info
+    /// </summary>
     public static class ImageExtensions
     {
+        /// <summary>
+        /// Get image codec information for the given extension.
+        /// </summary>
+        /// <param name="ext">extension of the image file</param>
+        /// <returns><see cref="ImageCodecInfo"/></returns>
         public static ImageCodecInfo GetEncoderInfo(string ext)
         {
             int j;
@@ -28,6 +36,11 @@ namespace LazZiya.ImageResize
             });
         }
 
+        /// <summary>
+        /// Save the image to the specified path
+        /// </summary>
+        /// <param name="img">Image to save</param>
+        /// <param name="path">Full path including file name and extension to save the image to</param>
         public static void SaveAs(this Image img, string path)
         {
             ImageCodecInfo myImageCodecInfo;

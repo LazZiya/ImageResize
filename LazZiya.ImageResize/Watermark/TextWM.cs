@@ -8,20 +8,29 @@ using System.Text;
 
 namespace LazZiya.ImageResize.Watermark
 {
+    /// <summary>
+    /// Add a text watermark over the main image
+    /// </summary>
     public static class TextWM
     {
         /// <summary>
-        /// add watermark text over image
+        /// Add a text watermark over the main image
         /// </summary>
-        /// <param name="img"></param>
-        /// <param name="text"></param>
-        /// <param name="color">hex8 Color e.g. #77FFFFFF</param>
-        /// <param name="bgColor">hex8 Color e.g. #00000000</param>
-        /// <param name="fontFamily"></param>
-        /// <param name="size"></param>
-        /// <param name="align"></param>
-        /// <param name="vAlign"></param>
-        /// <param name="style"></param>
+        /// <param name="img">The main image</param>
+        /// <param name="text">The text to add as watermark</param>
+        /// <param name="color">The color of the text. 
+        /// use 8 digit hex code to specify alpha channed as well.
+        /// sample: #77FFFFFF (77 is the alpha channed (00 - FF)
+        /// </param>
+        /// <param name="bgColor">The color of the text background. 
+        /// use 8 digit hex code to specify alpha channed as well.
+        /// sample: #77FFFFFF (77 is the alpha channed (00 - FF)</param>
+        /// <param name="fontFamily">Font family name</param>
+        /// <param name="size">Text size</param>
+        /// <param name="spot">Target spot to draw the watermark text over the main image. 
+        /// See <see cref="TargetSpot"/></param>
+        /// <param name="style">Font style</param>
+        /// <param name="margin">The distance in pixels between the watermark text and the nearest border of the main image.</param>
         public static void TextWatermark(this Image img,
             string text,
             string color = "#77FFFFFF", string bgColor = "#00000000",
@@ -60,12 +69,14 @@ namespace LazZiya.ImageResize.Watermark
 
 
         /// <summary>
-        /// watermark text pos
+        /// Calculate the watermark text background size and position according to the taret spot, 
+        /// main image size and font size.
         /// </summary>
-        /// <param name="imgWidth"></param>
-        /// <param name="imgHeight"></param>
-        /// <param name="fontSize"></param>
-        /// <param name="pos"></param>
+        /// <param name="imgWidth">Main image width</param>
+        /// <param name="imgHeight">Main image height</param>
+        /// <param name="fontSize">Font size</param>
+        /// <param name="spot">target spot</param>
+        /// <param name="margin">Distance from the nearest border</param>
         /// <returns></returns>
         private static Rectangle SetBGPos(int imgWidth, int imgHeight, int fontSize, TargetSpot spot, int margin)
         {

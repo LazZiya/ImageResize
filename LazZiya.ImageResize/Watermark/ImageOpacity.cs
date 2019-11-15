@@ -4,6 +4,9 @@ using System.Drawing.Imaging;
 
 namespace LazZiya.ImageResize.Watermark
 {
+    /// <summary>
+    /// Change image opacity
+    /// </summary>
     // https://stackoverflow.com/a/8843188/5519026
     public class ImageOpacity
     {

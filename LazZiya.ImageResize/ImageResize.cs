@@ -5,6 +5,9 @@ using System.Drawing;
 
 namespace LazZiya.ImageResize
 {
+    /// <summary>
+    /// Resize images
+    /// </summary>
     public static class ImageResize
     {
         /// <summary>
@@ -84,6 +87,14 @@ namespace LazZiya.ImageResize
             return Resize(img, resize.SourceRect, resize.TargetRect);
         }
 
+        /// <summary>
+        /// specify custom resize options
+        /// </summary>
+        /// <param name="img">the image to resize</param>
+        /// <param name="source">The coordinates to read as source from the image, 
+        /// can be the whole image or part of it</param>
+        /// <param name="target">The coordinates of the target image size</param>
+        /// <returns></returns>
         public static Image Resize(Image img, Rectangle source, Rectangle target)
         {
             Bitmap outputImage = new Bitmap(target.Width, target.Height, img.PixelFormat);
