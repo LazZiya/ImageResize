@@ -412,25 +412,21 @@
             Add a text watermark over the main image
             </summary>
         </member>
-        <member name="M:LazZiya.ImageResize.Watermark.TextWM.TextWatermark(System.Drawing.Image,System.String,System.String,System.String,System.String,System.Int32,LazZiya.ImageResize.TargetSpot,System.Drawing.FontStyle,System.Int32)">
+        <member name="M:LazZiya.ImageResize.Watermark.TextWM.TextWatermark(System.Drawing.Image,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Single,LazZiya.ImageResize.TargetSpot,System.Drawing.FontStyle,System.Int32)">
             <summary>
-            Add a text watermark over the main image
+            
             </summary>
-            <param name="img">The main image</param>
-            <param name="text">The text to add as watermark</param>
-            <param name="color">The color of the text. 
-            use 8 digit hex code to specify alpha channed as well.
-            sample: #77FFFFFF (77 is the alpha channed (00 - FF)
-            </param>
-            <param name="bgColor">The color of the text background. 
-            use 8 digit hex code to specify alpha channed as well.
-            sample: #77FFFFFF (77 is the alpha channed (00 - FF)</param>
-            <param name="fontFamily">Font family name</param>
-            <param name="size">Text size</param>
-            <param name="spot">Target spot to draw the watermark text over the main image. 
-            See <see cref="T:LazZiya.ImageResize.TargetSpot"/></param>
-            <param name="style">Font style</param>
-            <param name="margin">The distance in pixels between the watermark text and the nearest border of the main image.</param>
+            <param name="img"></param>
+            <param name="text"></param>
+            <param name="color"></param>
+            <param name="bgColor"></param>
+            <param name="outlineColor"></param>
+            <param name="fontFamily"></param>
+            <param name="size"></param>
+            <param name="spot"></param>
+            <param name="outlineWidth"></param>
+            <param name="style"></param>
+            <param name="margin"></param>
         </member>
         <member name="M:LazZiya.ImageResize.Watermark.TextWM.SetBGPos(System.Int32,System.Int32,System.Int32,LazZiya.ImageResize.TargetSpot,System.Int32)">
             <summary>
