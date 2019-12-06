@@ -73,5 +73,52 @@ namespace LazZiya.ImageResize.Watermark
 
             return bmp;
         }
+
+        /// <summary>  
+        /// method for changing the opacity of an image  
+        /// </summary>  
+        /// <param name="image">image to set opacity on</param>  
+        /// <param name="opacity">percentage of opacity</param>  
+        /// <returns></returns>  
+        public Image SetImageOpacity(Image image, float opacity)
+        {
+            try
+            {
+                //create a Bitmap the size of the image provided  
+                Bitmap bmp = new Bitmap(image.Width, image.Height);
+
+                //create a graphics object from the image  
+                using (Graphics gfx = Graphics.FromImage(bmp))
+                {
+
+                    //create a color matrix object  
+
+                    //create image attributes  
+                    using (var attributes = new ImageAttributes())
+                    {
+                        ColorMatrix matrix = new ColorMatrix();
+
+                        if (opacity < 1.0)
+                        {
+                            // clear undesired border
+                            gfx.Clear(Color.White);
+                        }
+                        //set the opacity  
+                        matrix.Matrix33 = opacity;
+
+                        //set the color(opacity) of the image  
+                        attributes.SetColorMatrix(matrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                        //now draw the image  
+                        gfx.DrawImage(image, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, attributes);
+                    }
+                }
+                return bmp;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }
