@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Text;
+﻿using System.Drawing;
 
-namespace LazZiya.ImageResize.Watermark
+namespace LazZiya.ImageResize
 {
     /// <summary>
     /// Define options for adding text watermark over the image, like text color, opacity, text outline, etc.

@@ -2,12 +2,12 @@
 using System;
 using System.Drawing.Imaging;
 
-namespace LazZiya.ImageResize
+namespace LazZiya.ImageResize.Tools
 {
     /// <summary>
     /// Available image formats and GUID values
     /// </summary>
-    public class ImageFormats
+    public abstract class ImageFormats
     {
         /// <summary>
         /// return image format by comparing the ImageFormat.Guid param

@@ -2,24 +2,24 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace LazZiya.ImageResize.Watermark
+namespace LazZiya.ImageResize.Tools
 {
     /// <summary>
     /// Change image opacity
     /// </summary>
     // https://stackoverflow.com/a/8843188/5519026
-    public class ImageOpacity
+    public abstract class ImageOpacity
     {
-        private const int bytesPerPixel = 4;
 
         /// <summary>
-        /// Change the opacity of an image
+        /// Change the opacity of an image, this method loops through all image pixels and changes the opacity
         /// </summary>
         /// <param name="originalImage">The original image</param>
         /// <param name="opacity">Opacity, where 100 is no opacity, 00 is full transparency</param>
         /// <returns>The changed image</returns>
-        public static Image ChangeImageOpacity(Image originalImage, int opacity)
+        public static Image ChangeImageOpacityMethod1(Image originalImage, int opacity)
         {
+
             if ((originalImage.PixelFormat & PixelFormat.Indexed) == PixelFormat.Indexed)
             {
                 // Cannot modify an image with indexed colors
@@ -37,6 +37,8 @@ namespace LazZiya.ImageResize.Watermark
 
             // Get the address of the first line.
             IntPtr ptr = bmpData.Scan0;
+
+            int bytesPerPixel = 4;
 
             // Declare an array to hold the bytes of the bitmap.
             // This code is specific to a bitmap with 32 bits per pixels 
@@ -75,50 +77,44 @@ namespace LazZiya.ImageResize.Watermark
         }
 
         /// <summary>  
-        /// method for changing the opacity of an image  
+        /// method for changing the opacity of an image, this method uses ImageAttributes matrix to change the opacity.
         /// </summary>  
         /// <param name="image">image to set opacity on</param>  
-        /// <param name="opacity">percentage of opacity</param>  
+        /// <param name="opacity">opacity 0 full transparent, 100 no opacity</param>  
         /// <returns></returns>  
-        public Image SetImageOpacity(Image image, float opacity)
+        public static Image ChangeImageOpacityMethod2(Image image, int opacity)
         {
-            try
-            {
-                //create a Bitmap the size of the image provided  
-                Bitmap bmp = new Bitmap(image.Width, image.Height);
+            //create a Bitmap the size of the image provided  
+            Bitmap bmp = new Bitmap(image.Width, image.Height);
 
-                //create a graphics object from the image  
-                using (Graphics gfx = Graphics.FromImage(bmp))
+            //create a graphics object from the image  
+            using (Graphics gfx = Graphics.FromImage(bmp))
+            {
+
+                //create a color matrix object  
+
+                //create image attributes  
+                using (var attributes = new ImageAttributes())
                 {
+                    ColorMatrix matrix = new ColorMatrix();
 
-                    //create a color matrix object  
-
-                    //create image attributes  
-                    using (var attributes = new ImageAttributes())
+                    if (opacity < 100)
                     {
-                        ColorMatrix matrix = new ColorMatrix();
-
-                        if (opacity < 1.0)
-                        {
-                            // clear undesired border
-                            gfx.Clear(Color.White);
-                        }
-                        //set the opacity  
-                        matrix.Matrix33 = opacity;
-
-                        //set the color(opacity) of the image  
-                        attributes.SetColorMatrix(matrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
-
-                        //now draw the image  
-                        gfx.DrawImage(image, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, attributes);
+                        // clear undesired border
+                        gfx.Clear(Color.White);
                     }
+
+                    //set the opacity  
+                    matrix.Matrix33 = (float)opacity / 100;
+
+                    //set the color(opacity) of the image  
+                    attributes.SetColorMatrix(matrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                    //now draw the image  
+                    gfx.DrawImage(image, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, attributes);
                 }
-                return bmp;
             }
-            catch (Exception ex)
-            {
-                return null;
-            }
+            return bmp;
         }
     }
 }

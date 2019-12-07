@@ -1,19 +1,21 @@
 ﻿using LazZiya.ImageResize.Exceptions;
 using LazZiya.ImageResize.ResizeMethods;
+using LazZiya.ImageResize.Tools;
 using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace LazZiya.ImageResize
 {
     /// <summary>
     /// Resize images
     /// </summary>
-    public static class ImageResize
+    public abstract class ImageResize
     {
         /// <summary>
-        /// auto scale image by width or height till longest border (width/height) is equal to new width/height
-        /// final image aspect ratio is equal to original image aspect ratio
-        /// if the aspect ratio of new w/h != aspect ratio of original image then; 
+        /// Auto scale image by width or height till longest border (width/height) is equal to new width/height.
+        /// Final image aspect ratio is equal to original image aspect ratio.
+        /// If the aspect ratio of new w/h != aspect ratio of original image then 
         /// one border will be in different size than the given value in order to keep original aspect ratio
         /// </summary>
         /// <param name="img"></param>
@@ -28,8 +30,8 @@ namespace LazZiya.ImageResize
         }
 
         /// <summary>
-        /// scale image by width and keep same aspect ratio of target image same as the original image
-        /// height will be adjusted automatically
+        /// Scale image by width and keep same aspect ratio of target image same as the original image.
+        /// Height will be adjusted automatically
         /// </summary>
         /// <param name="img"></param>
         /// <param name="newWidth"></param>
@@ -42,8 +44,8 @@ namespace LazZiya.ImageResize
         }
 
         /// <summary>
-        /// scale image by height and keep same aspect ratio of target image same as the original image
-        /// width will be adjusted automatically
+        /// Scale image by height and keep same aspect ratio of target image same as the original image.
+        /// Width will be adjusted automatically
         /// </summary>
         /// <param name="img"></param>
         /// <param name="newHeight"></param>
@@ -56,9 +58,9 @@ namespace LazZiya.ImageResize
         }
 
         /// <summary>
-        /// scale target image till shortest border are equal to target value, 
-        /// then crop the additonal pixels from the longest border
-        /// final image aspect ratio is equal to the given new width/height
+        /// Scale target image till shortest border are equal to target value, 
+        /// then crop the additonal pixels from the longest border.
+        /// Final image aspect ratio is equal to the given new width/height
         /// </summary>
         /// <param name="img"></param>
         /// <param name="newWidth"></param>
@@ -73,8 +75,8 @@ namespace LazZiya.ImageResize
         }
 
         /// <summary>
-        /// directly crop original image without scaling it
-        /// final image aspect ratio is equal to given new width/height
+        /// Directly crop original image without scaling it.
+        /// Final image aspect ratio is equal to given new width/height
         /// </summary>
         /// <param name="img"></param>
         /// <param name="newWidth"></param>
@@ -88,7 +90,7 @@ namespace LazZiya.ImageResize
         }
 
         /// <summary>
-        /// specify custom resize options
+        /// Specify custom resize options
         /// </summary>
         /// <param name="img">the image to resize</param>
         /// <param name="source">The coordinates to read as source from the image, 
