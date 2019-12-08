@@ -1,51 +1,48 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>Ziya Mollamahmut</Authors>
     <Company>Ziyad.info</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>Simple tool for image resize, and add text over image for ASP.NET Core</Description>
+    <Description>Easily resize and crop images, add text watermark, add text outline, add image watermark with transparency, etc. Supports all .NetStandard2.0 compatible platforms (Asp.Net Core all versions and more...)</Description>
     <Copyright>Ziyad.info</Copyright>
     <PackageTags>asp.net,core,.net,dotnet,image,resize,text,overlay</PackageTags>
     <RepositoryUrl>https://github.com/LazZiya/ImageResize</RepositoryUrl>
     <PackageProjectUrl>http://ziyad.info/en/articles/29-Image_Resize_for_dotNetCore</PackageProjectUrl>
-    <Platforms>AnyCPU;x64</Platforms>
-    <AssemblyVersion>2.2.5.61</AssemblyVersion>
-    <FileVersion>2.2.5.55</FileVersion>
-    <Version>2.0</Version>
-    <PackageReleaseNotes>image watermark with opacity settings</PackageReleaseNotes>
+    <Version>3.0.0-preview1</Version>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
+    <FileVersion>3.0.0.0</FileVersion>
+    <PackageReleaseNotes>
+      - .NetStandard 2.0 support
+      - New: TextOutline for text watermark
+      - New: AddTextWatermark methods
+      - New: AddImageWatermark methods
+      - New: Graphic options for image resize methods
+      - Obsolete: TextWatermark, ImageWatermark extensions are obsolete and will be removed in a feature release
+      - Overall performance improvments
+    </PackageReleaseNotes>
     <PackageIconUrl>https://raw.githubusercontent.com/LazZiya/ImageResize/master/LazZiya.ImageResize/files/icon.png</PackageIconUrl>
+    <PackageIcon>icon.png</PackageIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>files\LazZiya.ImageResize.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>LazZiya.ImageResize.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="LazZiya.ImageResize.1.0.0.nupkg" />
-    <None Remove="LazZiya.ImageResize.nuspec" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
     <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
-      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.logging.abstractions\2.1.1\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Composition.AttributedModel">
-      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\system.composition.attributedmodel\1.0.31\lib\netstandard1.0\System.Composition.AttributedModel.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="files\icon.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="files\icon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="files\license.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="files\icon.png" Pack="true" Visible="false" PackagePath="\" />
+    <None Include="files\icon.ico" Pack="true" Visible="false" PackagePath="\" />
+    <None Include="files\license.txt" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

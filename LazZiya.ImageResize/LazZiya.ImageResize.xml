@@ -1,0 +1,727 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LazZiya.ImageResize</name>
+    </assembly>
+    <members>
+        <member name="T:LazZiya.ImageResize.Exceptions.FailureReasonType">
+            <summary>
+            Failure reasone type
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Exceptions.FailureReasonType.None">
+            <summary>
+            not listed
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Exceptions.FailureReasonType.EncoderNotFound">
+            <summary>
+            Relevant encoder info not found
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Exceptions.FailureReasonType.ExtensionNotSupported">
+            <summary>
+            File extension is not supported
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Exceptions.FailureReasonType.UnknownImageFormatGuid">
+            <summary>
+            Image file format GUID is unknown
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Exceptions.FailureReasonType.ZeroSizeNotAllowed">
+            <summary>
+            Zero size error
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Exceptions.FailureReasonType.GraphicsException">
+            <summary>
+            GDI+ related exceptin
+            </summary>
+        </member>
+        <member name="T:LazZiya.ImageResize.Exceptions.ImageResizeException">
+            <summary>
+            Raise an image resize exeption
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Exceptions.ImageResizeException.#ctor">
+            <summary>
+            Raise an image resize exeption
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Exceptions.ImageResizeException.#ctor(System.String)">
+            <summary>
+            Raise an image resize exeption
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Exceptions.ImageResizeException.#ctor(System.String,System.Exception)">
+            <summary>
+            Raise an image resize exeption
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.Exceptions.ImageResizeException.Result">
+            <summary>
+            Image resize result
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Exceptions.ImageResizeException.#ctor(LazZiya.ImageResize.Exceptions.ImageResizeResult)">
+            <summary>
+            Raise an image resize exeption
+            </summary>
+        </member>
+        <member name="T:LazZiya.ImageResize.Exceptions.ImageResizeResult">
+            <summary>
+            Image resize result object
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.Exceptions.ImageResizeResult.Success">
+            <summary>
+            Resize result status, true for success, false for failure
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.Exceptions.ImageResizeResult.Value">
+            <summary>
+            String message value
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.Exceptions.ImageResizeResult.Reason">
+            <summary>
+            Specify failure reason
+            </summary>
+        </member>
+        <member name="T:LazZiya.ImageResize.ImageResize">
+            <summary>
+            Resize images
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResize.Scale(System.Drawing.Image,System.Int32,System.Int32)">
+            <summary>
+            Auto scale image by width or height till longest border (width/height) is equal to new width/height.
+            Final image aspect ratio is equal to original image aspect ratio.
+            If the aspect ratio of new w/h != aspect ratio of original image then 
+            one border will be in different size than the given value in order to keep original aspect ratio
+            </summary>
+            <param name="img"></param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResize.Scale(System.Drawing.Image,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Auto scale image by width or height till longest border (width/height) is equal to new width/height.
+            Final image aspect ratio is equal to original image aspect ratio.
+            If the aspect ratio of new w/h != aspect ratio of original image then 
+            one border will be in different size than the given value in order to keep original aspect ratio
+            </summary>
+            <param name="img"></param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResize.ScaleByWidth(System.Drawing.Image,System.Int32)">
+            <summary>
+            Scale image by width and keep same aspect ratio of target image same as the original image.
+            Height will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="newWidth"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResize.ScaleByWidth(System.Drawing.Image,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Scale image by width and keep same aspect ratio of target image same as the original image.
+            Height will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="newWidth"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResize.ScaleByHeight(System.Drawing.Image,System.Int32)">
+            <summary>
+            Scale image by height and keep same aspect ratio of target image same as the original image.
+            Width will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResize.ScaleByHeight(System.Drawing.Image,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Scale image by height and keep same aspect ratio of target image same as the original image.
+            Width will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="newHeight"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResize.ScaleAndCrop(System.Drawing.Image,System.Int32,System.Int32,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Scale target image till shortest border are equal to target value, 
+            then crop the additonal pixels from the longest border.
+            Final image aspect ratio is equal to the given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResize.ScaleAndCrop(System.Drawing.Image,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Scale target image till shortest border are equal to target value, 
+            then crop the additonal pixels from the longest border.
+            Final image aspect ratio is equal to the given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResize.Crop(System.Drawing.Image,System.Int32,System.Int32,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Directly crop original image without scaling it.
+            Final image aspect ratio is equal to given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot">target spot to crop and save</param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResize.Crop(System.Drawing.Image,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Directly crop original image without scaling it.
+            Final image aspect ratio is equal to given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot">target spot to crop and save</param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResize.Resize(System.Drawing.Image,System.Drawing.Rectangle,System.Drawing.Rectangle)">
+            <summary>
+            Specify custom resize options
+            </summary>
+            <param name="img">the image to resize</param>
+            <param name="source">The coordinates to read as source from the image, 
+            can be the whole image or part of it</param>
+            <param name="target">The coordinates of the target image size</param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResize.Resize(System.Drawing.Image,System.Drawing.Rectangle,System.Drawing.Rectangle,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Specify custom resize options
+            </summary>
+            <param name="img">the image to resize</param>
+            <param name="source">The coordinates to read as source from the image, 
+            can be the whole image or part of it</param>
+            <param name="target">The coordinates of the target image size</param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="T:LazZiya.ImageResize.GraphicOptions">
+            <summary>
+            Define graphic options
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.CompositingQuality">
+            <summary>
+            Composition quality. 
+            Default: CompositingQuality.HighQuality
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.SmoothingMode">
+            <summary>
+            Smoothing mode. 
+            Default: SmoothingMode.HighQuality
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.InterpolationMode">
+            <summary>
+            Interpolation mode.
+            Default: InterpolationMode.HighQualityBicubic
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.PixelOffsetMode">
+            <summary>
+            Pixel offset mode.
+            Default: PixelOffsetMode.HighQuality
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.CompositingMode">
+            <summary>
+            Composition mode.
+            Default: CompositingMode.SourceOver
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.PageUnit">
+            <summary>
+            Page unit.
+            Default: GraphicsUnit.Pixel
+            </summary>
+        </member>
+        <member name="T:LazZiya.ImageResize.ImageWatermark">
+            <summary>
+            Draw image watermark
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageWatermark.AddImageWatermark(System.Drawing.Image,System.String)">
+            <summary>
+            Draw image watermark
+            </summary>
+            <param name="img">The original image</param>
+            <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageWatermark.AddImageWatermark(System.Drawing.Image,System.Drawing.Image)">
+            <summary>
+            Draw image watermark
+            </summary>
+            <param name="img">The original image</param>
+            <param name="wmImage">Watermark image</param>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageWatermark.AddImageWatermark(System.Drawing.Image,System.String,LazZiya.ImageResize.ImageWatermarkOptions)">
+            <summary>
+            Draw image watermark
+            </summary>
+            <param name="img">The original image</param>
+            <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
+            <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageWatermark.AddImageWatermark(System.Drawing.Image,System.Drawing.Image,LazZiya.ImageResize.ImageWatermarkOptions)">
+            <summary>
+            Draw image watermark
+            </summary>
+            <param name="img">The original image</param>
+            <param name="wmImage">Watermak image</param>
+            <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
+        </member>
+        <member name="T:LazZiya.ImageResize.ImageWatermarkOptions">
+            <summary>
+            Define options for adding image watermark over the image, like margin, opacity, and location.
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ImageWatermarkOptions.Margin">
+            <summary>
+            Margin in pixels. Depends on watermark location. default value 10
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ImageWatermarkOptions.Location">
+            <summary>
+            The location to draw the image watermark. Choose from pre-defined 9 main locations (3 cols, 3 rows).
+            Default value TargetSpot.TopRight.
+            See <see cref="T:LazZiya.ImageResize.TargetSpot"/>
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ImageWatermarkOptions.Opacity">
+            <summary>
+            Set opacity value of the image watermark (0 - 100). 
+            Default value 100 full color.
+            </summary>
+        </member>
+        <member name="T:LazZiya.ImageResize.ResizeMethods.Crop">
+            <summary>
+            Defines the image resize / crop method
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ResizeMethods.Crop.SourceRect">
+            <summary>
+            The rectangle info to read from the source image, the whole image size by default
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ResizeMethods.Crop.TargetRect">
+            <summary>
+            The target image size
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ResizeMethods.Crop.SourceOrigin">
+            <summary>
+            The origin point to start reading from the source image
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ResizeMethods.Crop.TargetOrigin">
+            <summary>
+            The origin point to start writing the target image
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ResizeMethods.Crop.SourceSize">
+            <summary>
+            Source image size
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ResizeMethods.Crop.TargetSize">
+            <summary>
+            Target image size
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.ResizeMethods.Crop.#ctor(System.Drawing.Size,System.Drawing.Size,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Crop an image according to the specified values
+            </summary>
+            <param name="imgSize">The source image size</param>
+            <param name="targetSize">The target image size</param>
+            <param name="targetSpot">The pre-defined spot of the source image to read and crop.
+            <see cref="T:LazZiya.ImageResize.TargetSpot"/></param>
+        </member>
+        <member name="T:LazZiya.ImageResize.ResizeMethods.IResizeMethod">
+            <summary>
+            Common properties for image resize methods
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ResizeMethods.IResizeMethod.SourceRect">
+            <summary>
+            The source image size and position
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ResizeMethods.IResizeMethod.TargetRect">
+            <summary>
+            The target image size and position
+            </summary>
+        </member>
+        <member name="T:LazZiya.ImageResize.ResizeMethods.Scale">
+            <summary>
+            scale image size down till both width and height are in the target image size
+            keep target image aspect ratio = original image aspect ratio
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ResizeMethods.Scale.SourceRect">
+            <summary>
+            The source reading rectangle from the source image
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ResizeMethods.Scale.TargetRect">
+            <summary>
+            the target image size and position
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.ResizeMethods.Scale.#ctor(System.Drawing.Size,System.Drawing.Size)">
+            <summary>
+            Scale an image as per given size and keep aspect ratio. 
+            The final result of the scale may have different width or hight
+            </summary>
+            <param name="imgSize"></param>
+            <param name="targetSize"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.ResizeMethods.Scale.ScaleByWidth(System.Drawing.Size,System.Single)">
+            <summary>
+            Get the height of the scaled image according to its given width
+            </summary>
+            <param name="size">The source image size</param>
+            <param name="width">The desired image width</param>
+            <returns>Size result of the scaling calculation</returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ResizeMethods.Scale.ScaleByHeight(System.Drawing.Size,System.Single)">
+            <summary>
+            Get the width of the scaled image according to its given height
+            </summary>
+            <param name="size">The source image size</param>
+            <param name="height">The desired image height</param>
+            <returns>Size result of the scaling calculation</returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ResizeMethods.Scale.AutoScale(System.Drawing.Size,System.Drawing.Size)">
+            <summary>
+            Get new sizes of the image to resize,
+            The scale calculation will fit the new size till both width and height are contianed,
+            So the final image is not cropped and completely fits in the new size.
+            </summary>
+            <param name="imgSize"></param>
+            <param name="targetSize"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LazZiya.ImageResize.ResizeMethods.ScaleAndCrop">
+            <summary>
+            scale down image size till one of width or height are equal to target image size
+            extra pixels will be cropped out
+            target image aspect ratio is equal to defined new size aspect ratio
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ResizeMethods.ScaleAndCrop.SourceRect">
+            <summary>
+            The source reading rectangle from the source image
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ResizeMethods.ScaleAndCrop.TargetRect">
+            <summary>
+            the target image size and position
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.ResizeMethods.ScaleAndCrop.#ctor(System.Drawing.Size,System.Drawing.Size,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Scale and crop the image,
+            If the final width or heghit is out of the target area it will be cropped out.
+            </summary>
+            <param name="imgSize">Source image size</param>
+            <param name="targetSize">Target image size</param>
+            <param name="targetSpot">The target spot to read from the source image. See <see cref="T:LazZiya.ImageResize.TargetSpot"/></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.ResizeMethods.ScaleAndCrop.GetSourceSize(System.Drawing.Size,System.Drawing.Size)">
+            <summary>
+            define the max rect size and pos to read from source image
+            </summary>
+        </member>
+        <member name="T:LazZiya.ImageResize.ResizeMethods.SourceOrigin">
+            <summary>
+            calculate the source origin point from image 
+            </summary>
+        </member>
+        <member name="T:LazZiya.ImageResize.SaveImage">
+            <summary>
+            Save the image file to disc
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.SaveImage.SaveAs(System.Drawing.Image,System.String,System.Int32)">
+            <summary>
+            Save the image to the specified path then dispose the Image object.
+            </summary>
+            <param name="img">Image to save</param>
+            <param name="path">Full path including file name and extension to save the image to</param>
+            <param name="quality">Image save quality (0 - 100)</param>
+        </member>
+        <member name="T:LazZiya.ImageResize.TargetSpot">
+            <summary>
+            Use target spot to specify the reading sport of the source image, 
+            if the cropped image is larger than the new image size 
+            then select the spot to crop.
+            <para>The TargetSpot pre-defines 9 main spots in the image, 3 columns and 3 rows.
+            it helps easily select which area to read from the image for resize and crop.</para>
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.TargetSpot.TopLeft">
+            <summary>
+            Takes the top left area of the image
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.TargetSpot.TopMiddle">
+            <summary>
+            Takes the top middle area of the image
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.TargetSpot.TopRight">
+            <summary>
+            Takes the top right area
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.TargetSpot.MiddleLeft">
+            <summary>
+            Takes the middle left area
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.TargetSpot.Center">
+            <summary>
+            Takes the center area of the image
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.TargetSpot.MiddleRight">
+            <summary>
+            Takes the middle right area of the image
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.TargetSpot.BottomLeft">
+            <summary>
+            Takes the bottom left area of the image
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.TargetSpot.BottomMiddle">
+            <summary>
+            Takes the bottom middle area of the image
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.TargetSpot.BottomRight">
+            <summary>
+            Takes the bottom left area of the image
+            </summary>
+        </member>
+        <member name="T:LazZiya.ImageResize.TextWatermark">
+            <summary>
+            Add text watermark over the image.
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.TextWatermark.AddTextWatermark(System.Drawing.Image,System.String)">
+            <summary>
+            Add text watermark over the image.
+            </summary>
+            <param name="img"></param>
+            <param name="text"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.TextWatermark.AddTextWatermark(System.Drawing.Image,System.String,LazZiya.ImageResize.TextWatermarkOptions)">
+            <summary>
+            Add text watermark over the image.
+            </summary>
+            <param name="img"></param>
+            <param name="text">text to draw over the image</param>
+            <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
+        </member>
+        <member name="T:LazZiya.ImageResize.TextWatermarkOptions">
+            <summary>
+            Define options for adding text watermark over the image, like text color, opacity, text outline, etc.
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.TextWatermarkOptions.TextColor">
+            <summary>
+            Value for the text color. Use alpha channel to specify transparency (0 - 255). 
+            Set alpha to 0 to remove text color.
+            Default value Color.FromArgb(255, Color.White) full color.
+            See <see cref="T:System.Drawing.Color"/>
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.TextWatermarkOptions.FontSize">
+            <summary>
+            Font size in pixel.
+            Default value 24
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.TextWatermarkOptions.FontStyle">
+            <summary>
+            Font style. Default value FontStyle.Regular.
+            See <see cref="P:LazZiya.ImageResize.TextWatermarkOptions.FontStyle"/>
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.TextWatermarkOptions.FontName">
+            <summary>
+            Font family. Default value "Arial"
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.TextWatermarkOptions.BGColor">
+            <summary>
+            Value for the text background color. Use alpha channel to specify transparency (0 - 255).
+            Set alpha to 0 to remove background.
+            Default value Color.FromArgb(0, Color.White) no background.
+            See <see cref="T:System.Drawing.Color"/>
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.TextWatermarkOptions.Margin">
+            <summary>
+            Top/Bottom margin in pixels. Depends on watermark horizontal alignment.
+            Default value 10
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.TextWatermarkOptions.Location">
+            <summary>
+            The location to draw the text watermark. Choose from pre-defined 9 main locations (3 cols, 3 rows).
+            Default value TargetSpot.BottomLeft.
+            See <see cref="T:LazZiya.ImageResize.TargetSpot"/>
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.TextWatermarkOptions.OutlineColor">
+            <summary>
+            Value for the text outline color. Use alpha channel to specify transparency (0 - 255).
+            Set alpha to 0 to remove outline.
+            Default value Color.FromArgb(255, Color.Black)
+            See <see cref="T:System.Drawing.Color"/>
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.TextWatermarkOptions.OutlineWidth">
+            <summary>
+            Text outline width in pixels. Default value 3.5f
+            </summary>
+        </member>
+        <member name="T:LazZiya.ImageResize.Tools.EncoderInfo">
+            <summary>
+            Image extension methods to get encoder info
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Tools.EncoderInfo.GetEncoderInfo(System.String)">
+            <summary>
+            Get image codec information for the given extension.
+            </summary>
+            <param name="ext">extension of the image file</param>
+            <returns><see cref="T:System.Drawing.Imaging.ImageCodecInfo"/></returns>
+        </member>
+        <member name="T:LazZiya.ImageResize.Tools.ImageFormats">
+            <summary>
+            Available image formats and GUID values
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Tools.ImageFormats.GetImageFormat(System.Guid)">
+            <summary>
+            return image format by comparing the ImageFormat.Guid param
+            </summary>
+            <param name="guid"></param>
+            <returns>System.Drawing.Imaging.ImageFormat</returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Tools.ImageFormats.GetImageFormat(System.String)">
+            <summary>
+            return image format by reading file extension
+            </summary>
+            <param name="fileName"></param>
+            <returns>System.Drawing.Imaging.ImageFormat</returns>
+        </member>
+        <member name="T:LazZiya.ImageResize.Tools.ImageOpacity">
+            <summary>
+            Change image opacity
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Tools.ImageOpacity.ChangeImageOpacityMethod1(System.Drawing.Image,System.Int32)">
+            <summary>
+            Change the opacity of an image, this method loops through all image pixels and changes the opacity
+            </summary>
+            <param name="originalImage">The original image</param>
+            <param name="opacity">Opacity, where 100 is no opacity, 00 is full transparency, 100 full color</param>
+            <returns>The changed image</returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Tools.ImageOpacity.ChangeImageOpacityMethod2(System.Drawing.Image,System.Int32)">
+            <summary>  
+            method for changing the opacity of an image, this method uses ImageAttributes matrix to change the opacity.
+            </summary>  
+            <param name="image">image to set opacity on</param>  
+            <param name="opacity">opacity 0 full transparent, 100 no opacity</param>  
+            <returns></returns>  
+        </member>
+        <member name="M:LazZiya.ImageResize.Tools.TextWatermarkPosition.SetBGPos(System.Int32,System.Int32,System.Int32,LazZiya.ImageResize.TargetSpot,System.Int32)">
+            <summary>
+            Calculate the watermark text background size and position according to the taret spot, 
+            main image size and font size.
+            </summary>
+            <param name="imgWidth">Main image width</param>
+            <param name="imgHeight">Main image height</param>
+            <param name="fontSize">Font size</param>
+            <param name="spot">target spot</param>
+            <param name="margin">Distance from the nearest border</param>
+            <returns></returns>
+        </member>
+        <member name="T:LazZiya.ImageResize.Watermark.Watermark">
+            <summary>
+            Add image watermark over another image
+            </summary>
+            <summary>
+            Add a text watermark over the main image
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Watermark.Watermark.ImageWatermark(System.Drawing.Image,System.String,LazZiya.ImageResize.TargetSpot,System.Int32,System.Int32)">
+            <summary>
+            Add image watermark over another image.
+            </summary>
+            <param name="img">The main image</param>
+            <param name="wmFileName">full path to the image that will be used as watermark</param>
+            <param name="spot">The taret spot on the main image to draw the watermark over. See <see cref="T:LazZiya.ImageResize.TargetSpot"/></param>
+            <param name="margin">The distance of the watermark image in pixels from the nearest border.</param>
+            <param name="opacity">The opacity of the watermark image (0 - 100)</param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Watermark.Watermark.TextWatermark(System.Drawing.Image,System.String,System.String,System.String,System.String,System.Int32,LazZiya.ImageResize.TargetSpot,System.Drawing.FontStyle,System.Int32)">
+            <summary>
+            Add a text watermark over the main image
+            </summary>
+            <param name="img">The main image</param>
+            <param name="text">The text to add as watermark</param>
+            <param name="color">The color of the text. 
+            use 8 digit hex code to specify alpha channed as well.
+            sample: #77FFFFFF (77 is the alpha channed (00 - FF)
+            </param>
+            <param name="bgColor">The color of the text background. 
+            use 8 digit hex code to specify alpha channed as well.
+            sample: #77FFFFFF (77 is the alpha channed (00 - FF)</param>
+            <param name="fontFamily">Font family name</param>
+            <param name="size">Text size</param>
+            <param name="spot">Target spot to draw the watermark text over the main image. 
+            See <see cref="T:LazZiya.ImageResize.TargetSpot"/></param>
+            <param name="style">Font style</param>
+            <param name="margin">The distance in pixels between the watermark text and the nearest border of the main image.</param>
+        </member>
+    </members>
+</doc>
