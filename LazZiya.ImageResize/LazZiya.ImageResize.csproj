@@ -5,7 +5,7 @@
     <Authors>Ziya Mollamahmut</Authors>
     <Company>Ziyad.info</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>Easily resize images, add text watermark with outline, add image watermark with transparency.</Description>
+    <Description>Easily resize and crop images, add text watermark, add text outline, add image watermark with transparency, etc.</Description>
     <Copyright>Ziyad.info</Copyright>
     <PackageTags>asp.net,core,.net,dotnet,image,resize,text,overlay</PackageTags>
     <RepositoryUrl>https://github.com/LazZiya/ImageResize</RepositoryUrl>
