@@ -119,7 +119,7 @@ img.AddTextWatermark("http://ziyad.info", new TextWatermarkOptions { ... });
 img.AddImageWatermark(@"wwwroot\images\logo.png");
 
 // or
-img.AddImageWatermark(@"wwwroot\images\logo.png", new ImageWatermarkOption { ... });
+img.AddImageWatermark(@"wwwroot\images\logo.png", new ImageWatermarkOptions { ... });
 
 // or
 var wm = Image.FromFile(@"wwwroot\images\logo.png");
@@ -127,7 +127,7 @@ img.AddImageWatermark(wm);
 
 // or
 var wm = Image.FromFile(@"wwwroot\images\logo.png");
-img.AddImageWatermark(wm, new ImageWatermarkOption { ... });
+img.AddImageWatermark(wm, new ImageWatermarkOptions { ... });
 ````
 
 ## TargetSpot :
@@ -137,16 +137,21 @@ public enum TargetSpot { TopLeft, TopMiddle, TopRight, MiddleLeft, Center, Middl
 ````
 
 ## GraphicOptions
-Define graphic options to ensure maximum image compatibility and quality.
+Define graphic options to ensure maximum image compatibility and quality. 
+See [GraphicOptions][1]
 
 ## TextWatermarkOptions
-Define text watermark options, like locaiton, color, text outline, etc.
+Define text watermark options, like locaiton, color, text outline, etc. See [TextWatermarkOptions][2]
 
 ## ImageWatermarkOptions
-Define image watermark option, lie location, opacity and margin.
+Define image watermark option, lie location, opacity and margin. See [ImageWatermarkOptions][3]
 
 
 goto project website: http://ziyad.info/en/articles/29-LazZiya_ImageResize
 
 ## License
 https://github.com/LazZiya/ImageResize/blob/master/LICENSE
+
+[1]: LazZiya.ImageResize/GraphicOptions.cs
+[2]: LazZiya.ImageResize/TextWatermarkOptions.cs
+[3]: LazZiya.ImageResize/ImageWatermarkOptions.cs
