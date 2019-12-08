@@ -8,6 +8,27 @@ namespace LazZiya.ImageResize.Exceptions
     public class ImageResizeException : Exception
     {
         /// <summary>
+        /// Raise an image resize exeption
+        /// </summary>
+        public ImageResizeException()
+        {
+        }
+
+        /// <summary>
+        /// Raise an image resize exeption
+        /// </summary>
+        public ImageResizeException(string message) : base(message)
+        {
+        }
+
+        /// <summary>
+        /// Raise an image resize exeption
+        /// </summary>
+        public ImageResizeException(string message, Exception innerException) : base(message, innerException)
+        {
+        }
+
+        /// <summary>
         /// Image resize result
         /// </summary>
         public ImageResizeResult Result { get; }

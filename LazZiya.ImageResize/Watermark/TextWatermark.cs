@@ -1,10 +1,11 @@
-﻿using System;
+﻿using LazZiya.ImageResize.Tools;
+using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Globalization;
 
-namespace LazZiya.ImageResize.Tools
+namespace LazZiya.ImageResize.Watermark
 {
     /// <summary>
     /// Add a text watermark over the main image

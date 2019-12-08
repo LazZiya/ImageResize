@@ -15,7 +15,7 @@ namespace LazZiya.ImageResize.Tools
         /// Change the opacity of an image, this method loops through all image pixels and changes the opacity
         /// </summary>
         /// <param name="originalImage">The original image</param>
-        /// <param name="opacity">Opacity, where 100 is no opacity, 00 is full transparency</param>
+        /// <param name="opacity">Opacity, where 100 is no opacity, 00 is full transparency, 100 full color</param>
         /// <returns>The changed image</returns>
         public static Image ChangeImageOpacityMethod1(Image originalImage, int opacity)
         {

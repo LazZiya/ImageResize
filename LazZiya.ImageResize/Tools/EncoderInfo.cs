@@ -5,7 +5,7 @@ using System.Drawing.Imaging;
 namespace LazZiya.ImageResize.Tools
 {
     /// <summary>
-    /// Image extnsion methods to get encoder info
+    /// Image extension methods to get encoder info
     /// </summary>
     public abstract class EncoderInfo
     {

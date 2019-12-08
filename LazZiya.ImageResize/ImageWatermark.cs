@@ -5,16 +5,16 @@ using System.Drawing.Drawing2D;
 namespace LazZiya.ImageResize
 {
     /// <summary>
-    /// 
+    /// Draw image watermark
     /// </summary>
     public static class ImageWatermark
     {
 
         /// <summary>
-        /// 
+        /// Draw image watermark
         /// </summary>
-        /// <param name="img"></param>
-        /// <param name="wmImgPath"></param>
+        /// <param name="img">The original image</param>
+        /// <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
         public static Image AddImageWatermark(this Image img, string wmImgPath)
         {
             var wm = Image.FromFile(wmImgPath);
@@ -22,21 +22,21 @@ namespace LazZiya.ImageResize
         }
 
         /// <summary>
-        /// 
+        /// Draw image watermark
         /// </summary>
-        /// <param name="img"></param>
-        /// <param name="wmImage"></param>
+        /// <param name="img">The original image</param>
+        /// <param name="wmImage">Watermark image</param>
         public static Image AddImageWatermark(this Image img, Image wmImage)
         {
             return img.AddImageWatermark(wmImage, new ImageWatermarkOptions());
         }
 
         /// <summary>
-        /// 
+        /// Draw image watermark
         /// </summary>
-        /// <param name="img"></param>
-        /// <param name="wmImgPath"></param>
-        /// <param name="ops"></param>
+        /// <param name="img">The original image</param>
+        /// <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
+        /// <param name="ops">Image watermark options <see cref="ImageWatermarkOptions"/></param>
         public static Image AddImageWatermark(this Image img, string wmImgPath, ImageWatermarkOptions ops)
         {
             var wm = Image.FromFile(wmImgPath);
@@ -44,33 +44,31 @@ namespace LazZiya.ImageResize
         }
 
         /// <summary>
-        /// Add image watermark
+        /// Draw image watermark
         /// </summary>
-        /// <param name="img">The main image</param>
-        /// <param name="wmImage">full path to the image that will be used as watermark</param>
-        /// <param name="ops">Image watermark options</param>
+        /// <param name="img">The original image</param>
+        /// <param name="wmImage">Watermak image</param>
+        /// <param name="ops">Image watermark options <see cref="ImageWatermarkOptions"/></param>
         public static Image AddImageWatermark(this Image img, Image wmImage, ImageWatermarkOptions ops)
         {
             if (ops.Opacity > 0)
             {
-                var graphics = Graphics.FromImage(img);
+                using (var graphics = Graphics.FromImage(img))
+                {
+                    graphics.SmoothingMode = SmoothingMode.None;
+                    graphics.CompositingMode = CompositingMode.SourceOver;
 
-                graphics.SmoothingMode = SmoothingMode.None;
-                graphics.CompositingMode = CompositingMode.SourceOver;
+                    if (ops.Opacity < 100)
+                        wmImage = ImageOpacity.ChangeImageOpacityMethod1(wmImage, ops.Opacity);
 
-                if (ops.Opacity < 100)
-                    wmImage = ImageOpacity.ChangeImageOpacityMethod1(wmImage, ops.Opacity);
+                    var wmW = wmImage.Width;
+                    var wmH = wmImage.Height;
 
-                var wmW = wmImage.Width;
-                var wmH = wmImage.Height;
+                    var drawingPoint = ImageWatermarkPosition.ImageWatermarkPos(img.Width, img.Height, wmW, wmH, ops.Location, ops.Margin);
 
-                var drawingPoint = ImageWatermarkPosition.ImageWatermarkPos(img.Width, img.Height, wmW, wmH, ops.Location, ops.Margin);
-
-                graphics.DrawImage(wmImage, drawingPoint.X, drawingPoint.Y, wmW, wmH);
-
-                graphics.Dispose();
+                    graphics.DrawImage(wmImage, drawingPoint.X, drawingPoint.Y, wmW, wmH);
+                }
             }
-
             return img;
         }
     }

@@ -10,7 +10,7 @@ namespace LazZiya.ImageResize
     /// <summary>
     /// Resize images
     /// </summary>
-    public abstract class ImageResize
+    public static class ImageResize
     {
         /// <summary>
         /// Auto scale image by width or height till longest border (width/height) is equal to new width/height.
@@ -97,7 +97,7 @@ namespace LazZiya.ImageResize
         /// can be the whole image or part of it</param>
         /// <param name="target">The coordinates of the target image size</param>
         /// <returns></returns>
-        public static Image Resize(Image img, Rectangle source, Rectangle target)
+        public static Image Resize(this Image img, Rectangle source, Rectangle target)
         {
             Bitmap outputImage = new Bitmap(target.Width, target.Height, img.PixelFormat);
 
@@ -105,15 +105,20 @@ namespace LazZiya.ImageResize
 
             try
             {
-                Graphics graphics = Graphics.FromImage(outputImage);
+                using (var graphics = Graphics.FromImage(outputImage))
+                {
+                    graphics.CompositingQuality = CompositingQuality.HighQuality;
+                    graphics.SmoothingMode = SmoothingMode.HighQuality;
+                    graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
 
-                graphics.DrawImage(
-                    img,
-                    target,
-                    source,
-                    GraphicsUnit.Pixel);
+                    graphics.DrawImage(
+                        img,
+                        target,
+                        source,
+                        GraphicsUnit.Pixel);
 
-                graphics.Dispose();
+                }
             }
             catch (Exception e)
             {
@@ -124,7 +129,6 @@ namespace LazZiya.ImageResize
                     Value = e.Message
                 });
             }
-
             return outputImage;
         }
     }

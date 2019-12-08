@@ -1,8 +1,9 @@
-﻿using System;
+﻿using LazZiya.ImageResize.Tools;
+using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
-namespace LazZiya.ImageResize.Tools
+namespace LazZiya.ImageResize.Watermark
 {
     /// <summary>
     /// Add image watermark over another image

@@ -7,6 +7,9 @@ using System.Text;
 
 namespace LazZiya.ImageResize
 {
+    /// <summary>
+    /// Add text watermark over the image.
+    /// </summary>
     public static class TextWatermark
     {
 
@@ -24,8 +27,8 @@ namespace LazZiya.ImageResize
         /// Add text watermark over the image.
         /// </summary>
         /// <param name="img"></param>
-        /// <param name="text"></param>
-        /// <param name="ops"></param>
+        /// <param name="text">text to draw over the image</param>
+        /// <param name="ops">Text watermark options <see cref="TextWatermarkOptions"/></param>
         public static Image AddTextWatermark(this Image img, string text, TextWatermarkOptions ops)
         {
             using (var graphics = Graphics.FromImage(img))

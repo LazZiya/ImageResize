@@ -5,21 +5,32 @@
     <Authors>Ziya Mollamahmut</Authors>
     <Company>Ziyad.info</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>Simple tool for image resize, and add text over image for ASP.NET Core</Description>
+    <Description>Easily resize images, add text watermark with outline, add image watermark with transparency.</Description>
     <Copyright>Ziyad.info</Copyright>
     <PackageTags>asp.net,core,.net,dotnet,image,resize,text,overlay</PackageTags>
     <RepositoryUrl>https://github.com/LazZiya/ImageResize</RepositoryUrl>
     <PackageProjectUrl>http://ziyad.info/en/articles/29-Image_Resize_for_dotNetCore</PackageProjectUrl>
-    <Platforms>AnyCPU;x64</Platforms>
-    <Version>3.0.0-preview1</Version>
+    <Version>3.0.0-preview2</Version>
     <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <FileVersion>3.0.0.0</FileVersion>
-    <PackageReleaseNotes>image watermark with opacity settings</PackageReleaseNotes>
+    <PackageReleaseNotes>
+      - .NetStandard 2.0 support
+      - New: TextOutline for text watermark
+      - New: AddTextWatermark methods
+      - New: AddImageWatermark methods
+      - Obsolete: TextWatermark, ImageWatermark extensions are obsolete and will be removed in a feature release
+      - Overall performance improvments
+    </PackageReleaseNotes>
     <PackageIconUrl>https://raw.githubusercontent.com/LazZiya/ImageResize/master/LazZiya.ImageResize/files/icon.png</PackageIconUrl>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>files\LazZiya.ImageResize.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>LazZiya.ImageResize.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,15 +39,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="files\icon.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="files\icon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="files\license.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="files\icon.png" Pack="true" Visible="false" PackagePath="\" />
+    <None Include="files\icon.ico" Pack="true" Visible="false" PackagePath="\" />
+    <None Include="files\license.txt" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
