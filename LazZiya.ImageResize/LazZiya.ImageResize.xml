@@ -89,6 +89,47 @@
             Specify failure reason
             </summary>
         </member>
+        <member name="T:LazZiya.ImageResize.GraphicOptions">
+            <summary>
+            Define graphic options
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.CompositingQuality">
+            <summary>
+            Composition quality. 
+            Default: CompositingQuality.HighQuality
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.SmoothingMode">
+            <summary>
+            Smoothing mode. 
+            Default: SmoothingMode.HighQuality
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.InterpolationMode">
+            <summary>
+            Interpolation mode.
+            Default: InterpolationMode.HighQualityBicubic
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.PixelOffsetMode">
+            <summary>
+            Pixel offset mode.
+            Default: PixelOffsetMode.HighQuality
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.CompositingMode">
+            <summary>
+            Composition mode.
+            Default: CompositingMode.SourceOver
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.PageUnit">
+            <summary>
+            Page unit.
+            Default: GraphicsUnit.Pixel
+            </summary>
+        </member>
         <member name="T:LazZiya.ImageResize.ImageResize">
             <summary>
             Resize images
@@ -225,47 +266,6 @@
             <param name="target">The coordinates of the target image size</param>
             <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
             <returns></returns>
-        </member>
-        <member name="T:LazZiya.ImageResize.GraphicOptions">
-            <summary>
-            Define graphic options
-            </summary>
-        </member>
-        <member name="P:LazZiya.ImageResize.GraphicOptions.CompositingQuality">
-            <summary>
-            Composition quality. 
-            Default: CompositingQuality.HighQuality
-            </summary>
-        </member>
-        <member name="P:LazZiya.ImageResize.GraphicOptions.SmoothingMode">
-            <summary>
-            Smoothing mode. 
-            Default: SmoothingMode.HighQuality
-            </summary>
-        </member>
-        <member name="P:LazZiya.ImageResize.GraphicOptions.InterpolationMode">
-            <summary>
-            Interpolation mode.
-            Default: InterpolationMode.HighQualityBicubic
-            </summary>
-        </member>
-        <member name="P:LazZiya.ImageResize.GraphicOptions.PixelOffsetMode">
-            <summary>
-            Pixel offset mode.
-            Default: PixelOffsetMode.HighQuality
-            </summary>
-        </member>
-        <member name="P:LazZiya.ImageResize.GraphicOptions.CompositingMode">
-            <summary>
-            Composition mode.
-            Default: CompositingMode.SourceOver
-            </summary>
-        </member>
-        <member name="P:LazZiya.ImageResize.GraphicOptions.PageUnit">
-            <summary>
-            Page unit.
-            Default: GraphicsUnit.Pixel
-            </summary>
         </member>
         <member name="T:LazZiya.ImageResize.ImageWatermark">
             <summary>
