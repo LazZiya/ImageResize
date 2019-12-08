@@ -106,6 +106,19 @@
             <param name="newHeight"></param>
             <returns></returns>
         </member>
+        <member name="M:LazZiya.ImageResize.ImageResize.Scale(System.Drawing.Image,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Auto scale image by width or height till longest border (width/height) is equal to new width/height.
+            Final image aspect ratio is equal to original image aspect ratio.
+            If the aspect ratio of new w/h != aspect ratio of original image then 
+            one border will be in different size than the given value in order to keep original aspect ratio
+            </summary>
+            <param name="img"></param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
         <member name="M:LazZiya.ImageResize.ImageResize.ScaleByWidth(System.Drawing.Image,System.Int32)">
             <summary>
             Scale image by width and keep same aspect ratio of target image same as the original image.
@@ -115,6 +128,16 @@
             <param name="newWidth"></param>
             <returns></returns>
         </member>
+        <member name="M:LazZiya.ImageResize.ImageResize.ScaleByWidth(System.Drawing.Image,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Scale image by width and keep same aspect ratio of target image same as the original image.
+            Height will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="newWidth"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
         <member name="M:LazZiya.ImageResize.ImageResize.ScaleByHeight(System.Drawing.Image,System.Int32)">
             <summary>
             Scale image by height and keep same aspect ratio of target image same as the original image.
@@ -122,6 +145,16 @@
             </summary>
             <param name="img"></param>
             <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResize.ScaleByHeight(System.Drawing.Image,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Scale image by height and keep same aspect ratio of target image same as the original image.
+            Width will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="newHeight"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
             <returns></returns>
         </member>
         <member name="M:LazZiya.ImageResize.ImageResize.ScaleAndCrop(System.Drawing.Image,System.Int32,System.Int32,LazZiya.ImageResize.TargetSpot)">
@@ -136,6 +169,19 @@
             <param name="spot"></param>
             <returns></returns>
         </member>
+        <member name="M:LazZiya.ImageResize.ImageResize.ScaleAndCrop(System.Drawing.Image,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Scale target image till shortest border are equal to target value, 
+            then crop the additonal pixels from the longest border.
+            Final image aspect ratio is equal to the given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
         <member name="M:LazZiya.ImageResize.ImageResize.Crop(System.Drawing.Image,System.Int32,System.Int32,LazZiya.ImageResize.TargetSpot)">
             <summary>
             Directly crop original image without scaling it.
@@ -147,6 +193,18 @@
             <param name="spot">target spot to crop and save</param>
             <returns></returns>
         </member>
+        <member name="M:LazZiya.ImageResize.ImageResize.Crop(System.Drawing.Image,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Directly crop original image without scaling it.
+            Final image aspect ratio is equal to given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot">target spot to crop and save</param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
         <member name="M:LazZiya.ImageResize.ImageResize.Resize(System.Drawing.Image,System.Drawing.Rectangle,System.Drawing.Rectangle)">
             <summary>
             Specify custom resize options
@@ -156,6 +214,58 @@
             can be the whole image or part of it</param>
             <param name="target">The coordinates of the target image size</param>
             <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResize.Resize(System.Drawing.Image,System.Drawing.Rectangle,System.Drawing.Rectangle,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Specify custom resize options
+            </summary>
+            <param name="img">the image to resize</param>
+            <param name="source">The coordinates to read as source from the image, 
+            can be the whole image or part of it</param>
+            <param name="target">The coordinates of the target image size</param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="T:LazZiya.ImageResize.GraphicOptions">
+            <summary>
+            Define graphic options
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.CompositingQuality">
+            <summary>
+            Composition quality. 
+            Default: CompositingQuality.HighQuality
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.SmoothingMode">
+            <summary>
+            Smoothing mode. 
+            Default: SmoothingMode.HighQuality
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.InterpolationMode">
+            <summary>
+            Interpolation mode.
+            Default: InterpolationMode.HighQualityBicubic
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.PixelOffsetMode">
+            <summary>
+            Pixel offset mode.
+            Default: PixelOffsetMode.HighQuality
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.CompositingMode">
+            <summary>
+            Composition mode.
+            Default: CompositingMode.SourceOver
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.PageUnit">
+            <summary>
+            Page unit.
+            Default: GraphicsUnit.Pixel
+            </summary>
         </member>
         <member name="T:LazZiya.ImageResize.ImageWatermark">
             <summary>
@@ -365,12 +475,13 @@
             Save the image file to disc
             </summary>
         </member>
-        <member name="M:LazZiya.ImageResize.SaveImage.SaveAs(System.Drawing.Image,System.String)">
+        <member name="M:LazZiya.ImageResize.SaveImage.SaveAs(System.Drawing.Image,System.String,System.Int32)">
             <summary>
             Save the image to the specified path then dispose the Image object.
             </summary>
             <param name="img">Image to save</param>
             <param name="path">Full path including file name and extension to save the image to</param>
+            <param name="quality">Image save quality (0 - 100)</param>
         </member>
         <member name="T:LazZiya.ImageResize.TargetSpot">
             <summary>
