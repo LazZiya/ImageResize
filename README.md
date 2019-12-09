@@ -40,7 +40,7 @@ To change opacity of the text/outline/background just use the relevant `Color` w
 ````cs
 using(var img = Image.FromFile(@"wwwroot\images\image-file.jpg"))
 {
-    var twmOps = new TextWatermarkOptions
+    var tOps = new TextWatermarkOptions
     {
         // Change text color and opacity
         // Text opacity range depends on Color's alpha channel (0 - 255)
@@ -51,7 +51,7 @@ using(var img = Image.FromFile(@"wwwroot\images\image-file.jpg"))
         OutlineColor = Color.FromArgb(255, Color.Black)
     };
     
-    img.AddTextWatermark("http://ziyad.info", twmOps)
+    img.AddTextWatermark("http://ziyad.info", tOps)
        .SaveAs(@"wwwroot\images\new-image.jpg");
 }
 ````
@@ -61,7 +61,7 @@ using(var img = Image.FromFile(@"wwwroot\images\image-file.jpg"))
 ````cs
 using(var img = Image.FromFile(@"wwwroot\images\image-file.jpg"))
 {
-    var iwmOps = new ImageWatermarkOptions
+    var iOps = new ImageWatermarkOptions
     {
         // Change image opacity (0 - 100)
         Opacity = 50,
@@ -70,7 +70,7 @@ using(var img = Image.FromFile(@"wwwroot\images\image-file.jpg"))
         Location = TargetSpot.BottomRight
     };
     
-    img.AddImageWatermark(@"wwwroot\images\logo.png", iwmOps)
+    img.AddImageWatermark(@"wwwroot\images\logo.png", iOps)
        .SaveAs(@"wwwroot\images\new-image.jpg");
 }
 ````
