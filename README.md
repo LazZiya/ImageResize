@@ -20,9 +20,63 @@ Install via nuget (enable Include prerelease to check for latest test versions):
 ````
 Install-Package LazZiya.ImageResize
 ````
+### Resize image file
+````cs
+using System.Drawing;
+using LazZiya.ImageResize;
+
+using(var img = Image.FromFile(@"wwwroot\images\image-file.jpg"))
+{
+    img.ScaleByWidth(600)
+       .SaveAs(@"wwwroot\images\resized-image.jpg");
+}
+````
+
+### Add  text watermark and change color, opacity, ...etc.
+`AddTextWatermark` method accepts argument of type [`TextWaterMarkOptions`][2] that allows to customize the text.
+
+To change opacity of the text/outline/background just use the relevant `Color` with specified **alpha** value (0 - 255), 0 full opacity, 255 full color.
+
+````cs
+using(var img = Image.FromFile(@"wwwroot\images\image-file.jpg"))
+{
+    var twmOps = new TextWatermarkOptions
+    {
+        // Change text color and opacity
+        // Text opacity range depends on Color's alpha channel (0 - 255)
+        TextColor = Color.FromArgb(50, Color.White),
+        
+        // Add text outline
+        // Outline color opacity range depends on Color's alpha channel (0 - 255)
+        OutlineColor = Color.FromArgb(255, Color.Black)
+    };
+    
+    img.AddTextWatermark("http://ziyad.info", twmOps)
+       .SaveAs(@"wwwroot\images\new-image.jpg");
+}
+````
+
+### Add image watermark and change location, opacity, ...etc.
+`AddImageWatermark` method accepts argument of type [`ImageWatermarkOption`][3] that allows to specify watermark position etc.
+````cs
+using(var img = Image.FromFile(@"wwwroot\images\image-file.jpg"))
+{
+    var iwmOps = new ImageWatermarkOptions
+    {
+        // Change image opacity (0 - 100)
+        Opacity = 50,
+        
+        // Change image watermark location
+        Location = TargetSpot.BottomRight
+    };
+    
+    img.AddImageWatermark(@"wwwroot\images\logo.png", iwmOps)
+       .SaveAs(@"wwwroot\images\new-image.jpg");
+}
+````
 
 ### Upload and resize an image
-Handling uploaded files and resizing the images:
+All ImageResize methods can be chained together to provide easy image processing. Below sample shows how to handle uploaded files, resize them, add image and text watermarks:
 
 ````cs
 using System.Drawing;
