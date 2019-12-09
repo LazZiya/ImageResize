@@ -57,7 +57,7 @@ using(var img = Image.FromFile(@"wwwroot\images\image-file.jpg"))
 ````
 
 ### Add image watermark and change location, opacity, ...etc.
-`AddImageWatermark` method accepts argument of type [`ImageWatermarkOption`][3] that allows to specify watermark position etc.
+`AddImageWatermark` method accepts argument of type [`ImageWatermarkOptions`][3] that allows to specify watermark position etc.
 ````cs
 using(var img = Image.FromFile(@"wwwroot\images\image-file.jpg"))
 {
