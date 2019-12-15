@@ -44,7 +44,10 @@ namespace LazZiya.ImageResize
         }
 
         /// <summary>
-        /// Draw image watermark
+        /// Draw image watermark.
+        /// <para>Notice regarding watermark opacity:</para>
+        /// <para>If watermark image needs to be resized, first resize the watermark image, 
+        /// then save it to the disc, and read it again with Image.FromFile.</para>
         /// </summary>
         /// <param name="img">The original image</param>
         /// <param name="wmImage">Watermak image</param>
@@ -69,6 +72,8 @@ namespace LazZiya.ImageResize
                     graphics.DrawImage(wmImage, drawingPoint.X, drawingPoint.Y, wmW, wmH);
                 }
             }
+
+            wmImage.Dispose();
             return img;
         }
     }

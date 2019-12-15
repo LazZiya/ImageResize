@@ -10,17 +10,11 @@
     <PackageTags>asp.net,core,.net,dotnet,image,resize,text,overlay</PackageTags>
     <RepositoryUrl>https://github.com/LazZiya/ImageResize</RepositoryUrl>
     <PackageProjectUrl>http://ziyad.info/en/articles/29-Image_Resize_for_dotNetCore</PackageProjectUrl>
-    <Version>3.0.0-preview1</Version>
+    <Version>3.0.0-preview2</Version>
     <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <FileVersion>3.0.0.0</FileVersion>
     <PackageReleaseNotes>
-      - .NetStandard 2.0 support
-      - New: TextOutline for text watermark
-      - New: AddTextWatermark methods
-      - New: AddImageWatermark methods
-      - New: Graphic options for image resize methods
-      - Obsolete: TextWatermark, ImageWatermark extensions are obsolete and will be removed in a feature release
-      - Overall performance improvments
+      - CMYK support (fix for issue https://github.com/LazZiya/ImageResize/issues/3)
     </PackageReleaseNotes>
     <PackageIconUrl>https://raw.githubusercontent.com/LazZiya/ImageResize/master/LazZiya.ImageResize/files/icon.png</PackageIconUrl>
     <PackageIcon>icon.png</PackageIcon>

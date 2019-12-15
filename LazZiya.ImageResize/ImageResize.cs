@@ -1,8 +1,11 @@
-﻿using LazZiya.ImageResize.Exceptions;
+﻿using LazZiya.ImageResize.ColorFormats;
+using LazZiya.ImageResize.Exceptions;
 using LazZiya.ImageResize.ResizeMethods;
+using LazZiya.ImageResize.Tools;
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 
 namespace LazZiya.ImageResize
 {
@@ -194,12 +197,15 @@ namespace LazZiya.ImageResize
         /// <returns></returns>
         public static Image Resize(this Image img, Rectangle source, Rectangle target, GraphicOptions ops)
         {
-            Bitmap outputImage = new Bitmap(target.Width, target.Height, img.PixelFormat);
+            var pixF = ImageColorFormats.GetColorFormat((Bitmap)img) == ImageColorFormat.Cmyk
+                ? PixelFormat.Format32bppArgb
+                : img.PixelFormat;
 
-            outputImage.SetResolution(img.HorizontalResolution, img.VerticalResolution);
-
-            try
+            using (Bitmap outputImage = new Bitmap(target.Width, target.Height, pixF))
             {
+
+                outputImage.SetResolution(img.HorizontalResolution, img.VerticalResolution);
+
                 using (var graphics = Graphics.FromImage(outputImage))
                 {
                     graphics.SmoothingMode = ops.SmoothingMode;
@@ -216,17 +222,9 @@ namespace LazZiya.ImageResize
                         ops.PageUnit);
 
                 }
+
+                return Image.FromHbitmap(outputImage.GetHbitmap());
             }
-            catch (Exception e)
-            {
-                throw new ImageResizeException(new ImageResizeResult()
-                {
-                    Reason = FailureReasonType.GraphicsException,
-                    Success = false,
-                    Value = e.Message
-                });
-            }
-            return outputImage;
         }
     }
 }

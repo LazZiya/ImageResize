@@ -4,6 +4,51 @@
         <name>LazZiya.ImageResize</name>
     </assembly>
     <members>
+        <member name="T:LazZiya.ImageResize.ColorFormats.ImageColorFormat">
+            <summary>
+            Image color formats
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.ColorFormats.ImageColorFormat.Rgb">
+            <summary>
+            RGB
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.ColorFormats.ImageColorFormat.Cmyk">
+            <summary>
+            CMYK
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.ColorFormats.ImageColorFormat.Indexed">
+            <summary>
+            Indexed
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.ColorFormats.ImageColorFormat.Grayscale">
+            <summary>
+            Grayscale
+            </summary>
+        </member>
+        <member name="T:LazZiya.ImageResize.ColorFormats.ImagePixelFormat">
+            <summary>
+            Image pixel formats
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.ColorFormats.ImagePixelFormat.PixelFormatIndexed">
+            <summary>
+            Indexed
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.ColorFormats.ImagePixelFormat.PixelFormat32bppCMYK">
+            <summary>
+            32bit CMYK
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.ColorFormats.ImagePixelFormat.PixelFormat16bppGrayScale">
+            <summary>
+            16bit Gtrayscale
+            </summary>
+        </member>
         <member name="T:LazZiya.ImageResize.Exceptions.FailureReasonType">
             <summary>
             Failure reasone type
@@ -87,6 +132,47 @@
         <member name="P:LazZiya.ImageResize.Exceptions.ImageResizeResult.Reason">
             <summary>
             Specify failure reason
+            </summary>
+        </member>
+        <member name="T:LazZiya.ImageResize.GraphicOptions">
+            <summary>
+            Define graphic options
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.CompositingQuality">
+            <summary>
+            Composition quality. 
+            Default: CompositingQuality.HighQuality
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.SmoothingMode">
+            <summary>
+            Smoothing mode. 
+            Default: SmoothingMode.HighQuality
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.InterpolationMode">
+            <summary>
+            Interpolation mode.
+            Default: InterpolationMode.HighQualityBicubic
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.PixelOffsetMode">
+            <summary>
+            Pixel offset mode.
+            Default: PixelOffsetMode.HighQuality
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.CompositingMode">
+            <summary>
+            Composition mode.
+            Default: CompositingMode.SourceOver
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.GraphicOptions.PageUnit">
+            <summary>
+            Page unit.
+            Default: GraphicsUnit.Pixel
             </summary>
         </member>
         <member name="T:LazZiya.ImageResize.ImageResize">
@@ -226,47 +312,6 @@
             <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
             <returns></returns>
         </member>
-        <member name="T:LazZiya.ImageResize.GraphicOptions">
-            <summary>
-            Define graphic options
-            </summary>
-        </member>
-        <member name="P:LazZiya.ImageResize.GraphicOptions.CompositingQuality">
-            <summary>
-            Composition quality. 
-            Default: CompositingQuality.HighQuality
-            </summary>
-        </member>
-        <member name="P:LazZiya.ImageResize.GraphicOptions.SmoothingMode">
-            <summary>
-            Smoothing mode. 
-            Default: SmoothingMode.HighQuality
-            </summary>
-        </member>
-        <member name="P:LazZiya.ImageResize.GraphicOptions.InterpolationMode">
-            <summary>
-            Interpolation mode.
-            Default: InterpolationMode.HighQualityBicubic
-            </summary>
-        </member>
-        <member name="P:LazZiya.ImageResize.GraphicOptions.PixelOffsetMode">
-            <summary>
-            Pixel offset mode.
-            Default: PixelOffsetMode.HighQuality
-            </summary>
-        </member>
-        <member name="P:LazZiya.ImageResize.GraphicOptions.CompositingMode">
-            <summary>
-            Composition mode.
-            Default: CompositingMode.SourceOver
-            </summary>
-        </member>
-        <member name="P:LazZiya.ImageResize.GraphicOptions.PageUnit">
-            <summary>
-            Page unit.
-            Default: GraphicsUnit.Pixel
-            </summary>
-        </member>
         <member name="T:LazZiya.ImageResize.ImageWatermark">
             <summary>
             Draw image watermark
@@ -296,7 +341,10 @@
         </member>
         <member name="M:LazZiya.ImageResize.ImageWatermark.AddImageWatermark(System.Drawing.Image,System.Drawing.Image,LazZiya.ImageResize.ImageWatermarkOptions)">
             <summary>
-            Draw image watermark
+            Draw image watermark.
+            <para>Notice regarding watermark opacity:</para>
+            <para>If watermark image needs to be resized, first resize the watermark image, 
+            then save it to the disc, and read it again with Image.FromFile.</para>
             </summary>
             <param name="img">The original image</param>
             <param name="wmImage">Watermak image</param>
@@ -632,6 +680,19 @@
             </summary>
             <param name="ext">extension of the image file</param>
             <returns><see cref="T:System.Drawing.Imaging.ImageCodecInfo"/></returns>
+        </member>
+        <member name="T:LazZiya.ImageResize.Tools.ImageColorFormats">
+            <summary>
+            Detect image color format.
+            <para>https://stackoverflow.com/a/9899904/5519026</para>
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Tools.ImageColorFormats.GetColorFormat(System.Drawing.Bitmap)">
+            <summary>
+            Get image color format
+            </summary>
+            <param name="bitmap"></param>
+            <returns></returns>
         </member>
         <member name="T:LazZiya.ImageResize.Tools.ImageFormats">
             <summary>
