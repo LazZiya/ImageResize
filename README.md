@@ -9,8 +9,8 @@ http://ziyad.info/en/articles/29-LazZiya_ImageResize
 http://demo.ziyad.info/en/ImageResize
 
 ## Latest version
- - v3.0.0-preview1
- - Release date 08 Sep 2019
+ - v3.0.0-preview2
+ - Release date 15 Dec 2019
  - [Release notes][4]
 
 ## Installation:
@@ -214,4 +214,4 @@ https://github.com/LazZiya/ImageResize/blob/master/LICENSE
 [1]: LazZiya.ImageResize/GraphicOptions.cs
 [2]: LazZiya.ImageResize/TextWatermarkOptions.cs
 [3]: LazZiya.ImageResize/ImageWatermarkOptions.cs
-[4]: https://github.com/LazZiya/ImageResize/releases/tag/v3.0.0-preview1
+[4]: https://github.com/LazZiya/ImageResize/releases/tag/v3.0.0-preview2
