@@ -1,11 +1,9 @@
 ﻿using LazZiya.ImageResize.ColorFormats;
-using LazZiya.ImageResize.Exceptions;
 using LazZiya.ImageResize.ResizeMethods;
 using LazZiya.ImageResize.Tools;
-using System;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.IO;
 
 namespace LazZiya.ImageResize
 {
@@ -197,13 +195,14 @@ namespace LazZiya.ImageResize
         /// <returns></returns>
         public static Image Resize(this Image img, Rectangle source, Rectangle target, GraphicOptions ops)
         {
+            // check for CMYK pixel format to use Format32bppArgb
+            // or use the image pixel format
             var pixF = ImageColorFormats.GetColorFormat((Bitmap)img) == ImageColorFormat.Cmyk
                 ? PixelFormat.Format32bppArgb
                 : img.PixelFormat;
 
             using (Bitmap outputImage = new Bitmap(target.Width, target.Height, pixF))
             {
-
                 outputImage.SetResolution(img.HorizontalResolution, img.VerticalResolution);
 
                 using (var graphics = Graphics.FromImage(outputImage))
@@ -223,7 +222,11 @@ namespace LazZiya.ImageResize
 
                 }
 
-                return Image.FromHbitmap(outputImage.GetHbitmap());
+                using (var ms = new MemoryStream())
+                {
+                    outputImage.Save(ms, img.RawFormat);
+                    return Image.FromStream(ms);
+                }
             }
         }
     }

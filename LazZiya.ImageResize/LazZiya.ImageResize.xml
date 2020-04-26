@@ -669,6 +669,18 @@
             Text outline width in pixels. Default value 3.5f
             </summary>
         </member>
+        <member name="T:LazZiya.ImageResize.Tools.BitmapLength">
+            <summary>
+            Calculate a bitmap length in bytes
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Tools.BitmapLength.GetLength(System.Drawing.Bitmap)">
+            <summary>
+            Get bitmap length
+            </summary>
+            <param name="bitmap"></param>
+            <returns></returns>
+        </member>
         <member name="T:LazZiya.ImageResize.Tools.EncoderInfo">
             <summary>
             Image extension methods to get encoder info

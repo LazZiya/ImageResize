@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace LazZiya.ImageResize
+﻿namespace LazZiya.ImageResize
 {
     /// <summary>
     /// Use target spot to specify the reading sport of the source image, 
@@ -25,55 +23,46 @@ namespace LazZiya.ImageResize
         /// <summary>
         /// Takes the top left area of the image
         /// </summary>
-        [Display(Name = "Top left")]
         TopLeft,
 
         /// <summary>
         /// Takes the top middle area of the image
         /// </summary>
-        [Display(Name = "Top middle")]
         TopMiddle,
 
         /// <summary>
         /// Takes the top right area
         /// </summary>
-        [Display(Name = "Top right")]
         TopRight,
 
         /// <summary>
         /// Takes the middle left area
         /// </summary>
-        [Display(Name = "Middle left")]
         MiddleLeft,
 
         /// <summary>
         /// Takes the center area of the image
         /// </summary>
-        [Display(Name = "Center")]
         Center,
 
         /// <summary>
         /// Takes the middle right area of the image
         /// </summary>
-        [Display(Name = "Middle right")]
         MiddleRight,
 
         /// <summary>
         /// Takes the bottom left area of the image
         /// </summary>
-        [Display(Name = "Bottom left")]
         BottomLeft,
         
         /// <summary>
         /// Takes the bottom middle area of the image
         /// </summary>
-        [Display(Name = "Bottom middle")]
         BottomMiddle,
 
         /// <summary>
         /// Takes the bottom left area of the image
         /// </summary>
-        [Display(Name = "Bottom right")]
         BottomRight,
     }
 }

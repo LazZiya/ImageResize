@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace LazZiya.ImageResize
+﻿namespace LazZiya.ImageResize
 {
     /// <summary>
     /// Define options for adding image watermark over the image, like margin, opacity, and location.
@@ -23,7 +21,6 @@ namespace LazZiya.ImageResize
         /// Set opacity value of the image watermark (0 - 100). 
         /// Default value 100 full color.
         /// </summary>
-        [Range(0, 100)]
         public int Opacity { get; set; } = 100;
     }
 }
