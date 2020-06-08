@@ -5,10 +5,7 @@ This package is built on .NetStandard 2.0 so it supports wide range of compatibl
 ### Demo:
 http://demo.ziyad.info/en/ImageResize
 
-## Latest version
- - v3.0.1
- - Release date 26 Apr 2020
- - [Release notes][4]
+## [Release notes][4]
 
 ## Installation:
 
