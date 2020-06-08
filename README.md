@@ -6,8 +6,8 @@ This package is built on .NetStandard 2.0 so it supports wide range of compatibl
 http://demo.ziyad.info/en/ImageResize
 
 ## Latest version
- - v3.0.0
- - Release date 18 Dec 2019
+ - v3.0.1
+ - Release date 26 Apr 2020
  - [Release notes][4]
 
 ## Installation:
@@ -211,4 +211,4 @@ https://github.com/LazZiya/ImageResize/blob/master/LICENSE
 [1]: LazZiya.ImageResize/GraphicOptions.cs
 [2]: LazZiya.ImageResize/TextWatermarkOptions.cs
 [3]: LazZiya.ImageResize/ImageWatermarkOptions.cs
-[4]: https://github.com/LazZiya/ImageResize/releases/tag/v3.0.0
+[4]: https://github.com/LazZiya/ImageResize/releases/
