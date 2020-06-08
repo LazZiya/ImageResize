@@ -10,12 +10,11 @@
     <PackageTags>asp.net,core,.net,dotnet,image,resize,text,overlay</PackageTags>
     <RepositoryUrl>https://github.com/LazZiya/ImageResize</RepositoryUrl>
     <PackageProjectUrl>http://demo.ziyad.info/en/ImageResize</PackageProjectUrl>
-    <Version>3.0.1</Version>
-    <AssemblyVersion>3.0.1.0</AssemblyVersion>
-    <FileVersion>3.0.1.0</FileVersion>
+    <Version>3.0.2</Version>
+    <AssemblyVersion>3.0.2.0</AssemblyVersion>
+    <FileVersion>3.0.2.0</FileVersion>
     <PackageReleaseNotes>
-      - Fix for issue #4 https://github.com/LazZiya/ImageResize/issues/4
-      - removed dependency on System.ComponentModel.DataAnnotations
+      - Fix for issue #6 https://github.com/LazZiya/ImageResize/issues/6
       - See all release notes https://github.com/LazZiya/ImageResize/releases
     </PackageReleaseNotes>
     <PackageIconUrl>https://raw.githubusercontent.com/LazZiya/ImageResize/master/LazZiya.ImageResize/files/icon.png</PackageIconUrl>

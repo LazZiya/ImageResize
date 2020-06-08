@@ -222,11 +222,17 @@ namespace LazZiya.ImageResize
 
                 }
 
-                using (var ms = new MemoryStream())
+                // If the image has alpha channel (png) return image memory stream
+                if (img.PixelFormat == PixelFormat.Format32bppArgb)
                 {
-                    outputImage.Save(ms, img.RawFormat);
-                    return Image.FromStream(ms);
+                    using (var ms = new MemoryStream())
+                    {
+                        outputImage.Save(ms, img.RawFormat);
+                        return Image.FromStream(ms);
+                    }
                 }
+
+                return Image.FromHbitmap(outputImage.GetHbitmap());
             }
         }
     }
