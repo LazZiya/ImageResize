@@ -10,11 +10,12 @@
     <PackageTags>asp.net,core,.net,dotnet,image,resize,text,overlay</PackageTags>
     <RepositoryUrl>https://github.com/LazZiya/ImageResize</RepositoryUrl>
     <PackageProjectUrl>http://demo.ziyad.info/en/ImageResize</PackageProjectUrl>
-    <Version>3.0.2</Version>
-    <AssemblyVersion>3.0.2.0</AssemblyVersion>
-    <FileVersion>3.0.2.0</FileVersion>
+    <VersionPrefix>3.1.0</VersionPrefix>
+    <VersionSuffix>beta1</VersionSuffix>
+    <AssemblyVersion>3.1.0.0</AssemblyVersion>
+    <FileVersion>3.1.0.0</FileVersion>
     <PackageReleaseNotes>
-      - Fix for issue #6 https://github.com/LazZiya/ImageResize/issues/6
+      - Update ref for System.Drawing.Common https://github.com/dotnet/core/issues/3244
       - See all release notes https://github.com/LazZiya/ImageResize/releases
     </PackageReleaseNotes>
     <PackageIconUrl>https://raw.githubusercontent.com/LazZiya/ImageResize/master/LazZiya.ImageResize/files/icon.png</PackageIconUrl>
@@ -31,7 +32,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,5 +40,9 @@
     <None Include="files\icon.ico" Pack="true" Visible="false" PackagePath="\" />
     <None Include="files\license.txt" Pack="true" PackagePath="\" />
   </ItemGroup>
+
+  <Target Name="AfterPack" AfterTargets="Pack">
+    <Exec Command="dotnet nuget push $(PackageOutputPath)*.nupkg --source Local" />
+  </Target>
 
 </Project>
