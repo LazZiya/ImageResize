@@ -1,21 +1,19 @@
-﻿using LazZiya.ImageResize.Tools;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 
-namespace LazZiya.ImageResize
+namespace LazZiya.ImageResize.Animated
 {
     /// <summary>
-    /// Draw image watermark
+    /// Add an image watermark to animated gif
     /// </summary>
-    public static class ImageWatermark
+    public static class AnimatedGifWaterMark
     {
-
         /// <summary>
         /// Draw image watermark
         /// </summary>
         /// <param name="img">The original image</param>
         /// <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
-        public static Image AddImageWatermark(this Image img, string wmImgPath)
+        public static AnimatedGif AddImageWatermark(this AnimatedGif img, string wmImgPath)
         {
             var wm = Image.FromFile(wmImgPath);
             return img.AddImageWatermark(wm, new ImageWatermarkOptions());
@@ -26,7 +24,7 @@ namespace LazZiya.ImageResize
         /// </summary>
         /// <param name="img">The original image</param>
         /// <param name="wmImage">Watermark image</param>
-        public static Image AddImageWatermark(this Image img, Image wmImage)
+        public static AnimatedGif AddImageWatermark(this AnimatedGif img, Image wmImage)
         {
             return img.AddImageWatermark(wmImage, new ImageWatermarkOptions());
         }
@@ -37,7 +35,7 @@ namespace LazZiya.ImageResize
         /// <param name="img">The original image</param>
         /// <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
         /// <param name="ops">Image watermark options <see cref="ImageWatermarkOptions"/></param>
-        public static Image AddImageWatermark(this Image img, string wmImgPath, ImageWatermarkOptions ops)
+        public static AnimatedGif AddImageWatermark(this AnimatedGif img, string wmImgPath, ImageWatermarkOptions ops)
         {
             var wm = Image.FromFile(wmImgPath);
             return img.AddImageWatermark(wm, ops);
@@ -52,30 +50,20 @@ namespace LazZiya.ImageResize
         /// <param name="img">The original image</param>
         /// <param name="wmImage">Watermak image</param>
         /// <param name="ops">Image watermark options <see cref="ImageWatermarkOptions"/></param>
-        /// <param name="disposeWaterMark">Optional: dispose watermar image after finishing. Default: true</param>
-        public static Image AddImageWatermark(this Image img, Image wmImage, ImageWatermarkOptions ops, bool disposeWaterMark = true)
+        public static AnimatedGif AddImageWatermark(this AnimatedGif img, Image wmImage, ImageWatermarkOptions ops)
         {
-            if (ops.Opacity > 0)
+            var fList = new List<Image>();
+
+            foreach (var f in img.Frames)
             {
-                using (var graphics = Graphics.FromImage(img))
-                {
-                    graphics.SmoothingMode = SmoothingMode.None;
-                    graphics.CompositingMode = CompositingMode.SourceOver;
-
-                    if (ops.Opacity < 100)
-                        wmImage = ImageOpacity.ChangeImageOpacityMethod1(wmImage, ops.Opacity);
-
-                    var wmW = wmImage.Width;
-                    var wmH = wmImage.Height;
-
-                    var drawingPoint = ImageWatermarkPosition.ImageWatermarkPos(img.Width, img.Height, wmW, wmH, ops.Location, ops.Margin);
-
-                    graphics.DrawImage(wmImage, drawingPoint.X, drawingPoint.Y, wmW, wmH);
-                }
+                f.AddImageWatermark(wmImage, ops, false);
+                fList.Add(f);
             }
 
-            if(disposeWaterMark)
-                wmImage.Dispose();
+            wmImage.Dispose();
+
+            img.Frames.Clear();
+            img.Frames = fList;
 
             return img;
         }
