@@ -6,14 +6,14 @@ namespace LazZiya.ImageResize.Animated
     /// <summary>
     /// Add an image watermark to animated gif
     /// </summary>
-    public static class AnimatedGifWaterMark
+    public static class AnimatedImageImageWatermark
     {
         /// <summary>
         /// Draw image watermark
         /// </summary>
         /// <param name="img">The original image</param>
         /// <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
-        public static AnimatedGif AddImageWatermark(this AnimatedGif img, string wmImgPath)
+        public static AnimatedImage AddImageWatermark(this AnimatedImage img, string wmImgPath)
         {
             var wm = Image.FromFile(wmImgPath);
             return img.AddImageWatermark(wm, new ImageWatermarkOptions());
@@ -24,7 +24,7 @@ namespace LazZiya.ImageResize.Animated
         /// </summary>
         /// <param name="img">The original image</param>
         /// <param name="wmImage">Watermark image</param>
-        public static AnimatedGif AddImageWatermark(this AnimatedGif img, Image wmImage)
+        public static AnimatedImage AddImageWatermark(this AnimatedImage img, Image wmImage)
         {
             return img.AddImageWatermark(wmImage, new ImageWatermarkOptions());
         }
@@ -35,7 +35,7 @@ namespace LazZiya.ImageResize.Animated
         /// <param name="img">The original image</param>
         /// <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
         /// <param name="ops">Image watermark options <see cref="ImageWatermarkOptions"/></param>
-        public static AnimatedGif AddImageWatermark(this AnimatedGif img, string wmImgPath, ImageWatermarkOptions ops)
+        public static AnimatedImage AddImageWatermark(this AnimatedImage img, string wmImgPath, ImageWatermarkOptions ops)
         {
             var wm = Image.FromFile(wmImgPath);
             return img.AddImageWatermark(wm, ops);
@@ -50,7 +50,7 @@ namespace LazZiya.ImageResize.Animated
         /// <param name="img">The original image</param>
         /// <param name="wmImage">Watermak image</param>
         /// <param name="ops">Image watermark options <see cref="ImageWatermarkOptions"/></param>
-        public static AnimatedGif AddImageWatermark(this AnimatedGif img, Image wmImage, ImageWatermarkOptions ops)
+        public static AnimatedImage AddImageWatermark(this AnimatedImage img, Image wmImage, ImageWatermarkOptions ops)
         {
             var fList = new List<Image>();
 

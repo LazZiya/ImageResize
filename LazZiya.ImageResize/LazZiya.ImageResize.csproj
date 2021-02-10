@@ -10,11 +10,12 @@
     <PackageTags>asp.net,core,.net,dotnet,image,resize,text,overlay</PackageTags>
     <RepositoryUrl>https://github.com/LazZiya/ImageResize</RepositoryUrl>
     <PackageProjectUrl>http://demo.ziyad.info/en/ImageResize</PackageProjectUrl>
-    <VersionPrefix>3.1.0</VersionPrefix>
-    <VersionSuffix>beta1</VersionSuffix>
-    <AssemblyVersion>3.1.0.0</AssemblyVersion>
-    <FileVersion>3.1.0.0</FileVersion>
+    <VersionPrefix>4.0.0</VersionPrefix>
+    <VersionSuffix>preview1</VersionSuffix>
+    <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <FileVersion>4.0.0.0</FileVersion>
     <PackageReleaseNotes>
+      - Added support for animated gif (resize, text watewrmark, image water
       - Update ref for System.Drawing.Common https://github.com/dotnet/core/issues/3244
       - See all release notes https://github.com/LazZiya/ImageResize/releases
     </PackageReleaseNotes>

@@ -4,261 +4,134 @@
         <name>LazZiya.ImageResize</name>
     </assembly>
     <members>
-        <member name="T:LazZiya.ImageResize.Animated.AnimatedGif">
+        <member name="T:LazZiya.ImageResize.Animated.AnimatedImage">
             <summary>
-            Represents an animated gif image with multiple frames
+            Represents an animated image image with multiple frames
             </summary>
         </member>
-        <member name="P:LazZiya.ImageResize.Animated.AnimatedGif.Frames">
+        <member name="P:LazZiya.ImageResize.Animated.AnimatedImage.Frames">
             <summary>
             Gif image as list of frames
             </summary>
         </member>
-        <member name="P:LazZiya.ImageResize.Animated.AnimatedGif.RepeatCount">
+        <member name="P:LazZiya.ImageResize.Animated.AnimatedImage.RepeatCount">
             <summary>
             Set repeat count. (-1) no repeat. (0) always repeat
             </summary>
         </member>
-        <member name="P:LazZiya.ImageResize.Animated.AnimatedGif.FramesCount">
+        <member name="P:LazZiya.ImageResize.Animated.AnimatedImage.FramesCount">
             <summary>
             Get frames count in an animated gif
             </summary>
         </member>
-        <member name="P:LazZiya.ImageResize.Animated.AnimatedGif.Size">
+        <member name="P:LazZiya.ImageResize.Animated.AnimatedImage.Size">
             <summary>
             Get width and height of the image
             </summary>
         </member>
-        <member name="P:LazZiya.ImageResize.Animated.AnimatedGif.ImageColorFormat">
+        <member name="P:LazZiya.ImageResize.Animated.AnimatedImage.ImageColorFormat">
             <summary>
             Get image color format
             </summary>
         </member>
-        <member name="P:LazZiya.ImageResize.Animated.AnimatedGif.PixelFormat">
+        <member name="P:LazZiya.ImageResize.Animated.AnimatedImage.PixelFormat">
             <summary>
             Get pixel format
             </summary>
         </member>
-        <member name="P:LazZiya.ImageResize.Animated.AnimatedGif.HorizontalResolution">
+        <member name="P:LazZiya.ImageResize.Animated.AnimatedImage.HorizontalResolution">
             <summary>
             Get horizontal resolution
             </summary>
         </member>
-        <member name="P:LazZiya.ImageResize.Animated.AnimatedGif.VerticalResolution">
+        <member name="P:LazZiya.ImageResize.Animated.AnimatedImage.VerticalResolution">
             <summary>
             Get vertival resolution
             </summary>
         </member>
-        <member name="P:LazZiya.ImageResize.Animated.AnimatedGif.RawFormat">
+        <member name="P:LazZiya.ImageResize.Animated.AnimatedImage.RawFormat">
             <summary>
             Get image raw format
             </summary>
         </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGif.#ctor(System.String)">
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImage.#ctor(System.Drawing.Image)">
             <summary>
-            Create an animated gif from file
+            private constructor
             </summary>
-            <param name="filePath"></param>
         </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGif.#ctor(System.IO.Stream)">
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImage.FromFile(System.String)">
             <summary>
-            Create an animated gif from a stream
+            Create animated image from file
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImage.FromStream(System.IO.Stream)">
+            <summary>
+            Create animated image from stream
             </summary>
             <param name="stream"></param>
+            <returns></returns>
         </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGif.#ctor(System.IntPtr)">
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImage.FromImage(System.Drawing.Image)">
             <summary>
-            Create an animated gif from HBitmap
-            </summary>
-            <param name="hbitmap"></param>
-        </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGif.#ctor(System.IntPtr,System.IntPtr)">
-            <summary>
-            Create an animated gif from HBitmap
-            </summary>
-            <param name="hbitmap"></param>
-            <param name="hplatte"></param>
-        </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGif.#ctor(System.Drawing.Image)">
-            <summary>
-            Create animated gif from Image file
+            Create animated image from image
             </summary>
             <param name="image"></param>
+            <returns></returns>
         </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGif.SaveAs(System.String,System.Int32)">
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImage.FromHBitmap(System.IntPtr)">
+            <summary>
+            Create animated image from bitmap
+            </summary>
+            <param name="hbitmap"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImage.FromHBitmap(System.IntPtr,System.IntPtr)">
+            <summary>
+            Create animated image from bitmap
+            </summary>
+            <param name="hbitmap"></param>
+            <param name="hpalatte"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImage.SaveAs(System.String,System.Int32)">
             <summary>
             Save animated gif
             </summary>
             <param name="path"></param>
             <param name="delay">Frmae delay in milliseconds</param>
         </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGif.Dispose">
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImage.Dispose">
             <summary>
             Clear frames
             </summary>
         </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGif.Finalize">
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImage.Finalize">
             <summary>
             deconstruct
             </summary>
         </member>
-        <member name="T:LazZiya.ImageResize.Animated.AnimatedGifResize">
-            <summary>
-            Resize images
-            </summary>
-        </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGifResize.Scale(LazZiya.ImageResize.Animated.AnimatedGif,System.Int32,System.Int32)">
-            <summary>
-            Auto scale image by width or height till longest border (width/height) is equal to new width/height.
-            Final image aspect ratio is equal to original image aspect ratio.
-            If the aspect ratio of new w/h != aspect ratio of original image then 
-            one border will be in different size than the given value in order to keep original aspect ratio
-            </summary>
-            <param name="img"></param>
-            <param name="newWidth"></param>
-            <param name="newHeight"></param>
-            <returns></returns>
-        </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGifResize.Scale(LazZiya.ImageResize.Animated.AnimatedGif,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions)">
-            <summary>
-            Auto scale image by width or height till longest border (width/height) is equal to new width/height.
-            Final image aspect ratio is equal to original image aspect ratio.
-            If the aspect ratio of new w/h != aspect ratio of original image then 
-            one border will be in different size than the given value in order to keep original aspect ratio
-            </summary>
-            <param name="img"></param>
-            <param name="newWidth"></param>
-            <param name="newHeight"></param>
-            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
-            <returns></returns>
-        </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGifResize.ScaleByWidth(LazZiya.ImageResize.Animated.AnimatedGif,System.Int32)">
-            <summary>
-            Scale image by width and keep same aspect ratio of target image same as the original image.
-            Height will be adjusted automatically
-            </summary>
-            <param name="img"></param>
-            <param name="newWidth"></param>
-            <returns></returns>
-        </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGifResize.GifScaleByWidth(LazZiya.ImageResize.Animated.AnimatedGif,System.Int32,LazZiya.ImageResize.GraphicOptions)">
-            <summary>
-            Scale image by width and keep same aspect ratio of target image same as the original image.
-            Height will be adjusted automatically
-            </summary>
-            <param name="img"></param>
-            <param name="newWidth"></param>
-            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
-            <returns></returns>
-        </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGifResize.ScaleByHeight(LazZiya.ImageResize.Animated.AnimatedGif,System.Int32)">
-            <summary>
-            Scale image by height and keep same aspect ratio of target image same as the original image.
-            Width will be adjusted automatically
-            </summary>
-            <param name="img"></param>
-            <param name="newHeight"></param>
-            <returns></returns>
-        </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGifResize.ScaleByHeight(LazZiya.ImageResize.Animated.AnimatedGif,System.Int32,LazZiya.ImageResize.GraphicOptions)">
-            <summary>
-            Scale image by height and keep same aspect ratio of target image same as the original image.
-            Width will be adjusted automatically
-            </summary>
-            <param name="img"></param>
-            <param name="newHeight"></param>
-            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
-            <returns></returns>
-        </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGifResize.ScaleAndCrop(LazZiya.ImageResize.Animated.AnimatedGif,System.Int32,System.Int32,LazZiya.ImageResize.TargetSpot)">
-            <summary>
-            Scale target image till shortest border are equal to target value, 
-            then crop the additonal pixels from the longest border.
-            Final image aspect ratio is equal to the given new width/height
-            </summary>
-            <param name="img"></param>
-            <param name="newWidth"></param>
-            <param name="newHeight"></param>
-            <param name="spot"></param>
-            <returns></returns>
-        </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGifResize.ScaleAndCrop(LazZiya.ImageResize.Animated.AnimatedGif,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions,LazZiya.ImageResize.TargetSpot)">
-            <summary>
-            Scale target image till shortest border are equal to target value, 
-            then crop the additonal pixels from the longest border.
-            Final image aspect ratio is equal to the given new width/height
-            </summary>
-            <param name="img"></param>
-            <param name="newWidth"></param>
-            <param name="newHeight"></param>
-            <param name="spot"></param>
-            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
-            <returns></returns>
-        </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGifResize.Crop(LazZiya.ImageResize.Animated.AnimatedGif,System.Int32,System.Int32,LazZiya.ImageResize.TargetSpot)">
-            <summary>
-            Directly crop original image without scaling it.
-            Final image aspect ratio is equal to given new width/height
-            </summary>
-            <param name="img"></param>
-            <param name="newWidth"></param>
-            <param name="newHeight"></param>
-            <param name="spot">target spot to crop and save</param>
-            <returns></returns>
-        </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGifResize.Crop(LazZiya.ImageResize.Animated.AnimatedGif,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions,LazZiya.ImageResize.TargetSpot)">
-            <summary>
-            Directly crop original image without scaling it.
-            Final image aspect ratio is equal to given new width/height
-            </summary>
-            <param name="img"></param>
-            <param name="newWidth"></param>
-            <param name="newHeight"></param>
-            <param name="spot">target spot to crop and save</param>
-            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
-            <returns></returns>
-        </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGifResize.Resize(LazZiya.ImageResize.Animated.AnimatedGif,System.Drawing.Rectangle,System.Drawing.Rectangle)">
-            <summary>
-            Specify custom resize options
-            </summary>
-            <param name="img">the image to resize</param>
-            <param name="source">The coordinates to read as source from the image, 
-            can be the whole image or part of it</param>
-            <param name="target">The coordinates of the target image size</param>
-            <returns></returns>
-        </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGifResize.Resize(LazZiya.ImageResize.Animated.AnimatedGif,System.Drawing.Rectangle,System.Drawing.Rectangle,LazZiya.ImageResize.GraphicOptions)">
-            <summary>
-            Specify custom resize options
-            </summary>
-            <param name="img">the image to resize</param>
-            <param name="source">The coordinates to read as source from the image, 
-            can be the whole image or part of it</param>
-            <param name="target">The coordinates of the target image size</param>
-            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
-            <returns></returns>
-        </member>
-        <member name="T:LazZiya.ImageResize.Animated.AnimatedGifWaterMark">
+        <member name="T:LazZiya.ImageResize.Animated.AnimatedImageImageWatermark">
             <summary>
             Add an image watermark to animated gif
             </summary>
         </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGifWaterMark.AddImageWatermark(LazZiya.ImageResize.Animated.AnimatedGif,System.String)">
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageImageWatermark.AddImageWatermark(LazZiya.ImageResize.Animated.AnimatedImage,System.String)">
             <summary>
             Draw image watermark
             </summary>
             <param name="img">The original image</param>
             <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
         </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGifWaterMark.AddImageWatermark(LazZiya.ImageResize.Animated.AnimatedGif,System.Drawing.Image)">
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageImageWatermark.AddImageWatermark(LazZiya.ImageResize.Animated.AnimatedImage,System.Drawing.Image)">
             <summary>
             Draw image watermark
             </summary>
             <param name="img">The original image</param>
             <param name="wmImage">Watermark image</param>
         </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGifWaterMark.AddImageWatermark(LazZiya.ImageResize.Animated.AnimatedGif,System.String,LazZiya.ImageResize.ImageWatermarkOptions)">
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageImageWatermark.AddImageWatermark(LazZiya.ImageResize.Animated.AnimatedImage,System.String,LazZiya.ImageResize.ImageWatermarkOptions)">
             <summary>
             Draw image watermark
             </summary>
@@ -266,7 +139,7 @@
             <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
             <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
         </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedGifWaterMark.AddImageWatermark(LazZiya.ImageResize.Animated.AnimatedGif,System.Drawing.Image,LazZiya.ImageResize.ImageWatermarkOptions)">
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageImageWatermark.AddImageWatermark(LazZiya.ImageResize.Animated.AnimatedImage,System.Drawing.Image,LazZiya.ImageResize.ImageWatermarkOptions)">
             <summary>
             Draw image watermark.
             <para>Notice regarding watermark opacity:</para>
@@ -276,6 +149,143 @@
             <param name="img">The original image</param>
             <param name="wmImage">Watermak image</param>
             <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
+        </member>
+        <member name="T:LazZiya.ImageResize.Animated.AnimatedImageResize">
+            <summary>
+            Resize images
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResize.Scale(LazZiya.ImageResize.Animated.AnimatedImage,System.Int32,System.Int32)">
+            <summary>
+            Auto scale image by width or height till longest border (width/height) is equal to new width/height.
+            Final image aspect ratio is equal to original image aspect ratio.
+            If the aspect ratio of new w/h != aspect ratio of original image then 
+            one border will be in different size than the given value in order to keep original aspect ratio
+            </summary>
+            <param name="img"></param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResize.Scale(LazZiya.ImageResize.Animated.AnimatedImage,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Auto scale image by width or height till longest border (width/height) is equal to new width/height.
+            Final image aspect ratio is equal to original image aspect ratio.
+            If the aspect ratio of new w/h != aspect ratio of original image then 
+            one border will be in different size than the given value in order to keep original aspect ratio
+            </summary>
+            <param name="img"></param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResize.ScaleByWidth(LazZiya.ImageResize.Animated.AnimatedImage,System.Int32)">
+            <summary>
+            Scale image by width and keep same aspect ratio of target image same as the original image.
+            Height will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="newWidth"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResize.GifScaleByWidth(LazZiya.ImageResize.Animated.AnimatedImage,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Scale image by width and keep same aspect ratio of target image same as the original image.
+            Height will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="newWidth"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResize.ScaleByHeight(LazZiya.ImageResize.Animated.AnimatedImage,System.Int32)">
+            <summary>
+            Scale image by height and keep same aspect ratio of target image same as the original image.
+            Width will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResize.ScaleByHeight(LazZiya.ImageResize.Animated.AnimatedImage,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Scale image by height and keep same aspect ratio of target image same as the original image.
+            Width will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="newHeight"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResize.ScaleAndCrop(LazZiya.ImageResize.Animated.AnimatedImage,System.Int32,System.Int32,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Scale target image till shortest border are equal to target value, 
+            then crop the additonal pixels from the longest border.
+            Final image aspect ratio is equal to the given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResize.ScaleAndCrop(LazZiya.ImageResize.Animated.AnimatedImage,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Scale target image till shortest border are equal to target value, 
+            then crop the additonal pixels from the longest border.
+            Final image aspect ratio is equal to the given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResize.Crop(LazZiya.ImageResize.Animated.AnimatedImage,System.Int32,System.Int32,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Directly crop original image without scaling it.
+            Final image aspect ratio is equal to given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot">target spot to crop and save</param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResize.Crop(LazZiya.ImageResize.Animated.AnimatedImage,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Directly crop original image without scaling it.
+            Final image aspect ratio is equal to given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot">target spot to crop and save</param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResize.Resize(LazZiya.ImageResize.Animated.AnimatedImage,System.Drawing.Rectangle,System.Drawing.Rectangle)">
+            <summary>
+            Specify custom resize options
+            </summary>
+            <param name="img">the image to resize</param>
+            <param name="source">The coordinates to read as source from the image, 
+            can be the whole image or part of it</param>
+            <param name="target">The coordinates of the target image size</param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResize.Resize(LazZiya.ImageResize.Animated.AnimatedImage,System.Drawing.Rectangle,System.Drawing.Rectangle,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Specify custom resize options
+            </summary>
+            <param name="img">the image to resize</param>
+            <param name="source">The coordinates to read as source from the image, 
+            can be the whole image or part of it</param>
+            <param name="target">The coordinates of the target image size</param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
         </member>
         <member name="T:LazZiya.ImageResize.Animated.GifEncoder">
             <summary>
@@ -314,19 +324,19 @@
             Save and dispose
             </summary>
         </member>
-        <member name="T:LazZiya.ImageResize.AnimatedTextWatermark">
+        <member name="T:LazZiya.ImageResize.AnimatedImageTextWatermark">
             <summary>
             Add text watermark over the image.
             </summary>
         </member>
-        <member name="M:LazZiya.ImageResize.AnimatedTextWatermark.AddTextWatermark(LazZiya.ImageResize.Animated.AnimatedGif,System.String)">
+        <member name="M:LazZiya.ImageResize.AnimatedImageTextWatermark.AddTextWatermark(LazZiya.ImageResize.Animated.AnimatedImage,System.String)">
             <summary>
             Add text watermark over the image.
             </summary>
             <param name="img"></param>
             <param name="text"></param>
         </member>
-        <member name="M:LazZiya.ImageResize.AnimatedTextWatermark.AddTextWatermark(LazZiya.ImageResize.Animated.AnimatedGif,System.String,LazZiya.ImageResize.TextWatermarkOptions)">
+        <member name="M:LazZiya.ImageResize.AnimatedImageTextWatermark.AddTextWatermark(LazZiya.ImageResize.Animated.AnimatedImage,System.String,LazZiya.ImageResize.TextWatermarkOptions)">
             <summary>
             Add text watermark over the image.
             </summary>

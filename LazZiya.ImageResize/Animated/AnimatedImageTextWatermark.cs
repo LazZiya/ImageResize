@@ -7,7 +7,7 @@ namespace LazZiya.ImageResize
     /// <summary>
     /// Add text watermark over the image.
     /// </summary>
-    public static class AnimatedTextWatermark
+    public static class AnimatedImageTextWatermark
     {
 
         /// <summary>
@@ -15,7 +15,7 @@ namespace LazZiya.ImageResize
         /// </summary>
         /// <param name="img"></param>
         /// <param name="text"></param>
-        public static AnimatedGif AddTextWatermark(this AnimatedGif img, string text)
+        public static AnimatedImage AddTextWatermark(this AnimatedImage img, string text)
         {
             return AddTextWatermark(img, text, new TextWatermarkOptions());
         }
@@ -26,7 +26,7 @@ namespace LazZiya.ImageResize
         /// <param name="img"></param>
         /// <param name="text">text to draw over the image</param>
         /// <param name="ops">Text watermark options <see cref="TextWatermarkOptions"/></param>
-        public static AnimatedGif AddTextWatermark(this AnimatedGif img, string text, TextWatermarkOptions ops)
+        public static AnimatedImage AddTextWatermark(this AnimatedImage img, string text, TextWatermarkOptions ops)
         {
             var fList = new List<Image>();
 

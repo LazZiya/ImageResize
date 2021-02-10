@@ -9,9 +9,9 @@ using System.IO;
 namespace LazZiya.ImageResize.Animated
 {
     /// <summary>
-    /// Represents an animated gif image with multiple frames
+    /// Represents an animated image image with multiple frames
     /// </summary>
-    public class AnimatedGif : IDisposable
+    public class AnimatedImage : IDisposable
     {
         /// <summary>
         /// Gif image as list of frames
@@ -59,51 +59,9 @@ namespace LazZiya.ImageResize.Animated
         public ImageFormat RawFormat { get; }
 
         /// <summary>
-        /// Create an animated gif from file
+        /// private constructor
         /// </summary>
-        /// <param name="filePath"></param>
-        public AnimatedGif(string filePath)
-            : this(Image.FromFile(filePath))
-        {
-            
-        }
-
-        /// <summary>
-        /// Create an animated gif from a stream
-        /// </summary>
-        /// <param name="stream"></param>
-        public AnimatedGif(Stream stream)
-            :this(Image.FromStream(stream))
-        {
-
-        }
-
-        /// <summary>
-        /// Create an animated gif from HBitmap
-        /// </summary>
-        /// <param name="hbitmap"></param>
-        public AnimatedGif(IntPtr hbitmap)
-            : this(Image.FromHbitmap(hbitmap))
-        {
-
-        }
-
-        /// <summary>
-        /// Create an animated gif from HBitmap
-        /// </summary>
-        /// <param name="hbitmap"></param>
-        /// <param name="hplatte"></param>
-        public AnimatedGif(IntPtr hbitmap, IntPtr hplatte)
-            : this(Image.FromHbitmap(hbitmap, hplatte))
-        {
-
-        }
-
-        /// <summary>
-        /// Create animated gif from Image file
-        /// </summary>
-        /// <param name="image"></param>
-        public AnimatedGif(Image image)
+        private AnimatedImage(Image image)
         {
             if (!ImageAnimator.CanAnimate(image))
                 throw new BadImageFormatException("This is not an animated gif!");
@@ -112,7 +70,6 @@ namespace LazZiya.ImageResize.Animated
             FramesCount = image.GetFrameCount(dim);
             Size = new Size(image.Width, image.Height);
             Frames = new List<Image>();
-
             ImageColorFormat = ImageColorFormats.GetColorFormat((Bitmap)image);
             PixelFormat = image.PixelFormat;
             HorizontalResolution = image.HorizontalResolution;
@@ -125,6 +82,63 @@ namespace LazZiya.ImageResize.Animated
                 var frame = image.Clone() as Image;
                 Frames.Add(frame);
             }
+
+            image.Dispose();
+        }
+
+        /// <summary>
+        /// Create animated image from file
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        public static AnimatedImage FromFile(string fileName)
+        {
+            var img = Image.FromFile(fileName);
+            return new AnimatedImage(img);
+        }
+
+        /// <summary>
+        /// Create animated image from stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns></returns>
+        public static AnimatedImage FromStream(Stream stream)
+        {
+            var img = Image.FromStream(stream);
+            return new AnimatedImage(img);
+        }
+
+        /// <summary>
+        /// Create animated image from image
+        /// </summary>
+        /// <param name="image"></param>
+        /// <returns></returns>
+        public static AnimatedImage FromImage(Image image)
+        {
+            return new AnimatedImage(image);
+        }
+
+        /// <summary>
+        /// Create animated image from bitmap
+        /// </summary>
+        /// <param name="hbitmap"></param>
+        /// <returns></returns>
+        public static AnimatedImage FromHBitmap(IntPtr hbitmap)
+        {
+            var img = Image.FromHbitmap(hbitmap);
+            return new AnimatedImage(img);
+        }
+
+        /// <summary>
+        /// Create animated image from bitmap
+        /// </summary>
+        /// <param name="hbitmap"></param>
+        /// <param name="hpalatte"></param>
+        /// <returns></returns>
+        public static AnimatedImage FromHBitmap(IntPtr hbitmap, IntPtr hpalatte)
+        {
+            var img = Image.FromHbitmap(hbitmap, hpalatte);
+            return new AnimatedImage(img);
         }
 
         /// <summary>
@@ -157,7 +171,7 @@ namespace LazZiya.ImageResize.Animated
         /// <summary>
         /// deconstruct
         /// </summary>
-        ~AnimatedGif()
+        ~AnimatedImage()
         {
             this.Dispose();
         }

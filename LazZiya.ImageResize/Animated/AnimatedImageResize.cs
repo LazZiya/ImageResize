@@ -1,7 +1,5 @@
 ﻿using LazZiya.ImageResize.ColorFormats;
 using LazZiya.ImageResize.ResizeMethods;
-using LazZiya.ImageResize.Tools;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -12,7 +10,7 @@ namespace LazZiya.ImageResize.Animated
     /// <summary>
     /// Resize images
     /// </summary>
-    public static class AnimatedGifResize
+    public static class AnimatedImageResize
     {
         /// <summary>
         /// Auto scale image by width or height till longest border (width/height) is equal to new width/height.
@@ -24,7 +22,7 @@ namespace LazZiya.ImageResize.Animated
         /// <param name="newWidth"></param>
         /// <param name="newHeight"></param>
         /// <returns></returns>
-        public static AnimatedGif Scale(this AnimatedGif img, int newWidth, int newHeight)
+        public static AnimatedImage Scale(this AnimatedImage img, int newWidth, int newHeight)
         {
             var resize = new Scale(img.Size, new Size(newWidth, newHeight));
 
@@ -42,7 +40,7 @@ namespace LazZiya.ImageResize.Animated
         /// <param name="newHeight"></param>
         /// <param name="ops">Graphic options <see cref="GraphicOptions"/></param>
         /// <returns></returns>
-        public static AnimatedGif Scale(this AnimatedGif img, int newWidth, int newHeight, GraphicOptions ops)
+        public static AnimatedImage Scale(this AnimatedImage img, int newWidth, int newHeight, GraphicOptions ops)
         {
             var resize = new Scale(img.Size, new Size(newWidth, newHeight));
 
@@ -56,7 +54,7 @@ namespace LazZiya.ImageResize.Animated
         /// <param name="img"></param>
         /// <param name="newWidth"></param>
         /// <returns></returns>
-        public static AnimatedGif ScaleByWidth(this AnimatedGif img, int newWidth)
+        public static AnimatedImage ScaleByWidth(this AnimatedImage img, int newWidth)
         {
             var resize = new Scale(img.Size, new Size(newWidth, 0));
 
@@ -71,7 +69,7 @@ namespace LazZiya.ImageResize.Animated
         /// <param name="newWidth"></param>
         /// <param name="ops">Graphic options <see cref="GraphicOptions"/></param>
         /// <returns></returns>
-        public static AnimatedGif GifScaleByWidth(this AnimatedGif img, int newWidth, GraphicOptions ops)
+        public static AnimatedImage GifScaleByWidth(this AnimatedImage img, int newWidth, GraphicOptions ops)
         {
             var resize = new Scale(img.Size, new Size(newWidth, 0));
 
@@ -85,7 +83,7 @@ namespace LazZiya.ImageResize.Animated
         /// <param name="img"></param>
         /// <param name="newHeight"></param>
         /// <returns></returns>
-        public static AnimatedGif ScaleByHeight(this AnimatedGif img, int newHeight)
+        public static AnimatedImage ScaleByHeight(this AnimatedImage img, int newHeight)
         {
             var resize = new Scale(img.Size, new Size(0, newHeight));
 
@@ -100,7 +98,7 @@ namespace LazZiya.ImageResize.Animated
         /// <param name="newHeight"></param>
         /// <param name="ops">Graphic options <see cref="GraphicOptions"/></param>
         /// <returns></returns>
-        public static AnimatedGif ScaleByHeight(this AnimatedGif img, int newHeight, GraphicOptions ops)
+        public static AnimatedImage ScaleByHeight(this AnimatedImage img, int newHeight, GraphicOptions ops)
         {
             var resize = new Scale(img.Size, new Size(0, newHeight));
 
@@ -117,7 +115,7 @@ namespace LazZiya.ImageResize.Animated
         /// <param name="newHeight"></param>
         /// <param name="spot"></param>
         /// <returns></returns>
-        public static AnimatedGif ScaleAndCrop(this AnimatedGif img, int newWidth, int newHeight, TargetSpot spot = TargetSpot.Center)
+        public static AnimatedImage ScaleAndCrop(this AnimatedImage img, int newWidth, int newHeight, TargetSpot spot = TargetSpot.Center)
         {
             var resize = new ScaleAndCrop(img.Size, new Size(newWidth, newHeight), spot);
 
@@ -135,7 +133,7 @@ namespace LazZiya.ImageResize.Animated
         /// <param name="spot"></param>
         /// <param name="ops">Graphic options <see cref="GraphicOptions"/></param>
         /// <returns></returns>
-        public static AnimatedGif ScaleAndCrop(this AnimatedGif img, int newWidth, int newHeight, GraphicOptions ops, TargetSpot spot = TargetSpot.Center)
+        public static AnimatedImage ScaleAndCrop(this AnimatedImage img, int newWidth, int newHeight, GraphicOptions ops, TargetSpot spot = TargetSpot.Center)
         {
             var resize = new ScaleAndCrop(img.Size, new Size(newWidth, newHeight), spot);
 
@@ -151,7 +149,7 @@ namespace LazZiya.ImageResize.Animated
         /// <param name="newHeight"></param>
         /// <param name="spot">target spot to crop and save</param>
         /// <returns></returns>
-        public static AnimatedGif Crop(this AnimatedGif img, int newWidth, int newHeight, TargetSpot spot = TargetSpot.Center)
+        public static AnimatedImage Crop(this AnimatedImage img, int newWidth, int newHeight, TargetSpot spot = TargetSpot.Center)
         {
             var resize = new Crop(img.Size, new Size(newWidth, newHeight), spot);
             return Resize(img, resize.SourceRect, resize.TargetRect);
@@ -167,7 +165,7 @@ namespace LazZiya.ImageResize.Animated
         /// <param name="spot">target spot to crop and save</param>
         /// <param name="ops">Graphic options <see cref="GraphicOptions"/></param>
         /// <returns></returns>
-        public static AnimatedGif Crop(this AnimatedGif img, int newWidth, int newHeight, GraphicOptions ops, TargetSpot spot = TargetSpot.Center)
+        public static AnimatedImage Crop(this AnimatedImage img, int newWidth, int newHeight, GraphicOptions ops, TargetSpot spot = TargetSpot.Center)
         {
             var resize = new Crop(img.Size, new Size(newWidth, newHeight), spot);
             return Resize(img, resize.SourceRect, resize.TargetRect, ops);
@@ -181,7 +179,7 @@ namespace LazZiya.ImageResize.Animated
         /// can be the whole image or part of it</param>
         /// <param name="target">The coordinates of the target image size</param>
         /// <returns></returns>
-        public static AnimatedGif Resize(this AnimatedGif img, Rectangle source, Rectangle target)
+        public static AnimatedImage Resize(this AnimatedImage img, Rectangle source, Rectangle target)
         {
             return img.Resize(source, target, new GraphicOptions());
         }
@@ -195,7 +193,7 @@ namespace LazZiya.ImageResize.Animated
         /// <param name="target">The coordinates of the target image size</param>
         /// <param name="ops">Graphic options <see cref="GraphicOptions"/></param>
         /// <returns></returns>
-        public static AnimatedGif Resize(this AnimatedGif img, Rectangle source, Rectangle target, GraphicOptions ops)
+        public static AnimatedImage Resize(this AnimatedImage img, Rectangle source, Rectangle target, GraphicOptions ops)
         {
             // check for CMYK pixel format to use Format32bppArgb
             // or use the image pixel format
