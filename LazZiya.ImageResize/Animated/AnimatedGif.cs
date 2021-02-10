@@ -31,7 +31,7 @@ namespace LazZiya.ImageResize.Animated
         /// <summary>
         /// Get width and height of the image
         /// </summary>
-        public Size Size { get; set; }
+        public Size Size { get; internal set; }
 
         /// <summary>
         /// Get image color format
@@ -57,6 +57,47 @@ namespace LazZiya.ImageResize.Animated
         /// Get image raw format
         /// </summary>
         public ImageFormat RawFormat { get; }
+
+        /// <summary>
+        /// Create an animated gif from file
+        /// </summary>
+        /// <param name="filePath"></param>
+        public AnimatedGif(string filePath)
+            : this(Image.FromFile(filePath))
+        {
+            
+        }
+
+        /// <summary>
+        /// Create an animated gif from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        public AnimatedGif(Stream stream)
+            :this(Image.FromStream(stream))
+        {
+
+        }
+
+        /// <summary>
+        /// Create an animated gif from HBitmap
+        /// </summary>
+        /// <param name="hbitmap"></param>
+        public AnimatedGif(IntPtr hbitmap)
+            : this(Image.FromHbitmap(hbitmap))
+        {
+
+        }
+
+        /// <summary>
+        /// Create an animated gif from HBitmap
+        /// </summary>
+        /// <param name="hbitmap"></param>
+        /// <param name="hplatte"></param>
+        public AnimatedGif(IntPtr hbitmap, IntPtr hplatte)
+            : this(Image.FromHbitmap(hbitmap, hplatte))
+        {
+
+        }
 
         /// <summary>
         /// Create animated gif from Image file

@@ -54,6 +54,31 @@
             Get image raw format
             </summary>
         </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedGif.#ctor(System.String)">
+            <summary>
+            Create an animated gif from file
+            </summary>
+            <param name="filePath"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedGif.#ctor(System.IO.Stream)">
+            <summary>
+            Create an animated gif from a stream
+            </summary>
+            <param name="stream"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedGif.#ctor(System.IntPtr)">
+            <summary>
+            Create an animated gif from HBitmap
+            </summary>
+            <param name="hbitmap"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedGif.#ctor(System.IntPtr,System.IntPtr)">
+            <summary>
+            Create an animated gif from HBitmap
+            </summary>
+            <param name="hbitmap"></param>
+            <param name="hplatte"></param>
+        </member>
         <member name="M:LazZiya.ImageResize.Animated.AnimatedGif.#ctor(System.Drawing.Image)">
             <summary>
             Create animated gif from Image file
