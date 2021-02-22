@@ -1,9 +1,8 @@
 # LazZiya.ImageResize
 Image resizing tool for .Net applications, with support to add text/image watermark.
 This package is built on .NetStandard 2.0 so it supports wide range of compatible platforms (e.g. Asp.Net Core etc).
-
-### Demo:
-http://demo.ziyad.info/en/ImageResize
+### Docs
+https://docs.ziyad.info
 
 ## [Release notes][4]
 
