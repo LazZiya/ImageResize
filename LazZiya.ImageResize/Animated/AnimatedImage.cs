@@ -87,6 +87,26 @@ namespace LazZiya.ImageResize.Animated
         }
 
         /// <summary>
+        /// Make sure to initialize values
+        /// </summary>
+        public AnimatedImage(IList<Image> frames)
+        {
+            if (frames == null)
+                throw new NullReferenceException(nameof(frames));
+
+            var image = frames[0];
+
+            FramesCount = frames.Count;
+            Size = new Size(image.Width, image.Height);
+            Frames = frames;
+            ImageColorFormat = ImageColorFormats.GetColorFormat((Bitmap)image);
+            PixelFormat = image.PixelFormat;
+            HorizontalResolution = image.HorizontalResolution;
+            VerticalResolution = image.VerticalResolution;
+            RawFormat = image.RawFormat;
+        }
+
+        /// <summary>
         /// Create animated image from file
         /// </summary>
         /// <param name="fileName"></param>
@@ -145,7 +165,7 @@ namespace LazZiya.ImageResize.Animated
         /// Save animated gif
         /// </summary>
         /// <param name="path"></param>
-        /// <param name="delay">Frmae delay in milliseconds</param>
+        /// <param name="delay">Frame delay in milliseconds</param>
         public void SaveAs(string path, int delay = 400)
         {
             using (var fs = File.Create(path))

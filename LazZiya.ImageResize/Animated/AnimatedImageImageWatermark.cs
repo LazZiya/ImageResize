@@ -4,12 +4,12 @@ using System.Drawing;
 namespace LazZiya.ImageResize.Animated
 {
     /// <summary>
-    /// Add an image watermark to animated gif
+    /// Add a static image watermark over animated image.
     /// </summary>
     public static class AnimatedImageImageWatermark
     {
         /// <summary>
-        /// Draw image watermark
+        /// Add a static image watermark over animated image.
         /// </summary>
         /// <param name="img">The original image</param>
         /// <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
@@ -20,7 +20,7 @@ namespace LazZiya.ImageResize.Animated
         }
 
         /// <summary>
-        /// Draw image watermark
+        /// Add a static image watermark over animated image.
         /// </summary>
         /// <param name="img">The original image</param>
         /// <param name="wmImage">Watermark image</param>
@@ -30,7 +30,7 @@ namespace LazZiya.ImageResize.Animated
         }
 
         /// <summary>
-        /// Draw image watermark
+        /// Add a static image watermark over animated image.
         /// </summary>
         /// <param name="img">The original image</param>
         /// <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
@@ -42,7 +42,7 @@ namespace LazZiya.ImageResize.Animated
         }
 
         /// <summary>
-        /// Draw image watermark.
+        /// Add a static image watermark over animated image.
         /// <para>Notice regarding watermark opacity:</para>
         /// <para>If watermark image needs to be resized, first resize the watermark image, 
         /// then save it to the disc, and read it again with Image.FromFile.</para>

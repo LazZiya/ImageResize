@@ -5,13 +5,12 @@ using System.Drawing;
 namespace LazZiya.ImageResize
 {
     /// <summary>
-    /// Add text watermark over the image.
+    /// Add a static text watermark over animated image.
     /// </summary>
     public static class AnimatedImageTextWatermark
     {
-
         /// <summary>
-        /// Add text watermark over the image.
+        /// Add a static text watermark over animated image.
         /// </summary>
         /// <param name="img"></param>
         /// <param name="text"></param>
@@ -21,7 +20,7 @@ namespace LazZiya.ImageResize
         }
 
         /// <summary>
-        /// Add text watermark over the image.
+        /// Add a static text watermark over animated image.
         /// </summary>
         /// <param name="img"></param>
         /// <param name="text">text to draw over the image</param>

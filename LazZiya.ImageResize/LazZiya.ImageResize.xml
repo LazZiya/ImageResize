@@ -59,6 +59,11 @@
             private constructor
             </summary>
         </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImage.#ctor(System.Collections.Generic.IList{System.Drawing.Image})">
+            <summary>
+            Make sure to initialize values
+            </summary>
+        </member>
         <member name="M:LazZiya.ImageResize.Animated.AnimatedImage.FromFile(System.String)">
             <summary>
             Create animated image from file
@@ -100,7 +105,7 @@
             Save animated gif
             </summary>
             <param name="path"></param>
-            <param name="delay">Frmae delay in milliseconds</param>
+            <param name="delay">Frame delay in milliseconds</param>
         </member>
         <member name="M:LazZiya.ImageResize.Animated.AnimatedImage.Dispose">
             <summary>
@@ -112,28 +117,65 @@
             deconstruct
             </summary>
         </member>
+        <member name="T:LazZiya.ImageResize.Animated.AnimatedImageAnimatedTextWatermark">
+            <summary>
+            Add animated text watermark over animated image.
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageAnimatedTextWatermark.AddAnimatedTextWatermark(LazZiya.ImageResize.Animated.AnimatedImage,System.String)">
+            <summary>
+            Add animated text watermark over animated image.
+            </summary>
+            <param name="img"></param>
+            <param name="text"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageAnimatedTextWatermark.AddAnimatedTextWatermark(LazZiya.ImageResize.Animated.AnimatedImage,System.String,LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions)">
+            <summary>
+            Add animated text watermark over animated image.
+            </summary>
+            <param name="img"></param>
+            <param name="text"></param>
+            <param name="animOps"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageAnimatedTextWatermark.AddAnimatedTextWatermark(LazZiya.ImageResize.Animated.AnimatedImage,System.String,LazZiya.ImageResize.TextWatermarkOptions)">
+            <summary>
+            Add animated text watermark over animated image.
+            </summary>
+            <param name="img"></param>
+            <param name="text">text to draw over the image</param>
+            <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageAnimatedTextWatermark.AddAnimatedTextWatermark(LazZiya.ImageResize.Animated.AnimatedImage,System.String,LazZiya.ImageResize.TextWatermarkOptions,LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions)">
+            <summary>
+            Add animated text watermark over animated image.
+            </summary>
+            <param name="img"></param>
+            <param name="text">text to draw over the image</param>
+            <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
+            <param name="animOps">Animated text options <see cref="T:LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions"/></param>
+        </member>
         <member name="T:LazZiya.ImageResize.Animated.AnimatedImageImageWatermark">
             <summary>
-            Add an image watermark to animated gif
+            Add a static image watermark over animated image.
             </summary>
         </member>
         <member name="M:LazZiya.ImageResize.Animated.AnimatedImageImageWatermark.AddImageWatermark(LazZiya.ImageResize.Animated.AnimatedImage,System.String)">
             <summary>
-            Draw image watermark
+            Add a static image watermark over animated image.
             </summary>
             <param name="img">The original image</param>
             <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
         </member>
         <member name="M:LazZiya.ImageResize.Animated.AnimatedImageImageWatermark.AddImageWatermark(LazZiya.ImageResize.Animated.AnimatedImage,System.Drawing.Image)">
             <summary>
-            Draw image watermark
+            Add a static image watermark over animated image.
             </summary>
             <param name="img">The original image</param>
             <param name="wmImage">Watermark image</param>
         </member>
         <member name="M:LazZiya.ImageResize.Animated.AnimatedImageImageWatermark.AddImageWatermark(LazZiya.ImageResize.Animated.AnimatedImage,System.String,LazZiya.ImageResize.ImageWatermarkOptions)">
             <summary>
-            Draw image watermark
+            Add a static image watermark over animated image.
             </summary>
             <param name="img">The original image</param>
             <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
@@ -141,7 +183,7 @@
         </member>
         <member name="M:LazZiya.ImageResize.Animated.AnimatedImageImageWatermark.AddImageWatermark(LazZiya.ImageResize.Animated.AnimatedImage,System.Drawing.Image,LazZiya.ImageResize.ImageWatermarkOptions)">
             <summary>
-            Draw image watermark.
+            Add a static image watermark over animated image.
             <para>Notice regarding watermark opacity:</para>
             <para>If watermark image needs to be resized, first resize the watermark image, 
             then save it to the disc, and read it again with Image.FromFile.</para>
@@ -287,6 +329,26 @@
             <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
             <returns></returns>
         </member>
+        <member name="T:LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions">
+            <summary>
+            Define options for animated text
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions.TextAnimation">
+            <summary>
+            Pre-defined text animations
+            </summary>
+        </member>
+        <member name="T:LazZiya.ImageResize.Animated.TextAnimation">
+            <summary>
+            Pre defined text animations
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.TextAnimation.Typing">
+            <summary>
+            increment char-by-char
+            </summary>
+        </member>
         <member name="T:LazZiya.ImageResize.Animated.GifEncoder">
             <summary>
             Encodes multiple images as an animated gif to a stream. <br />
@@ -324,21 +386,96 @@
             Save and dispose
             </summary>
         </member>
+        <member name="T:LazZiya.ImageResize.Animated.ImageAnimatedImageWatermark">
+            <summary>
+            Add an animated image watermark to static image
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedImageWatermark.AddAnimatedImageWatermark(System.Drawing.Image,System.String)">
+            <summary>
+            Draw animated image watermark over a static image
+            </summary>
+            <param name="img">The original image</param>
+            <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedImageWatermark.AddAnimatedImageWatermark(System.Drawing.Image,LazZiya.ImageResize.Animated.AnimatedImage)">
+            <summary>
+            Draw animated image watermark over a static image
+            </summary>
+            <param name="img">The original image</param>
+            <param name="wmImage">Watermark image</param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedImageWatermark.AddAnimatedImageWatermark(System.Drawing.Image,System.String,LazZiya.ImageResize.ImageWatermarkOptions)">
+            <summary>
+            Draw animated image watermark over a static image
+            </summary>
+            <param name="img">The original image</param>
+            <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
+            <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedImageWatermark.AddAnimatedImageWatermark(System.Drawing.Image,LazZiya.ImageResize.Animated.AnimatedImage,LazZiya.ImageResize.ImageWatermarkOptions)">
+            <summary>
+            Draw animated image watermark over a static image
+            <para>Notice regarding watermark opacity:</para>
+            <para>If watermark image needs to be resized, first resize the watermark image, 
+            then save it to the disc, and read it again with Image.FromFile.</para>
+            </summary>
+            <param name="img">The original image</param>
+            <param name="wmImage">Watermak image</param>
+            <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
+        </member>
+        <member name="T:LazZiya.ImageResize.Animated.ImageAnimatedTextWatermark">
+            <summary>
+            Add animated text watermark over image
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedTextWatermark.AddAnimatedTextWatermark(System.Drawing.Image,System.String)">
+            <summary>
+            Add animated text watermark over a static image.
+            </summary>
+            <param name="img"></param>
+            <param name="text"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedTextWatermark.AddAnimatedTextWatermark(System.Drawing.Image,System.String,LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions)">
+            <summary>
+            Add animated text watermark over a static image.
+            </summary>
+            <param name="img"></param>
+            <param name="text"></param>
+            <param name="animOps"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedTextWatermark.AddAnimatedTextWatermark(System.Drawing.Image,System.String,LazZiya.ImageResize.TextWatermarkOptions)">
+            <summary>
+            Add animated text watermark over a static image.
+            </summary>
+            <param name="img"></param>
+            <param name="text">text to draw over the image</param>
+            <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedTextWatermark.AddAnimatedTextWatermark(System.Drawing.Image,System.String,LazZiya.ImageResize.TextWatermarkOptions,LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions)">
+            <summary>
+            Add animated text watermark over a static image.
+            </summary>
+            <param name="img"></param>
+            <param name="text">text to draw over the image</param>
+            <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
+            <param name="animOps">Animated text options <see cref="T:LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions"/></param>
+        </member>
         <member name="T:LazZiya.ImageResize.AnimatedImageTextWatermark">
             <summary>
-            Add text watermark over the image.
+            Add a static text watermark over animated image.
             </summary>
         </member>
         <member name="M:LazZiya.ImageResize.AnimatedImageTextWatermark.AddTextWatermark(LazZiya.ImageResize.Animated.AnimatedImage,System.String)">
             <summary>
-            Add text watermark over the image.
+            Add a static text watermark over animated image.
             </summary>
             <param name="img"></param>
             <param name="text"></param>
         </member>
         <member name="M:LazZiya.ImageResize.AnimatedImageTextWatermark.AddTextWatermark(LazZiya.ImageResize.Animated.AnimatedImage,System.String,LazZiya.ImageResize.TextWatermarkOptions)">
             <summary>
-            Add text watermark over the image.
+            Add a static text watermark over animated image.
             </summary>
             <param name="img"></param>
             <param name="text">text to draw over the image</param>
