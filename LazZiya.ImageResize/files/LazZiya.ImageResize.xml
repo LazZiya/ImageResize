@@ -789,6 +789,154 @@
             <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
             <returns></returns>
         </member>
+        <member name="T:LazZiya.ImageResize.ImageResizeConditional">
+            <summary>
+            Conditionally resize images depending on a condition token
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.ScaleIf(System.Drawing.Image,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Auto scale image by width or height till longest border (width/height) is equal to new width/height.
+            Final image aspect ratio is equal to original image aspect ratio.
+            If the aspect ratio of new w/h != aspect ratio of original image then 
+            one border will be in different size than the given value in order to keep original aspect ratio
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.ScaleIf(System.Drawing.Image,System.Boolean,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Auto scale image by width or height till longest border (width/height) is equal to new width/height.
+            Final image aspect ratio is equal to original image aspect ratio.
+            If the aspect ratio of new w/h != aspect ratio of original image then 
+            one border will be in different size than the given value in order to keep original aspect ratio
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.ScaleByWidthIf(System.Drawing.Image,System.Boolean,System.Int32)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale image by width and keep same aspect ratio of target image same as the original image.
+            Height will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.ScaleByWidthIf(System.Drawing.Image,System.Boolean,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale image by width and keep same aspect ratio of target image same as the original image.
+            Height will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.ScaleByHeightIf(System.Drawing.Image,System.Boolean,System.Int32)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale image by height and keep same aspect ratio of target image same as the original image.
+            Width will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.ScaleByHeightIf(System.Drawing.Image,System.Boolean,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale image by height and keep same aspect ratio of target image same as the original image.
+            Width will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newHeight"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.ScaleAndCropIf(System.Drawing.Image,System.Boolean,System.Int32,System.Int32,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale target image till shortest border are equal to target value, 
+            then crop the additonal pixels from the longest border.
+            Final image aspect ratio is equal to the given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.ScaleAndCropIf(System.Drawing.Image,System.Boolean,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale target image till shortest border are equal to target value, 
+            then crop the additonal pixels from the longest border.
+            Final image aspect ratio is equal to the given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.CropIf(System.Drawing.Image,System.Boolean,System.Int32,System.Int32,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Directly crop original image without scaling it.
+            Final image aspect ratio is equal to given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot">target spot to crop and save</param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.CropIf(System.Drawing.Image,System.Boolean,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Directly crop original image without scaling it.
+            Final image aspect ratio is equal to given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot">target spot to crop and save</param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.ResizeIf(System.Drawing.Image,System.Boolean,System.Drawing.Rectangle,System.Drawing.Rectangle)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Specify custom resize options
+            </summary>
+            <param name="img">the image to resize</param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="source">The coordinates to read as source from the image, 
+            can be the whole image or part of it</param>
+            <param name="target">The coordinates of the target image size</param>
+            <returns></returns>
+        </member>
         <member name="T:LazZiya.ImageResize.ImageWatermark">
             <summary>
             Draw image watermark
