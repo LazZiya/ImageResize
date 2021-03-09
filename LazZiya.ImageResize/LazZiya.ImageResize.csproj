@@ -16,7 +16,8 @@
 		<FileVersion>4.0.0.0</FileVersion>
 		<PackageReleaseNotes>
 			Updates in preview 3:
-			- New "Conditional resizing methods: The resize will done depending on a conditional parameter.
+			- New "Conditional" resizing methods: The resize will done depending on a conditional parameter.
+			- New "Conditional" text/image watermark methods: Add text/image watermark if condition is true.
 			- Amended method name: AnimatedImageResize.GifScaleByWidth --> AnimatedImageResize.GifScaleByWidth
 			
 			Updates in preview 2:
