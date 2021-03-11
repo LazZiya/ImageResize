@@ -1143,6 +1143,35 @@
             Rouded or ellipse
             </summary>
         </member>
+        <member name="T:LazZiya.ImageResize.ImageMaskExtensions">
+            <summary>
+            Add image mask
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageMaskExtensions.Mask(System.Drawing.Image,System.Drawing.Rectangle,LazZiya.ImageResize.ImageFrameShape)">
+            <summary>
+            Add image mask with the specified paameters
+            </summary>
+            <param name="img"></param>
+            <param name="rectangle"></param>
+            <param name="shape"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LazZiya.ImageResize.ImageMaskExtensionsConditional">
+            <summary>
+            Add image mask
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageMaskExtensionsConditional.MaskIf(System.Drawing.Image,System.Boolean,System.Drawing.Rectangle,LazZiya.ImageResize.ImageFrameShape)">
+            <summary>
+            Add image mask with the specified paameters, depnding on a conditonal parameter
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to apply mask, otherwise return image</param>
+            <param name="rectangle"></param>
+            <param name="shape"></param>
+            <returns></returns>
+        </member>
         <member name="T:LazZiya.ImageResize.ImageResize">
             <summary>
             Resize images
@@ -1919,20 +1948,6 @@
             </summary>
             <param name="fileName"></param>
             <returns>System.Drawing.Imaging.ImageFormat</returns>
-        </member>
-        <member name="T:LazZiya.ImageResize.Tools.ImageMaskExtensions">
-            <summary>
-            Add image mask
-            </summary>
-        </member>
-        <member name="M:LazZiya.ImageResize.Tools.ImageMaskExtensions.Mask(System.Drawing.Image,System.Drawing.Rectangle,LazZiya.ImageResize.ImageFrameShape)">
-            <summary>
-            Add image mask with the specified paameters
-            </summary>
-            <param name="img"></param>
-            <param name="rectangle"></param>
-            <param name="shape"></param>
-            <returns></returns>
         </member>
         <member name="T:LazZiya.ImageResize.Tools.ImageOpacity">
             <summary>
