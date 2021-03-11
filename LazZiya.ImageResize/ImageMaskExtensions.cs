@@ -2,7 +2,7 @@
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 
-namespace LazZiya.ImageResize.Tools
+namespace LazZiya.ImageResize
 {
     /// <summary>
     /// Add image mask
