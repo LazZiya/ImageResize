@@ -154,6 +154,47 @@
             <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
             <param name="animOps">Animated text options <see cref="T:LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions"/></param>
         </member>
+        <member name="T:LazZiya.ImageResize.Animated.AnimatedImageAnimatedTextWatermarkConditional">
+            <summary>
+            Add animated text watermark over animated image, depending on a condition parameter.
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageAnimatedTextWatermarkConditional.AddAnimatedTextWatermarkIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.String)">
+            <summary>
+            Add animated text watermark over animated image, depending on a conditon parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add text watermark, false will return the img</param>
+            <param name="text"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageAnimatedTextWatermarkConditional.AddAnimatedTextWatermarkIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.String,LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions)">
+            <summary>
+            Add animated text watermark over animated image, depending on a conditon parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add text watermark, false will return the img</param>
+            <param name="text"></param>
+            <param name="animOps"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageAnimatedTextWatermarkConditional.AddAnimatedTextWatermarkIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.String,LazZiya.ImageResize.TextWatermarkOptions)">
+            <summary>
+            Add animated text watermark over animated image, depending on a conditon parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add text watermark, false will return the img</param>
+            <param name="text">text to draw over the image</param>
+            <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageAnimatedTextWatermarkConditional.AddAnimatedTextWatermarkIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.String,LazZiya.ImageResize.TextWatermarkOptions,LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions)">
+            <summary>
+            Add animated text watermark over animated image, depending on a conditon parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add text watermark, false will return the img</param>
+            <param name="text">text to draw over the image</param>
+            <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
+            <param name="animOps">Animated text options <see cref="T:LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions"/></param>
+        </member>
         <member name="T:LazZiya.ImageResize.Animated.AnimatedImageImageWatermark">
             <summary>
             Add a static image watermark over animated image.
@@ -189,6 +230,48 @@
             then save it to the disc, and read it again with Image.FromFile.</para>
             </summary>
             <param name="img">The original image</param>
+            <param name="wmImage">Watermak image</param>
+            <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
+        </member>
+        <member name="T:LazZiya.ImageResize.Animated.AnimatedImageImageWatermarkConditional">
+            <summary>
+            Add a static image watermark over animated image, depending on a condition parameter.
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageImageWatermarkConditional.AddImageWatermarkIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.String)">
+            <summary>
+            Add a static image watermark over animated image, depending on a condition parameter.
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add image watermark, false will return the img</param>
+            <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageImageWatermarkConditional.AddImageWatermarkIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Drawing.Image)">
+            <summary>
+            Add a static image watermark over animated image, depending on a condition parameter.
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add image watermark, false will return the img</param>
+            <param name="wmImage">Watermark image</param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageImageWatermarkConditional.AddImageWatermarkIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.String,LazZiya.ImageResize.ImageWatermarkOptions)">
+            <summary>
+            Add a static image watermark over animated image, depending on a condition parameter.
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add image watermark, false will return the img</param>
+            <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
+            <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageImageWatermarkConditional.AddImageWatermarkIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Drawing.Image,LazZiya.ImageResize.ImageWatermarkOptions)">
+            <summary>
+            Add a static image watermark over animated image, depending on a condition parameter.
+            <para>Notice regarding watermark opacity:</para>
+            <para>If watermark image needs to be resized, first resize the watermark image, 
+            then save it to the disc, and read it again with Image.FromFile.</para>
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add image watermark, false will return the img</param>
             <param name="wmImage">Watermak image</param>
             <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
         </member>
@@ -231,7 +314,7 @@
             <param name="newWidth"></param>
             <returns></returns>
         </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResize.GifScaleByWidth(LazZiya.ImageResize.Animated.AnimatedImage,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResize.ScaleByWidth(LazZiya.ImageResize.Animated.AnimatedImage,System.Int32,LazZiya.ImageResize.GraphicOptions)">
             <summary>
             Scale image by width and keep same aspect ratio of target image same as the original image.
             Height will be adjusted automatically
@@ -323,6 +406,167 @@
             Specify custom resize options
             </summary>
             <param name="img">the image to resize</param>
+            <param name="source">The coordinates to read as source from the image, 
+            can be the whole image or part of it</param>
+            <param name="target">The coordinates of the target image size</param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="T:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional">
+            <summary>
+            Conditionally resize animated images with reference to a condition token
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.ScaleIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Auto scale image by width or height till longest border (width/height) is equal to new width/height.
+            Final image aspect ratio is equal to original image aspect ratio.
+            If the aspect ratio of new w/h != aspect ratio of original image then 
+            one border will be in different size than the given value in order to keep original aspect ratio
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.ScaleIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Auto scale image by width or height till longest border (width/height) is equal to new width/height.
+            Final image aspect ratio is equal to original image aspect ratio.
+            If the aspect ratio of new w/h != aspect ratio of original image then 
+            one border will be in different size than the given value in order to keep original aspect ratio
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.ScaleByWidthIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Int32)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale image by width and keep same aspect ratio of target image same as the original image.
+            Height will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.ScaleByWidthIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale image by width and keep same aspect ratio of target image same as the original image.
+            Height will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.ScaleByHeightIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Int32)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale image by height and keep same aspect ratio of target image same as the original image.
+            Width will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.ScaleByHeightIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale image by height and keep same aspect ratio of target image same as the original image.
+            Width will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newHeight"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.ScaleAndCropIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Int32,System.Int32,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale target image till shortest border are equal to target value, 
+            then crop the additonal pixels from the longest border.
+            Final image aspect ratio is equal to the given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.ScaleAndCropIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale target image till shortest border are equal to target value, 
+            then crop the additonal pixels from the longest border.
+            Final image aspect ratio is equal to the given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.CropIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Int32,System.Int32,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Directly crop original image without scaling it.
+            Final image aspect ratio is equal to given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot">target spot to crop and save</param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.CropIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Directly crop original image without scaling it.
+            Final image aspect ratio is equal to given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot">target spot to crop and save</param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.ResizeIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Drawing.Rectangle,System.Drawing.Rectangle)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Specify custom resize options
+            </summary>
+            <param name="img">the image to resize</param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="source">The coordinates to read as source from the image, 
+            can be the whole image or part of it</param>
+            <param name="target">The coordinates of the target image size</param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.ResizeIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Drawing.Rectangle,System.Drawing.Rectangle,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Specify custom resize options
+            </summary>
+            <param name="img">the image to resize</param>
+            <param name="condition">true to resize, false will return the img</param>
             <param name="source">The coordinates to read as source from the image, 
             can be the whole image or part of it</param>
             <param name="target">The coordinates of the target image size</param>
@@ -424,6 +668,48 @@
             <param name="wmImage">Watermak image</param>
             <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
         </member>
+        <member name="T:LazZiya.ImageResize.Animated.ImageAnimatedImageWatermarkConditional">
+            <summary>
+            Add an animated image watermark to static image adn return an AnimatedImage, depending on a condition parameter.
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedImageWatermarkConditional.AddAnimatedImageWatermarkIf(System.Drawing.Image,System.Boolean,System.String)">
+            <summary>
+            Draw animated image watermark over a static image, depending on a condition parameter.
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add animated image watermark, false will return the img as AnimatedImage</param>
+            <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedImageWatermarkConditional.AddAnimatedImageWatermarkIf(System.Drawing.Image,System.Boolean,LazZiya.ImageResize.Animated.AnimatedImage)">
+            <summary>
+            Draw animated image watermark over a static image, depending on a condition parameter.
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add animated image watermark, false will return the img as AnimatedImage</param>
+            <param name="wmImage">Watermark image</param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedImageWatermarkConditional.AddAnimatedImageWatermarkIf(System.Drawing.Image,System.Boolean,System.String,LazZiya.ImageResize.ImageWatermarkOptions)">
+            <summary>
+            Draw animated image watermark over a static image, depending on a condition parameter.
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add animated image watermark, false will return the img as AnimatedImage</param>
+            <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
+            <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedImageWatermarkConditional.AddAnimatedImageWatermarkIf(System.Drawing.Image,System.Boolean,LazZiya.ImageResize.Animated.AnimatedImage,LazZiya.ImageResize.ImageWatermarkOptions)">
+            <summary>
+            Draw animated image watermark over a static image, depending on a condition parameter.
+            <para>Notice regarding watermark opacity:</para>
+            <para>If watermark image needs to be resized, first resize the watermark image, 
+            then save it to the disc, and read it again with Image.FromFile.</para>
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add animated image watermark, false will return the img as AnimatedImage</param>
+            <param name="wmImage">Watermak image</param>
+            <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
+        </member>
         <member name="T:LazZiya.ImageResize.Animated.ImageAnimatedTextWatermark">
             <summary>
             Add animated text watermark over image
@@ -461,6 +747,47 @@
             <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
             <param name="animOps">Animated text options <see cref="T:LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions"/></param>
         </member>
+        <member name="T:LazZiya.ImageResize.Animated.ImageAnimatedTextWatermarkConditional">
+            <summary>
+            Add animated text watermark over image, depending on a conditional parameter.
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedTextWatermarkConditional.AddAnimatedTextWatermarkIf(System.Drawing.Image,System.Boolean,System.String)">
+            <summary>
+            Add animated text watermark over a static image, depending on a conditional parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add animated text watermark, false will return the img as AnimatedImage</param>
+            <param name="text"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedTextWatermarkConditional.AddAnimatedTextWatermarkIf(System.Drawing.Image,System.Boolean,System.String,LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions)">
+            <summary>
+            Add animated text watermark over a static image, depending on a conditional parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add animated text watermark, false will return the img as AnimatedImage</param>
+            <param name="text"></param>
+            <param name="animOps"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedTextWatermarkConditional.AddAnimatedTextWatermarkIf(System.Drawing.Image,System.Boolean,System.String,LazZiya.ImageResize.TextWatermarkOptions)">
+            <summary>
+            Add animated text watermark over a static image, depending on a conditional parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add animated text watermark, false will return the img as AnimatedImage</param>
+            <param name="text">text to draw over the image</param>
+            <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedTextWatermarkConditional.AddAnimatedTextWatermarkIf(System.Drawing.Image,System.Boolean,System.String,LazZiya.ImageResize.TextWatermarkOptions,LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions)">
+            <summary>
+            Add animated text watermark over a static image, depending on a conditional parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add animated text watermark, false will return the img as AnimatedImage</param>
+            <param name="text">text to draw over the image</param>
+            <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
+            <param name="animOps">Animated text options <see cref="T:LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions"/></param>
+        </member>
         <member name="T:LazZiya.ImageResize.AnimatedImageTextWatermark">
             <summary>
             Add a static text watermark over animated image.
@@ -478,6 +805,28 @@
             Add a static text watermark over animated image.
             </summary>
             <param name="img"></param>
+            <param name="text">text to draw over the image</param>
+            <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
+        </member>
+        <member name="T:LazZiya.ImageResize.AnimatedImageTextWatermarkConditional">
+            <summary>
+            Add a static text watermark over animated image, depending on a condition parameter
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.AnimatedImageTextWatermarkConditional.AddTextWatermarkIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.String)">
+            <summary>
+            Add a static text watermark over animated image depending on a condition parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add text watermark, false will return the img</param>
+            <param name="text"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.AnimatedImageTextWatermarkConditional.AddTextWatermarkIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.String,LazZiya.ImageResize.TextWatermarkOptions)">
+            <summary>
+            Add a static text watermark over animated image depending on a condition parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add text watermark, false will return the img</param>
             <param name="text">text to draw over the image</param>
             <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
         </member>
@@ -650,6 +999,148 @@
             <summary>
             Page unit.
             Default: GraphicsUnit.Pixel
+            </summary>
+        </member>
+        <member name="T:LazZiya.ImageResize.ImageFrameExtensions">
+            <summary>
+            Draw frame, background, etc...
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageFrameExtensions.AddFrame(System.Drawing.Image)">
+            <summary>
+            This method will not resize the front image, but it will draw a frame with a specified width around the image.
+            </summary>
+            <param name="img"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageFrameExtensions.AddFrame(System.Drawing.Image,LazZiya.ImageResize.ImageFrameOptions)">
+            <summary>
+            This method will not resize the front image, but it will draw a frame with a specified width around the image.
+            </summary>
+            <param name="img"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageFrameExtensions.AddFrame(System.Drawing.Image,System.Int32,System.Int32)">
+            <summary>
+            This method will not resize the front image, but it will draw a frame with a specified width around the image.
+            </summary>
+            <param name="img"></param>
+            <param name="frameWidth"></param>
+            <param name="frameHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageFrameExtensions.AddFrame(System.Drawing.Image,System.Int32,System.Int32,LazZiya.ImageResize.ImageFrameOptions)">
+            <summary>
+            This method will not resize the front image, but it will draw a frame with a specified width around the image.
+            </summary>
+            <param name="img"></param>
+            <param name="frameWidth"></param>
+            <param name="frameHeight"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LazZiya.ImageResize.ImageFrameExtensionsConditional">
+            <summary>
+            Draw frame, background, etc...
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageFrameExtensionsConditional.AddFrameIf(System.Drawing.Image,System.Boolean)">
+            <summary>
+            This method will not resize the front image, but it will draw a frame with a specified width around the image, depending on a condition parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageFrameExtensionsConditional.AddFrameIf(System.Drawing.Image,System.Boolean,LazZiya.ImageResize.ImageFrameOptions)">
+            <summary>
+            This method will not resize the front image, but it will draw a frame with a specified width around the image, depending on a condition parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageFrameExtensionsConditional.AddFrameIf(System.Drawing.Image,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            This method will not resize the front image, but it will draw a frame with a specified width around the image, depending on a condition parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition"></param>
+            <param name="frameWidth"></param>
+            <param name="frameHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageFrameExtensionsConditional.AddFrameIf(System.Drawing.Image,System.Boolean,System.Int32,System.Int32,LazZiya.ImageResize.ImageFrameOptions)">
+            <summary>
+            This method will not resize the front image, but it will draw a frame with a specified width around the image, depending on a condition parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition"></param>
+            <param name="frameWidth"></param>
+            <param name="frameHeight"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LazZiya.ImageResize.ImageFrameOptions">
+            <summary>
+            Define options for image frame
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ImageFrameOptions.Thickness">
+            <summary>
+            Frame thikness in pixels. Default is 2
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ImageFrameOptions.FrameColor">
+            <summary>
+            Frame color. Default is LightGray
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ImageFrameOptions.FillColor">
+            <summary>
+            Fill the space beween the border and the image with a specific coloe. Default is transparent.
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ImageFrameOptions.FrameShape">
+            <summary>
+            The shapre of the frame.
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ImageFrameOptions.LineJoin">
+            <summary>
+            How the frame corners will be joined. Default is Miter.
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ImageFrameOptions.MitterLimit">
+            <summary>
+            Mitter limit. Default is 10.
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ImageFrameOptions.DashStyle">
+            <summary>
+            Dash style. Default is Solid.
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ImageFrameOptions.DashPattern">
+            <summary>
+            Define custom dash pattern. Dash style must be set to Custom.
+            </summary>
+        </member>
+        <member name="T:LazZiya.ImageResize.ImageFrameShape">
+            <summary>
+            Define the shapre to draw the frame
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.ImageFrameShape.Rectangle">
+            <summary>
+            Rectangle shape
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.ImageFrameShape.Ellipse">
+            <summary>
+            Rouded or ellipse
             </summary>
         </member>
         <member name="T:LazZiya.ImageResize.ImageResize">
@@ -937,6 +1428,19 @@
             <param name="target">The coordinates of the target image size</param>
             <returns></returns>
         </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.ResizeIf(System.Drawing.Image,System.Boolean,System.Drawing.Rectangle,System.Drawing.Rectangle,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Specify custom resize options
+            </summary>
+            <param name="img">the image to resize</param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="source">The coordinates to read as source from the image, 
+            can be the whole image or part of it</param>
+            <param name="target">The coordinates of the target image size</param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
         <member name="T:LazZiya.ImageResize.ImageWatermark">
             <summary>
             Draw image watermark
@@ -972,6 +1476,49 @@
             then save it to the disc, and read it again with Image.FromFile.</para>
             </summary>
             <param name="img">The original image</param>
+            <param name="wmImage">Watermak image</param>
+            <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
+            <param name="disposeWaterMark">Optional: dispose watermar image after finishing. Default: true</param>
+        </member>
+        <member name="T:LazZiya.ImageResize.ImageWatermarkConditional">
+            <summary>
+            Draw image watermark depending on a conditional parameter
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageWatermarkConditional.AddImageWatermarkIf(System.Drawing.Image,System.Boolean,System.String)">
+            <summary>
+            Draw image watermark if the condition is true, otherwise return without image watermark
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add image watermark, false will return the img</param>
+            <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageWatermarkConditional.AddImageWatermarkIf(System.Drawing.Image,System.Boolean,System.Drawing.Image)">
+            <summary>
+            Draw image watermark if the condition is true, otherwise return without image watermark
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add image watermark, false will return the img</param>
+            <param name="wmImage">Watermark image</param>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageWatermarkConditional.AddImageWatermarkIf(System.Drawing.Image,System.Boolean,System.String,LazZiya.ImageResize.ImageWatermarkOptions)">
+            <summary>
+            Draw image watermark if the condition is true, otherwise return without image watermark
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add image watermark, false will return the img</param>
+            <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
+            <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageWatermarkConditional.AddImageWatermarkIf(System.Drawing.Image,System.Boolean,System.Drawing.Image,LazZiya.ImageResize.ImageWatermarkOptions,System.Boolean)">
+            <summary>
+            Draw image watermark if the condition is true, otherwise return without image watermark
+            <para>Notice regarding watermark opacity:</para>
+            <para>If watermark image needs to be resized, first resize the watermark image, 
+            then save it to the disc, and read it again with Image.FromFile.</para>
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add image watermark, false will return the img</param>
             <param name="wmImage">Watermak image</param>
             <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
             <param name="disposeWaterMark">Optional: dispose watermar image after finishing. Default: true</param>
@@ -1231,6 +1778,28 @@
             <param name="text">text to draw over the image</param>
             <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
         </member>
+        <member name="T:LazZiya.ImageResize.TextWatermarkConditional">
+            <summary>
+            Add text watermark over the image depending on a conditional parameter.
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.TextWatermarkConditional.AddTextWatermarkIf(System.Drawing.Image,System.Boolean,System.String)">
+            <summary>
+            Add a text watermark if the condition is true, otherwise return without textwatermark.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add text watermark, false will return the img</param>
+            <param name="text"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.TextWatermarkConditional.AddTextWatermarkIf(System.Drawing.Image,System.Boolean,System.String,LazZiya.ImageResize.TextWatermarkOptions)">
+            <summary>
+            Add a text watermark if the condition is true, otherwise return without textwatermark.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add text watermark, false will return the img</param>
+            <param name="text">text to draw over the image</param>
+            <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
+        </member>
         <member name="T:LazZiya.ImageResize.TextWatermarkOptions">
             <summary>
             Define options for adding text watermark over the image, like text color, opacity, text outline, etc.
@@ -1350,6 +1919,20 @@
             </summary>
             <param name="fileName"></param>
             <returns>System.Drawing.Imaging.ImageFormat</returns>
+        </member>
+        <member name="T:LazZiya.ImageResize.Tools.ImageMaskExtensions">
+            <summary>
+            Add image mask
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Tools.ImageMaskExtensions.Mask(System.Drawing.Image,System.Drawing.Rectangle,LazZiya.ImageResize.ImageFrameShape)">
+            <summary>
+            Add image mask with the specified paameters
+            </summary>
+            <param name="img"></param>
+            <param name="rectangle"></param>
+            <param name="shape"></param>
+            <returns></returns>
         </member>
         <member name="T:LazZiya.ImageResize.Tools.ImageOpacity">
             <summary>
