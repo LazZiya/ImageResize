@@ -207,7 +207,10 @@ namespace LazZiya.ImageResize.Animated
             {
                 using (Bitmap outputImage = new Bitmap(target.Width, target.Height, pixF))
                 {
-                    outputImage.SetResolution(img.HorizontalResolution, img.VerticalResolution);
+                    var hRes = img.HorizontalResolution == 0 ? 72 : img.HorizontalResolution;
+                    var vRes = img.VerticalResolution == 0 ? 72 : img.VerticalResolution;
+
+                    outputImage.SetResolution(hRes, vRes);
 
                     using (var graphics = Graphics.FromImage(outputImage))
                     {
