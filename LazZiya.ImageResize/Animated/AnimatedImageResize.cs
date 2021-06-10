@@ -216,7 +216,7 @@ namespace LazZiya.ImageResize.Animated
                     // "cannot create image from indexed ..." on linux
                     var tmpImg = new Bitmap(outputImage);
 
-                    using (var graphics = Graphics.FromImage(outputImage))
+                    using (var graphics = Graphics.FromImage(tmpImg))
                     {
                         graphics.SmoothingMode = ops.SmoothingMode;
                         graphics.InterpolationMode = ops.InterpolationMode;
@@ -229,7 +229,7 @@ namespace LazZiya.ImageResize.Animated
 
                     using (var ms = new MemoryStream())
                     {
-                        outputImage.Save(ms, img.RawFormat);
+                        tmpImg.Save(ms, img.RawFormat);
                         fList.Add(new Bitmap(Image.FromStream(ms)));
                     }
 
