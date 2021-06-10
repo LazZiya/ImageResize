@@ -1,4 +1,5 @@
-﻿using LazZiya.ImageResize.ColorFormats;
+﻿using LazZiya.ImageResize.Animated.Gif;
+using LazZiya.ImageResize.ColorFormats;
 using LazZiya.ImageResize.Tools;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace LazZiya.ImageResize.Animated
         /// <summary>
         /// Set repeat count. (-1) no repeat. (0) always repeat
         /// </summary>
-        public int RepeatCount { get; set; }
+        public int RepeatCount { get; set; } = 0;
 
         /// <summary>
         /// Get frames count in an animated gif
@@ -59,6 +60,11 @@ namespace LazZiya.ImageResize.Animated
         public ImageFormat RawFormat { get; }
 
         /// <summary>
+        /// Get delay time (ms)
+        /// </summary>
+        public int Delay { get; set; } = 50;
+
+        /// <summary>
         /// private constructor
         /// </summary>
         private AnimatedImage(Image image)
@@ -66,8 +72,6 @@ namespace LazZiya.ImageResize.Animated
             if (!ImageAnimator.CanAnimate(image))
                 throw new BadImageFormatException("This is not an animated gif!");
 
-            var dim = new FrameDimension(image.FrameDimensionsList[0]);
-            FramesCount = image.GetFrameCount(dim);
             Size = new Size(image.Width, image.Height);
             Frames = new List<Image>();
             ImageColorFormat = ImageColorFormats.GetColorFormat((Bitmap)image);
@@ -76,11 +80,20 @@ namespace LazZiya.ImageResize.Animated
             VerticalResolution = image.VerticalResolution;
             RawFormat = image.RawFormat;
 
-            for (int i = 0; i < FramesCount; i++)
+            var gifDecoder = new GifDecoder();
+            using (var ms = new MemoryStream())
             {
-                image.SelectActiveFrame(dim, i);
-                var frame = image.Clone() as Image;
-                Frames.Add(frame);
+                image.Save(ms, image.RawFormat);
+                ms.Position = 0;
+                gifDecoder.Read(ms);
+                
+                FramesCount = gifDecoder.GetFrameCount();
+                Delay = gifDecoder.GetDelay(0);                
+
+                for (int i = 0; i < FramesCount; i++)
+                {
+                    Frames.Add(gifDecoder.GetFrame(i));
+                }
             }
 
             image.Dispose();
@@ -165,19 +178,20 @@ namespace LazZiya.ImageResize.Animated
         /// Save animated gif
         /// </summary>
         /// <param name="path"></param>
-        /// <param name="delay">Frame delay in milliseconds</param>
-        public void SaveAs(string path, int delay = 400)
+        /// <param name="repeat">Frame delay in milliseconds</param>
+        public void SaveAs(string path)
         {
-            using (var fs = File.Create(path))
-            {
-                using (var aniGif = new GifEncoder(fs, Size.Width, Size.Height, RepeatCount))
-                {
-                    aniGif.FrameDelay = TimeSpan.FromMilliseconds(delay);
+            var e = new AnimatedGifEncoder();
+            e.Start(path);
+            e.SetDelay(Delay);
+            e.SetRepeat(RepeatCount);
 
-                    foreach (var f in Frames)
-                        aniGif.AddFrame(f);
-                }
+            for (int i = 0; i < Frames.Count; i++)
+            {
+                e.AddFrame(Frames[i]);
             }
+
+            e.Finish();
         }
 
         /// <summary>
