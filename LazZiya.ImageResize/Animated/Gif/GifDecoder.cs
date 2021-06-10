@@ -322,21 +322,16 @@ namespace LazZiya.ImageResize.Animated.Gif
 		 * Creates new frame image from current data (and previous
 		 * frames as specified by their disposition codes).
 		 */
-		int [] GetPixels( Bitmap bitmap )
+		int[] GetPixels(Bitmap bitmap)
 		{
-			int [] pixels = new int [ 3 * image.Width * image.Height ];
+			int[] pixels = new int[image.Width * image.Height];
 			int count = 0;
 			for (int th = 0; th < image.Height; th++)
 			{
 				for (int tw = 0; tw < image.Width; tw++)
 				{
 					Color color = bitmap.GetPixel(tw, th);
-					pixels[count] = color.R;
-					count++;
-					pixels[count] = color.G;
-					count++;
-					pixels[count] = color.B;
-					count++;
+					pixels[count++] = color.ToArgb();
 				}
 			}
 			return pixels;
@@ -358,82 +353,76 @@ namespace LazZiya.ImageResize.Animated.Gif
 		/// <summary>
 		/// Set pixels
 		/// </summary>
-		protected void SetPixels() 
+		protected void SetPixels()
 		{
-			// expose destination image's pixels as int array
-			//		int[] dest =
-			//			(( int ) image.getRaster().getDataBuffer()).getData();
-			int[] dest = GetPixels( bitmap );
+			int[] dest = null;
 
 			// fill in starting image contents based on last image's dispose code
-			if (lastDispose > 0) 
+			if (lastDispose > 0)
 			{
-				if (lastDispose == 3) 
+				if (lastDispose == 3)
 				{
 					// use image before last
 					int n = frameCount - 2;
-					if (n > 0) 
+					if (n > 0)
 					{
 						lastImage = GetFrame(n - 1);
-					} 
-					else 
+					}
+					else
 					{
 						lastImage = null;
 					}
 				}
-
-				if (lastImage != null) 
+				if (lastImage != null)
 				{
-					//				int[] prev =
-					//					((DataBufferInt) lastImage.getRaster().getDataBuffer()).getData();
-					int[] prev = GetPixels( new Bitmap( lastImage ) );
-					Array.Copy(prev, 0, dest, 0, width * height);
-					// copy pixels
-
-					if (lastDispose == 2) 
+					if (lastDispose == 2)
 					{
 						// fill last image rect area with background color
-						Graphics g = Graphics.FromImage( image );
+						lastImage = new Bitmap(lastImage);
+						Graphics g = Graphics.FromImage(lastImage);
 						Color c = Color.Empty;
-						if (transparency) 
+						if (transparency)
 						{
-							c = Color.FromArgb( 0, 0, 0, 0 ); 	// assume background is transparent
-						} 
-						else 
-						{
-							c = Color.FromArgb( lastBgColor ) ;
-							//						c = new Color(lastBgColor); // use given background color
+							c = Color.FromArgb(255, 0, 0, 0); // assume background is transparent
 						}
-						Brush brush = new SolidBrush( c );
-						g.FillRectangle( brush, lastRect );
+						else
+						{
+							c = Color.FromArgb(lastBgColor);
+							// c = new Color(lastBgColor); // use given background color
+						}
+						Brush brush = new SolidBrush(c);
+						g.FillRectangle(brush, lastRect);
 						brush.Dispose();
 						g.Dispose();
 					}
+					dest = GetPixels((Bitmap)lastImage);
 				}
 			}
+
+			if (dest == null) dest = new int[bitmap.Width * bitmap.Height];
 
 			// copy each source line to the appropriate place in the destination
 			int pass = 1;
 			int inc = 8;
 			int iline = 0;
-			for (int i = 0; i < ih; i++) 
+			for (int i = 0; i < ih; i++)
 			{
 				int line = i;
-				if (interlace) 
+				if (interlace)
 				{
-					if (iline >= ih) 
+					if (iline >= ih)
 					{
 						pass++;
-						switch (pass) 
+						switch (pass)
 						{
-							case 2 :
+							case 2:
 								iline = 4;
 								break;
-							case 3 :
+							case 3:
 								iline = 2;
 								inc = 4;
 								break;
-							case 4 :
+							case 4:
 								iline = 1;
 								inc = 2;
 								break;
@@ -443,22 +432,22 @@ namespace LazZiya.ImageResize.Animated.Gif
 					iline += inc;
 				}
 				line += iy;
-				if (line < height) 
+				if (line < height)
 				{
 					int k = line * width;
 					int dx = k + ix; // start of line in dest
 					int dlim = dx + iw; // end of dest line
-					if ((k + width) < dlim) 
+					if ((k + width) < dlim)
 					{
 						dlim = k + width; // past dest edge
 					}
 					int sx = i * iw; // start of line in source
-					while (dx < dlim) 
+					while (dx < dlim)
 					{
 						// map color and insert in destination
-						int index = ((int) pixels[sx++]) & 0xff;
+						int index = ((int)pixels[sx++]) & 0xff;
 						int c = act[index];
-						if (c != 0) 
+						if (c != 0)
 						{
 							dest[dx] = c;
 						}
@@ -466,7 +455,7 @@ namespace LazZiya.ImageResize.Animated.Gif
 					}
 				}
 			}
-			SetPixels( dest );
+			SetPixels(dest);
 		}
 
 		/**

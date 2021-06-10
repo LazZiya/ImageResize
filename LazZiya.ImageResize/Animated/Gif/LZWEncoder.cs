@@ -294,19 +294,11 @@ namespace LazZiya.ImageResize.Animated.Gif
 		//----------------------------------------------------------------------------
 		private int NextPixel() 
 		{
-			if (remaining == 0)
+			if (curPixel == pixAry.Length) 
 				return EOF;
-
-			--remaining;
-
-			int temp = curPixel + 1;
-			if ( temp < pixAry.GetUpperBound( 0 ))
-			{
-				byte pix = pixAry[curPixel++];
-
-				return pix & 0xff;
-			}
-			return 0xff;
+			
+			curPixel++;			
+			return pixAry[curPixel - 1] & 0xff;
 		}
 	
 		void Output(int code, Stream outs)

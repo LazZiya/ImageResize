@@ -211,6 +211,10 @@ namespace LazZiya.ImageResize.Animated
                     var vRes = img.VerticalResolution == 0 ? 72 : img.VerticalResolution;
 
                     outputImage.SetResolution(hRes, vRes);
+                    
+                    // create temp image from the output image to avoid
+                    // "cannot create image from indexed ..." on linux
+                    var tmpImg = new Bitmap(outputImage);
 
                     using (var graphics = Graphics.FromImage(outputImage))
                     {
@@ -228,6 +232,8 @@ namespace LazZiya.ImageResize.Animated
                         outputImage.Save(ms, img.RawFormat);
                         fList.Add(new Bitmap(Image.FromStream(ms)));
                     }
+
+                    tmpImg.Dispose();
                 }
             }
 
