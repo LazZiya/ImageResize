@@ -1,16 +1,16 @@
 ﻿using LazZiya.ImageResize.ColorFormats;
 using LazZiya.ImageResize.ResizeMethods;
-using LazZiya.ImageResize.Tools;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 
-namespace LazZiya.ImageResize
+namespace LazZiya.ImageResize.Animated
 {
     /// <summary>
     /// Resize images
     /// </summary>
-    public static class ImageResize
+    public static class AnimatedImageResize
     {
         /// <summary>
         /// Auto scale image by width or height till longest border (width/height) is equal to new width/height.
@@ -22,7 +22,7 @@ namespace LazZiya.ImageResize
         /// <param name="newWidth"></param>
         /// <param name="newHeight"></param>
         /// <returns></returns>
-        public static Image Scale(this Image img, int newWidth, int newHeight)
+        public static AnimatedImage Scale(this AnimatedImage img, int newWidth, int newHeight)
         {
             var resize = new Scale(img.Size, new Size(newWidth, newHeight));
 
@@ -40,7 +40,7 @@ namespace LazZiya.ImageResize
         /// <param name="newHeight"></param>
         /// <param name="ops">Graphic options <see cref="GraphicOptions"/></param>
         /// <returns></returns>
-        public static Image Scale(this Image img, int newWidth, int newHeight, GraphicOptions ops)
+        public static AnimatedImage Scale(this AnimatedImage img, int newWidth, int newHeight, GraphicOptions ops)
         {
             var resize = new Scale(img.Size, new Size(newWidth, newHeight));
 
@@ -54,7 +54,7 @@ namespace LazZiya.ImageResize
         /// <param name="img"></param>
         /// <param name="newWidth"></param>
         /// <returns></returns>
-        public static Image ScaleByWidth(this Image img, int newWidth)
+        public static AnimatedImage ScaleByWidth(this AnimatedImage img, int newWidth)
         {
             var resize = new Scale(img.Size, new Size(newWidth, 0));
 
@@ -69,7 +69,7 @@ namespace LazZiya.ImageResize
         /// <param name="newWidth"></param>
         /// <param name="ops">Graphic options <see cref="GraphicOptions"/></param>
         /// <returns></returns>
-        public static Image ScaleByWidth(this Image img, int newWidth, GraphicOptions ops)
+        public static AnimatedImage ScaleByWidth(this AnimatedImage img, int newWidth, GraphicOptions ops)
         {
             var resize = new Scale(img.Size, new Size(newWidth, 0));
 
@@ -83,7 +83,7 @@ namespace LazZiya.ImageResize
         /// <param name="img"></param>
         /// <param name="newHeight"></param>
         /// <returns></returns>
-        public static Image ScaleByHeight(this Image img, int newHeight)
+        public static AnimatedImage ScaleByHeight(this AnimatedImage img, int newHeight)
         {
             var resize = new Scale(img.Size, new Size(0, newHeight));
 
@@ -98,7 +98,7 @@ namespace LazZiya.ImageResize
         /// <param name="newHeight"></param>
         /// <param name="ops">Graphic options <see cref="GraphicOptions"/></param>
         /// <returns></returns>
-        public static Image ScaleByHeight(this Image img, int newHeight, GraphicOptions ops)
+        public static AnimatedImage ScaleByHeight(this AnimatedImage img, int newHeight, GraphicOptions ops)
         {
             var resize = new Scale(img.Size, new Size(0, newHeight));
 
@@ -115,7 +115,7 @@ namespace LazZiya.ImageResize
         /// <param name="newHeight"></param>
         /// <param name="spot"></param>
         /// <returns></returns>
-        public static Image ScaleAndCrop(this Image img, int newWidth, int newHeight, TargetSpot spot = TargetSpot.Center)
+        public static AnimatedImage ScaleAndCrop(this AnimatedImage img, int newWidth, int newHeight, TargetSpot spot = TargetSpot.Center)
         {
             var resize = new ScaleAndCrop(img.Size, new Size(newWidth, newHeight), spot);
 
@@ -133,7 +133,7 @@ namespace LazZiya.ImageResize
         /// <param name="spot"></param>
         /// <param name="ops">Graphic options <see cref="GraphicOptions"/></param>
         /// <returns></returns>
-        public static Image ScaleAndCrop(this Image img, int newWidth, int newHeight, GraphicOptions ops, TargetSpot spot = TargetSpot.Center)
+        public static AnimatedImage ScaleAndCrop(this AnimatedImage img, int newWidth, int newHeight, GraphicOptions ops, TargetSpot spot = TargetSpot.Center)
         {
             var resize = new ScaleAndCrop(img.Size, new Size(newWidth, newHeight), spot);
 
@@ -149,7 +149,7 @@ namespace LazZiya.ImageResize
         /// <param name="newHeight"></param>
         /// <param name="spot">target spot to crop and save</param>
         /// <returns></returns>
-        public static Image Crop(this Image img, int newWidth, int newHeight, TargetSpot spot = TargetSpot.Center)
+        public static AnimatedImage Crop(this AnimatedImage img, int newWidth, int newHeight, TargetSpot spot = TargetSpot.Center)
         {
             var resize = new Crop(img.Size, new Size(newWidth, newHeight), spot);
             return Resize(img, resize.SourceRect, resize.TargetRect);
@@ -165,7 +165,7 @@ namespace LazZiya.ImageResize
         /// <param name="spot">target spot to crop and save</param>
         /// <param name="ops">Graphic options <see cref="GraphicOptions"/></param>
         /// <returns></returns>
-        public static Image Crop(this Image img, int newWidth, int newHeight, GraphicOptions ops, TargetSpot spot = TargetSpot.Center)
+        public static AnimatedImage Crop(this AnimatedImage img, int newWidth, int newHeight, GraphicOptions ops, TargetSpot spot = TargetSpot.Center)
         {
             var resize = new Crop(img.Size, new Size(newWidth, newHeight), spot);
             return Resize(img, resize.SourceRect, resize.TargetRect, ops);
@@ -179,7 +179,7 @@ namespace LazZiya.ImageResize
         /// can be the whole image or part of it</param>
         /// <param name="target">The coordinates of the target image size</param>
         /// <returns></returns>
-        public static Image Resize(this Image img, Rectangle source, Rectangle target)
+        public static AnimatedImage Resize(this AnimatedImage img, Rectangle source, Rectangle target)
         {
             return img.Resize(source, target, new GraphicOptions());
         }
@@ -193,50 +193,55 @@ namespace LazZiya.ImageResize
         /// <param name="target">The coordinates of the target image size</param>
         /// <param name="ops">Graphic options <see cref="GraphicOptions"/></param>
         /// <returns></returns>
-        public static Image Resize(this Image img, Rectangle source, Rectangle target, GraphicOptions ops)
+        public static AnimatedImage Resize(this AnimatedImage img, Rectangle source, Rectangle target, GraphicOptions ops)
         {
             // check for CMYK pixel format to use Format32bppArgb
             // or use the image pixel format
-            var pixF = ImageColorFormats.GetColorFormat((Bitmap)img) == ImageColorFormat.Cmyk
+            var pixF = img.ImageColorFormat == ImageColorFormat.Cmyk
                 ? PixelFormat.Format32bppArgb
                 : img.PixelFormat;
 
-            using (Bitmap outputImage = new Bitmap(target.Width, target.Height, pixF))
+            var fList = new List<Image>();
+
+            foreach (var f in img.Frames)
             {
-                var hRes = img.HorizontalResolution == 0 ? 72 : img.HorizontalResolution;
-                var vRes = img.VerticalResolution == 0 ? 72 : img.VerticalResolution;
-
-                outputImage.SetResolution(hRes, vRes);
-
-                using (var graphics = Graphics.FromImage(outputImage))
+                using (Bitmap outputImage = new Bitmap(target.Width, target.Height, pixF))
                 {
-                    graphics.SmoothingMode = ops.SmoothingMode;
-                    graphics.InterpolationMode = ops.InterpolationMode;
-                    graphics.PixelOffsetMode = ops.PixelOffsetMode;
-                    graphics.CompositingQuality = ops.CompositingQuality;
-                    graphics.CompositingMode = ops.CompositingMode;
-                    graphics.PageUnit = ops.PageUnit;
+                    var hRes = img.HorizontalResolution == 0 ? 72 : img.HorizontalResolution;
+                    var vRes = img.VerticalResolution == 0 ? 72 : img.VerticalResolution;
 
-                    graphics.DrawImage(
-                        img,
-                        target,
-                        source,
-                        ops.PageUnit);
+                    outputImage.SetResolution(hRes, vRes);
+                    
+                    // create temp image from the output image to avoid
+                    // "cannot create image from indexed ..." on linux
+                    var tmpImg = new Bitmap(outputImage);
 
-                }
+                    using (var graphics = Graphics.FromImage(tmpImg))
+                    {
+                        graphics.SmoothingMode = ops.SmoothingMode;
+                        graphics.InterpolationMode = ops.InterpolationMode;
+                        graphics.PixelOffsetMode = ops.PixelOffsetMode;
+                        graphics.CompositingQuality = ops.CompositingQuality;
+                        graphics.CompositingMode = ops.CompositingMode;
+                        graphics.PageUnit = ops.PageUnit;
+                        graphics.DrawImage(f, target, source, ops.PageUnit);
+                    }
 
-                // If the image has alpha channel (png) return image memory stream
-                if (img.PixelFormat == PixelFormat.Format32bppArgb)
-                {
                     using (var ms = new MemoryStream())
                     {
-                        outputImage.Save(ms, img.RawFormat);
-                        return Image.FromStream(ms);
+                        tmpImg.Save(ms, img.RawFormat);
+                        fList.Add(new Bitmap(Image.FromStream(ms)));
                     }
-                }
 
-                return Image.FromHbitmap(outputImage.GetHbitmap());
+                    tmpImg.Dispose();
+                }
             }
+
+            img.Frames.Clear();
+            img.Frames = fList;
+            img.Size = new Size(target.Width, target.Height);
+
+            return img;
         }
     }
 }
