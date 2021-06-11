@@ -54,6 +54,11 @@
             Get image raw format
             </summary>
         </member>
+        <member name="P:LazZiya.ImageResize.Animated.AnimatedImage.Delay">
+            <summary>
+            Get delay time (ms)
+            </summary>
+        </member>
         <member name="M:LazZiya.ImageResize.Animated.AnimatedImage.#ctor(System.Drawing.Image)">
             <summary>
             private constructor
@@ -100,12 +105,12 @@
             <param name="hpalatte"></param>
             <returns></returns>
         </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedImage.SaveAs(System.String,System.Int32)">
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImage.SaveAs(System.String)">
             <summary>
             Save animated gif
             </summary>
             <param name="path"></param>
-            <param name="delay">Frame delay in milliseconds</param>
+            <param name="repeat">Frame delay in milliseconds</param>
         </member>
         <member name="M:LazZiya.ImageResize.Animated.AnimatedImage.Dispose">
             <summary>
@@ -154,6 +159,47 @@
             <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
             <param name="animOps">Animated text options <see cref="T:LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions"/></param>
         </member>
+        <member name="T:LazZiya.ImageResize.Animated.AnimatedImageAnimatedTextWatermarkConditional">
+            <summary>
+            Add animated text watermark over animated image, depending on a condition parameter.
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageAnimatedTextWatermarkConditional.AddAnimatedTextWatermarkIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.String)">
+            <summary>
+            Add animated text watermark over animated image, depending on a conditon parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add text watermark, false will return the img</param>
+            <param name="text"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageAnimatedTextWatermarkConditional.AddAnimatedTextWatermarkIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.String,LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions)">
+            <summary>
+            Add animated text watermark over animated image, depending on a conditon parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add text watermark, false will return the img</param>
+            <param name="text"></param>
+            <param name="animOps"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageAnimatedTextWatermarkConditional.AddAnimatedTextWatermarkIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.String,LazZiya.ImageResize.TextWatermarkOptions)">
+            <summary>
+            Add animated text watermark over animated image, depending on a conditon parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add text watermark, false will return the img</param>
+            <param name="text">text to draw over the image</param>
+            <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageAnimatedTextWatermarkConditional.AddAnimatedTextWatermarkIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.String,LazZiya.ImageResize.TextWatermarkOptions,LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions)">
+            <summary>
+            Add animated text watermark over animated image, depending on a conditon parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add text watermark, false will return the img</param>
+            <param name="text">text to draw over the image</param>
+            <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
+            <param name="animOps">Animated text options <see cref="T:LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions"/></param>
+        </member>
         <member name="T:LazZiya.ImageResize.Animated.AnimatedImageImageWatermark">
             <summary>
             Add a static image watermark over animated image.
@@ -189,6 +235,48 @@
             then save it to the disc, and read it again with Image.FromFile.</para>
             </summary>
             <param name="img">The original image</param>
+            <param name="wmImage">Watermak image</param>
+            <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
+        </member>
+        <member name="T:LazZiya.ImageResize.Animated.AnimatedImageImageWatermarkConditional">
+            <summary>
+            Add a static image watermark over animated image, depending on a condition parameter.
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageImageWatermarkConditional.AddImageWatermarkIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.String)">
+            <summary>
+            Add a static image watermark over animated image, depending on a condition parameter.
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add image watermark, false will return the img</param>
+            <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageImageWatermarkConditional.AddImageWatermarkIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Drawing.Image)">
+            <summary>
+            Add a static image watermark over animated image, depending on a condition parameter.
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add image watermark, false will return the img</param>
+            <param name="wmImage">Watermark image</param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageImageWatermarkConditional.AddImageWatermarkIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.String,LazZiya.ImageResize.ImageWatermarkOptions)">
+            <summary>
+            Add a static image watermark over animated image, depending on a condition parameter.
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add image watermark, false will return the img</param>
+            <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
+            <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageImageWatermarkConditional.AddImageWatermarkIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Drawing.Image,LazZiya.ImageResize.ImageWatermarkOptions)">
+            <summary>
+            Add a static image watermark over animated image, depending on a condition parameter.
+            <para>Notice regarding watermark opacity:</para>
+            <para>If watermark image needs to be resized, first resize the watermark image, 
+            then save it to the disc, and read it again with Image.FromFile.</para>
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add image watermark, false will return the img</param>
             <param name="wmImage">Watermak image</param>
             <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
         </member>
@@ -231,7 +319,7 @@
             <param name="newWidth"></param>
             <returns></returns>
         </member>
-        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResize.GifScaleByWidth(LazZiya.ImageResize.Animated.AnimatedImage,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResize.ScaleByWidth(LazZiya.ImageResize.Animated.AnimatedImage,System.Int32,LazZiya.ImageResize.GraphicOptions)">
             <summary>
             Scale image by width and keep same aspect ratio of target image same as the original image.
             Height will be adjusted automatically
@@ -329,6 +417,167 @@
             <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
             <returns></returns>
         </member>
+        <member name="T:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional">
+            <summary>
+            Conditionally resize animated images with reference to a condition token
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.ScaleIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Auto scale image by width or height till longest border (width/height) is equal to new width/height.
+            Final image aspect ratio is equal to original image aspect ratio.
+            If the aspect ratio of new w/h != aspect ratio of original image then 
+            one border will be in different size than the given value in order to keep original aspect ratio
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.ScaleIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Auto scale image by width or height till longest border (width/height) is equal to new width/height.
+            Final image aspect ratio is equal to original image aspect ratio.
+            If the aspect ratio of new w/h != aspect ratio of original image then 
+            one border will be in different size than the given value in order to keep original aspect ratio
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.ScaleByWidthIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Int32)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale image by width and keep same aspect ratio of target image same as the original image.
+            Height will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.ScaleByWidthIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale image by width and keep same aspect ratio of target image same as the original image.
+            Height will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.ScaleByHeightIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Int32)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale image by height and keep same aspect ratio of target image same as the original image.
+            Width will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.ScaleByHeightIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale image by height and keep same aspect ratio of target image same as the original image.
+            Width will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newHeight"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.ScaleAndCropIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Int32,System.Int32,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale target image till shortest border are equal to target value, 
+            then crop the additonal pixels from the longest border.
+            Final image aspect ratio is equal to the given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.ScaleAndCropIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale target image till shortest border are equal to target value, 
+            then crop the additonal pixels from the longest border.
+            Final image aspect ratio is equal to the given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.CropIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Int32,System.Int32,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Directly crop original image without scaling it.
+            Final image aspect ratio is equal to given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot">target spot to crop and save</param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.CropIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Directly crop original image without scaling it.
+            Final image aspect ratio is equal to given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot">target spot to crop and save</param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.ResizeIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Drawing.Rectangle,System.Drawing.Rectangle)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Specify custom resize options
+            </summary>
+            <param name="img">the image to resize</param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="source">The coordinates to read as source from the image, 
+            can be the whole image or part of it</param>
+            <param name="target">The coordinates of the target image size</param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.AnimatedImageResizeConditional.ResizeIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.Drawing.Rectangle,System.Drawing.Rectangle,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Specify custom resize options
+            </summary>
+            <param name="img">the image to resize</param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="source">The coordinates to read as source from the image, 
+            can be the whole image or part of it</param>
+            <param name="target">The coordinates of the target image size</param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
         <member name="T:LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions">
             <summary>
             Define options for animated text
@@ -349,42 +598,851 @@
             increment char-by-char
             </summary>
         </member>
-        <member name="T:LazZiya.ImageResize.Animated.GifEncoder">
+        <member name="T:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder">
             <summary>
-            Encodes multiple images as an animated gif to a stream. <br />
-            ALWAYS ALWAYS ALWAYS wire this up   in a using block <br />
-            Disposing the encoder will complete the file. <br />
-            Uses default .net GIF encoding and adds animation headers.
+            AnimatedGiEncoder
             </summary>
         </member>
-        <member name="P:LazZiya.ImageResize.Animated.GifEncoder.FrameDelay">
-            Public Accessors
-        </member>
-        <member name="M:LazZiya.ImageResize.Animated.GifEncoder.#ctor(System.IO.Stream,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+        <member name="F:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.width">
             <summary>
-            Encodes multiple images as an animated gif to a stream. <br />
-            ALWAYS ALWAYS ALWAYS wire this in a using block <br />
-            Disposing the encoder will complete the file. <br />
-            Uses default .net GIF encoding and adds animation headers.
+            Width
             </summary>
-            <param name="stream">The stream that will be written to.</param>
-            <param name="width">Sets the width for this gif or null to use the first frame's width.</param>
-            <param name="height">Sets the height for this gif or null to use the first frame's height.</param>
-            <param name="repeatCount"></param>
         </member>
-        <member name="M:LazZiya.ImageResize.Animated.GifEncoder.AddFrame(System.Drawing.Image,System.Int32,System.Int32,System.Nullable{System.TimeSpan})">
+        <member name="F:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.height">
             <summary>
-            Adds a frame to this animation.
+            Height
             </summary>
-            <param name="img">The image to add</param>
-            <param name="x">The positioning x offset this image should be displayed at.</param>
-            <param name="y">The positioning y offset this image should be displayed at.</param>
-            <param name="frameDelay"></param>
         </member>
-        <member name="M:LazZiya.ImageResize.Animated.GifEncoder.Dispose">
+        <member name="F:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.transparent">
             <summary>
-            Save and dispose
+            transparent color if given
             </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.transIndex">
+            <summary>
+            transparent index in color table
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.repeat">
+            <summary>
+            -1 no repeat,
+            0 always repeat
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.delay">
+            <summary>
+            frame delay (hundredths)
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.started">
+            <summary>
+            ready to output frames
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.fs">
+            <summary>
+            FS
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.image">
+            <summary>
+            current frame
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.pixels">
+            <summary>
+            BGR byte array from frame
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.indexedPixels">
+            <summary>
+            converted frame indexed to palette
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.colorDepth">
+            <summary>
+            number of bit planes
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.colorTab">
+            <summary>
+            RGB palette
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.usedEntry">
+            <summary>
+            active palette entries
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.palSize">
+            <summary>
+            color table size (bits-1)
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.dispose">
+            <summary>
+            disposal code (-1 = use default)
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.closeStream">
+            <summary>
+            close stream when finished
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.firstFrame">
+            <summary>
+            first frame
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.sizeSet">
+            <summary>
+            if false, get size from first frame
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.sample">
+            <summary>
+            default sample interval for quantizer
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.SetDelay(System.Int32)">
+            <summary>
+            Sets the delay time between each frame, or changes it
+            for subsequent frames (applies to last frame added).
+            </summary>
+            <param name="ms">ms int delay time in milliseconds</param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.SetDispose(System.Int32)">
+            Sets the GIF frame disposal code for the last added frame
+            and any subsequent frames.  Default is 0 if no transparent
+            color has been set, otherwise 2.
+            @param code int disposal code.
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.SetRepeat(System.Int32)">
+             Sets the number of times the set of GIF frames
+             should be played.  Default is 1; 0 means play
+             indefinitely.  Must be invoked before the first
+             image is added.
+            
+             @param iter int number of iterations.
+             @return
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.SetTransparent(System.Drawing.Color)">
+             Sets the transparent color for the last added frame
+             and any subsequent frames.
+             Since all colors are subject to modification
+             in the quantization process, the color in the final
+             palette for each frame closest to the given color
+             becomes the transparent color for that frame.
+             May be set to null to indicate no transparent color.
+            
+             @param c Color to be treated as transparent on display.
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.AddFrame(System.Drawing.Image)">
+             Adds next GIF frame.  The frame is not written immediately, but is
+             actually deferred until the next frame is received so that timing
+             data can be inserted.  Invoking <code>finish()</code> flushes all
+             frames.  If <code>setSize</code> was not invoked, the size of the
+             first image is used for all subsequent frames.
+            
+             @param im BufferedImage containing frame to write.
+             @return true if successful.
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.Finish">
+            Flushes any pending data and closes output file.
+            If writing to an OutputStream, the stream is not
+            closed.
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.SetFrameRate(System.Single)">
+             Sets frame rate in frames per second.  Equivalent to
+             <code>setDelay(1000/fps)</code>.
+            
+             @param fps float frame rate (frames per second)
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.SetQuality(System.Int32)">
+             Sets quality of color quantization (conversion of images
+             to the maximum 256 colors allowed by the GIF specification).
+             Lower values (minimum = 1) produce better colors, but slow
+             processing significantly.  10 is the default, and produces
+             good color mapping at reasonable speeds.  Values greater
+             than 20 do not yield significant improvements in speed.
+            
+             @param quality int greater than 0.
+             @return
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.SetSize(System.Int32,System.Int32)">
+             Sets the GIF frame size.  The default size is the
+             size of the first frame added if this method is
+             not invoked.
+            
+             @param w int frame width.
+             @param h int frame width.
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.Start(System.IO.FileStream)">
+             Initiates GIF file creation on the given stream.  The stream
+             is not closed automatically.
+            
+             @param os OutputStream on which GIF images are written.
+             @return false if initial write failed.
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.Start(System.String)">
+             Initiates writing of a GIF file with the specified name.
+            
+             @param file String containing output file name.
+             @return false if open or initial write failed.
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.AnalyzePixels">
+            Analyzes image colors and creates color map.
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.FindClosest(System.Drawing.Color)">
+             Returns index of palette color closest to c
+            
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.GetImagePixels">
+            Extracts image pixels into byte array "pixels"
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.WriteGraphicCtrlExt">
+            Writes Graphic Control Extension
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.WriteImageDesc">
+            Writes Image Descriptor
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.WriteLSD">
+            Writes Logical Screen Descriptor
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.WriteNetscapeExt">
+            Writes Netscape application extension to define
+            repeat count.
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.WritePalette">
+            Writes color table
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.WritePixels">
+            Encodes and writes pixel data
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.WriteShort(System.Int32)">
+            Write 16-bit value to output stream, LSB first
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.AnimatedGifEncoder.WriteString(System.String)">
+            Writes string to output stream
+        </member>
+        <member name="T:LazZiya.ImageResize.Animated.Gif.GifDecoder">
+            <summary>
+            Gif Decoder
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.STATUS_OK">
+            File read status: No errors.
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.STATUS_FORMAT_ERROR">
+            File read status: Error decoding file (may be partially decoded)
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.STATUS_OPEN_ERROR">
+            File read status: Unable to open source.
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.inStream">
+            <summary>
+            Stream
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.status">
+            <summary>
+            Status
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.width">
+            <summary>
+            full image width
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.height">
+            <summary>
+            full image height
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.gctFlag">
+            <summary>
+            global color table used
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.gctSize">
+            <summary>
+            size of global color table
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.loopCount">
+            <summary>
+            iterations; 0 = repeat forever
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.gct">
+            <summary>
+            global color table
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.lct">
+            <summary>
+            local color table
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.act">
+            <summary>
+            active color table
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.bgIndex">
+            <summary>
+            background color index
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.bgColor">
+            <summary>
+            background color
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.lastBgColor">
+            <summary>
+            previous bg color
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.pixelAspect">
+            <summary>
+            pixel aspect ratio
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.lctFlag">
+            <summary>
+            local color table flag
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.interlace">
+            <summary>
+            interlace flag
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.lctSize">
+            <summary>
+            local color table size
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.ix">
+            <summary>
+            current image rectangle
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.iy">
+            <summary>
+            current image rectangle
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.iw">
+            <summary>
+            current image rectangle
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.ih">
+            <summary>
+            current image rectangle
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.lastRect">
+            <summary>
+            last image rect
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.image">
+            <summary>
+            current frame
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.bitmap">
+            <summary>
+            bitmap
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.lastImage">
+            <summary>
+            previous frame
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.block">
+            <summary>
+            current data block
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.blockSize">
+            <summary>
+            block size
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.dispose">
+            <summary>
+            last graphic control extension info
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.lastDispose">
+            <summary>
+            0=no action; 1=leave in place; 2=restore to bg; 3=restore to prev
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.transparency">
+            <summary>
+            use transparent color
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.delay">
+            <summary>
+            delay in milliseconds
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.transIndex">
+            <summary>
+            transparent color index
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.MaxStackSize">
+            <summary>
+            max decoder pixel stack size
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.prefix">
+            <summary>
+            LZW decoder working arrays
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.suffix">
+            <summary>
+            Suffix
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.pixelStack">
+            <summary>
+            Pixel stack
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.pixels">
+            <summary>
+            Pixels
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.frames">
+            <summary>
+            Frames
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.frameCount">
+            <summary>
+            Frame count
+            </summary>
+        </member>
+        <member name="T:LazZiya.ImageResize.Animated.Gif.GifDecoder.GifFrame">
+            <summary>
+            Gif Frame
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.GifFrame.#ctor(System.Drawing.Image,System.Int32)">
+            <summary>
+            Gif Frame
+            </summary>
+            <param name="im"></param>
+            <param name="del"></param>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.GifFrame.image">
+            <summary>
+            Image
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.GifDecoder.GifFrame.delay">
+            <summary>
+            Delay
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.GetDelay(System.Int32)">
+             Gets display duration for specified frame.
+            
+             @param n int index of frame
+             @return delay in milliseconds
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.GetFrameCount">
+            Gets the number of frames read from file.
+            @return frame count
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.GetImage">
+             Gets the first (or only) image read.
+            
+             @return BufferedImage containing first frame, or null if none.
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.GetLoopCount">
+             Gets the "Netscape" iteration count, if any.
+             A count of 0 means repeat indefinitiely.
+            
+             @return iteration count if one was specified, else 1.
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.GetPixels(System.Drawing.Bitmap)">
+            Creates new frame image from current data (and previous
+            frames as specified by their disposition codes).
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.SetPixels">
+            <summary>
+            Set pixels
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.GetFrame(System.Int32)">
+             Gets the image contents of frame n.
+            
+             @return BufferedImage representation of frame, or null if n is invalid.
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.GetFrameSize">
+             Gets image size.
+            
+             @return GIF image dimensions
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.Read(System.IO.Stream)">
+             Reads GIF image from stream
+            
+             @param BufferedInputStream containing GIF file.
+             @return read status code (0 = no errors)
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.Read(System.String)">
+             Reads GIF file from specified file/URL source  
+             (URL assumed if name contains ":/" or "file:")
+            
+             @param name String containing source
+             @return read status code (0 = no errors)
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.DecodeImageData">
+            Decodes LZW image data into pixel array.
+            Adapted from John Cristy's ImageMagick.
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.Error">
+            Returns true if an error was encountered during reading/decoding
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.Init">
+            Initializes or re-initializes reader
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.Read">
+            Reads a single byte from the input stream.
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.ReadBlock">
+             Reads next variable length block from input.
+            
+             @return number of bytes stored in "buffer"
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.ReadColorTable(System.Int32)">
+             Reads color table as 256 RGB integer values
+            
+             @param ncolors int number of colors to read
+             @return int array containing 256 colors (packed ARGB with full alpha)
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.ReadContents">
+            Main file parser.  Reads GIF content blocks.
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.ReadGraphicControlExt">
+            Reads Graphics Control Extension values
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.ReadHeader">
+            Reads GIF file header information.
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.ReadImage">
+            Reads next frame image
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.ReadLSD">
+            Reads Logical Screen Descriptor
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.ReadNetscapeExt">
+            Reads Netscape extenstion to obtain iteration count
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.ReadShort">
+            Reads next 16-bit value, LSB first
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.ResetFrame">
+            Resets frame state for reading next image.
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.GifDecoder.Skip">
+            Skips variable length blocks up to and including
+            next zero length block.
+        </member>
+        <member name="T:LazZiya.ImageResize.Animated.Gif.LZWEncoder">
+            <summary>
+            LZW Encoder
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.LZWEncoder.#ctor(System.Int32,System.Int32,System.Byte[],System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="pixels"></param>
+            <param name="color_depth"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.LZWEncoder.Encode(System.IO.Stream)">
+            <summary>
+            
+            </summary>
+            <param name="os"></param>
+        </member>
+        <member name="T:LazZiya.ImageResize.Animated.Gif.NeuQuant">
+            <summary>
+            NeuQuant 
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.netsize">
+            <summary>
+            number of colours used
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.prime1">
+            <summary>
+            four primes near 500 - assume no image has a length so large
+            that it is divisible by all four primes */
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.prime2">
+            <summary>
+            four primes near 500 - assume no image has a length so large
+            that it is divisible by all four primes */
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.prime3">
+            <summary>
+            four primes near 500 - assume no image has a length so large
+            that it is divisible by all four primes */
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.prime4">
+            <summary>
+            four primes near 500 - assume no image has a length so large
+            that it is divisible by all four primes */
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.minpicturebytes">
+            <summary>
+            minimum size for input image 
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.maxnetpos">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.netbiasshift">
+            <summary>
+            bias for colour values
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.ncycles">
+            <summary>
+            no. of learning cycles
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.intbiasshift">
+            <summary>
+            defs for freq and bias  
+            
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.intbias">
+            <summary>
+            bias for fractions
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.gammashift">
+            <summary>
+            gamma = 1024
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.gamma">
+            <summary>
+            gamme
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.betashift">
+            <summary>
+            beta shift
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.beta">
+            <summary>
+            beta = 1/1024
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.betagamma">
+            <summary>
+            beta gamma
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.initrad">
+            <summary>
+            for 256 cols, radius starts
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.radiusbiasshift">
+            <summary>
+            at 32.0 biased by 6 bits
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.radiusbias">
+            <summary>
+            radius bias
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.initradius">
+            <summary>
+            and decreases by a
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.radiusdec">
+            <summary>
+            factor of 1/30 each cycle
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.alphabiasshift">
+            <summary>
+            alpha starts at 1.0
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.initalpha">
+            <summary>
+            inital alpha
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.alphadec">
+            <summary>
+            biased by 10 bits
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.radbiasshift">
+            <summary>
+            rad bias shift
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.radbias">
+            <summary>
+            rad bias
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.alpharadbshift">
+            <summary>
+            alphoa rad shift
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.alpharadbias">
+            <summary>
+            alpha rad bias
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.thepicture">
+            <summary>
+            the input image itself
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.lengthcount">
+            <summary>
+            lengthcount = H*W*3
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.samplefac">
+            <summary>
+            sampling factor 1..30
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.network">
+            <summary>
+            the network itself - [netsize][4]
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.netindex">
+            <summary>
+            for network lookup - really 256 */
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.bias">
+            <summary>
+            bias and freq arrays for learning */
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.freq">
+            <summary>
+            freq
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.Animated.Gif.NeuQuant.radpower">
+            <summary>
+            radpower for precomputation */
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.NeuQuant.#ctor(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            NeuQuant
+            </summary>
+            <param name="thepic"></param>
+            <param name="len"></param>
+            <param name="sample"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.NeuQuant.ColorMap">
+            <summary>
+            Colormap
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.NeuQuant.Inxbuild">
+            <summary>
+            Insertion sort of network and building of netindex[0..255] (to do after unbias)
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.NeuQuant.Learn">
+            <summary>
+            Main Learning Loop 
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.NeuQuant.Map(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Search for BGR values 0..255 (after net is unbiased) and return colour index
+            </summary>
+            <param name="b"></param>
+            <param name="g"></param>
+            <param name="r"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.NeuQuant.Process">
+            <summary>
+            Process
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.NeuQuant.Unbiasnet">
+            <summary>
+            Unbias network to give byte values 0..255 and record position i to prepare for sort
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.NeuQuant.Alterneigh(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Move adjacent neurons by precomputed alpha*(1-((i-j)^2/[r]^2)) in radpower[|i-j|]
+            </summary>
+            <param name="rad"></param>
+            <param name="i"></param>
+            <param name="b"></param>
+            <param name="g"></param>
+            <param name="r"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.NeuQuant.Altersingle(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Move neuron i towards biased (b,g,r) by factor alpha
+            </summary>
+            <param name="alpha"></param>
+            <param name="i"></param>
+            <param name="b"></param>
+            <param name="g"></param>
+            <param name="r"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.Gif.NeuQuant.Contest(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Search for biased BGR values
+            </summary>
+            <param name="b"></param>
+            <param name="g"></param>
+            <param name="r"></param>
+            <returns></returns>
         </member>
         <member name="T:LazZiya.ImageResize.Animated.ImageAnimatedImageWatermark">
             <summary>
@@ -421,6 +1479,48 @@
             then save it to the disc, and read it again with Image.FromFile.</para>
             </summary>
             <param name="img">The original image</param>
+            <param name="wmImage">Watermak image</param>
+            <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
+        </member>
+        <member name="T:LazZiya.ImageResize.Animated.ImageAnimatedImageWatermarkConditional">
+            <summary>
+            Add an animated image watermark to static image adn return an AnimatedImage, depending on a condition parameter.
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedImageWatermarkConditional.AddAnimatedImageWatermarkIf(System.Drawing.Image,System.Boolean,System.String)">
+            <summary>
+            Draw animated image watermark over a static image, depending on a condition parameter.
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add animated image watermark, false will return the img as AnimatedImage</param>
+            <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedImageWatermarkConditional.AddAnimatedImageWatermarkIf(System.Drawing.Image,System.Boolean,LazZiya.ImageResize.Animated.AnimatedImage)">
+            <summary>
+            Draw animated image watermark over a static image, depending on a condition parameter.
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add animated image watermark, false will return the img as AnimatedImage</param>
+            <param name="wmImage">Watermark image</param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedImageWatermarkConditional.AddAnimatedImageWatermarkIf(System.Drawing.Image,System.Boolean,System.String,LazZiya.ImageResize.ImageWatermarkOptions)">
+            <summary>
+            Draw animated image watermark over a static image, depending on a condition parameter.
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add animated image watermark, false will return the img as AnimatedImage</param>
+            <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
+            <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedImageWatermarkConditional.AddAnimatedImageWatermarkIf(System.Drawing.Image,System.Boolean,LazZiya.ImageResize.Animated.AnimatedImage,LazZiya.ImageResize.ImageWatermarkOptions)">
+            <summary>
+            Draw animated image watermark over a static image, depending on a condition parameter.
+            <para>Notice regarding watermark opacity:</para>
+            <para>If watermark image needs to be resized, first resize the watermark image, 
+            then save it to the disc, and read it again with Image.FromFile.</para>
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add animated image watermark, false will return the img as AnimatedImage</param>
             <param name="wmImage">Watermak image</param>
             <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
         </member>
@@ -461,6 +1561,47 @@
             <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
             <param name="animOps">Animated text options <see cref="T:LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions"/></param>
         </member>
+        <member name="T:LazZiya.ImageResize.Animated.ImageAnimatedTextWatermarkConditional">
+            <summary>
+            Add animated text watermark over image, depending on a conditional parameter.
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedTextWatermarkConditional.AddAnimatedTextWatermarkIf(System.Drawing.Image,System.Boolean,System.String)">
+            <summary>
+            Add animated text watermark over a static image, depending on a conditional parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add animated text watermark, false will return the img as AnimatedImage</param>
+            <param name="text"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedTextWatermarkConditional.AddAnimatedTextWatermarkIf(System.Drawing.Image,System.Boolean,System.String,LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions)">
+            <summary>
+            Add animated text watermark over a static image, depending on a conditional parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add animated text watermark, false will return the img as AnimatedImage</param>
+            <param name="text"></param>
+            <param name="animOps"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedTextWatermarkConditional.AddAnimatedTextWatermarkIf(System.Drawing.Image,System.Boolean,System.String,LazZiya.ImageResize.TextWatermarkOptions)">
+            <summary>
+            Add animated text watermark over a static image, depending on a conditional parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add animated text watermark, false will return the img as AnimatedImage</param>
+            <param name="text">text to draw over the image</param>
+            <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.Animated.ImageAnimatedTextWatermarkConditional.AddAnimatedTextWatermarkIf(System.Drawing.Image,System.Boolean,System.String,LazZiya.ImageResize.TextWatermarkOptions,LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions)">
+            <summary>
+            Add animated text watermark over a static image, depending on a conditional parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add animated text watermark, false will return the img as AnimatedImage</param>
+            <param name="text">text to draw over the image</param>
+            <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
+            <param name="animOps">Animated text options <see cref="T:LazZiya.ImageResize.Animated.AnimatedTextWatermarkOptions"/></param>
+        </member>
         <member name="T:LazZiya.ImageResize.AnimatedImageTextWatermark">
             <summary>
             Add a static text watermark over animated image.
@@ -478,6 +1619,28 @@
             Add a static text watermark over animated image.
             </summary>
             <param name="img"></param>
+            <param name="text">text to draw over the image</param>
+            <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
+        </member>
+        <member name="T:LazZiya.ImageResize.AnimatedImageTextWatermarkConditional">
+            <summary>
+            Add a static text watermark over animated image, depending on a condition parameter
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.AnimatedImageTextWatermarkConditional.AddTextWatermarkIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.String)">
+            <summary>
+            Add a static text watermark over animated image depending on a condition parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add text watermark, false will return the img</param>
+            <param name="text"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.AnimatedImageTextWatermarkConditional.AddTextWatermarkIf(LazZiya.ImageResize.Animated.AnimatedImage,System.Boolean,System.String,LazZiya.ImageResize.TextWatermarkOptions)">
+            <summary>
+            Add a static text watermark over animated image depending on a condition parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add text watermark, false will return the img</param>
             <param name="text">text to draw over the image</param>
             <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
         </member>
@@ -652,6 +1815,177 @@
             Default: GraphicsUnit.Pixel
             </summary>
         </member>
+        <member name="T:LazZiya.ImageResize.ImageFrameExtensions">
+            <summary>
+            Draw frame, background, etc...
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageFrameExtensions.AddFrame(System.Drawing.Image)">
+            <summary>
+            This method will not resize the front image, but it will draw a frame with a specified width around the image.
+            </summary>
+            <param name="img"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageFrameExtensions.AddFrame(System.Drawing.Image,LazZiya.ImageResize.ImageFrameOptions)">
+            <summary>
+            This method will not resize the front image, but it will draw a frame with a specified width around the image.
+            </summary>
+            <param name="img"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageFrameExtensions.AddFrame(System.Drawing.Image,System.Int32,System.Int32)">
+            <summary>
+            This method will not resize the front image, but it will draw a frame with a specified width around the image.
+            </summary>
+            <param name="img"></param>
+            <param name="frameWidth"></param>
+            <param name="frameHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageFrameExtensions.AddFrame(System.Drawing.Image,System.Int32,System.Int32,LazZiya.ImageResize.ImageFrameOptions)">
+            <summary>
+            This method will not resize the front image, but it will draw a frame with a specified width around the image.
+            </summary>
+            <param name="img"></param>
+            <param name="frameWidth"></param>
+            <param name="frameHeight"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LazZiya.ImageResize.ImageFrameExtensionsConditional">
+            <summary>
+            Draw frame, background, etc...
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageFrameExtensionsConditional.AddFrameIf(System.Drawing.Image,System.Boolean)">
+            <summary>
+            This method will not resize the front image, but it will draw a frame with a specified width around the image, depending on a condition parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageFrameExtensionsConditional.AddFrameIf(System.Drawing.Image,System.Boolean,LazZiya.ImageResize.ImageFrameOptions)">
+            <summary>
+            This method will not resize the front image, but it will draw a frame with a specified width around the image, depending on a condition parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageFrameExtensionsConditional.AddFrameIf(System.Drawing.Image,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            This method will not resize the front image, but it will draw a frame with a specified width around the image, depending on a condition parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition"></param>
+            <param name="frameWidth"></param>
+            <param name="frameHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageFrameExtensionsConditional.AddFrameIf(System.Drawing.Image,System.Boolean,System.Int32,System.Int32,LazZiya.ImageResize.ImageFrameOptions)">
+            <summary>
+            This method will not resize the front image, but it will draw a frame with a specified width around the image, depending on a condition parameter.
+            </summary>
+            <param name="img"></param>
+            <param name="condition"></param>
+            <param name="frameWidth"></param>
+            <param name="frameHeight"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LazZiya.ImageResize.ImageFrameOptions">
+            <summary>
+            Define options for image frame
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ImageFrameOptions.Thickness">
+            <summary>
+            Frame thikness in pixels. Default is 2
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ImageFrameOptions.FrameColor">
+            <summary>
+            Frame color. Default is LightGray
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ImageFrameOptions.FillColor">
+            <summary>
+            Fill the space beween the border and the image with a specific coloe. Default is transparent.
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ImageFrameOptions.FrameShape">
+            <summary>
+            The shapre of the frame.
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ImageFrameOptions.LineJoin">
+            <summary>
+            How the frame corners will be joined. Default is Miter.
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ImageFrameOptions.MitterLimit">
+            <summary>
+            Mitter limit. Default is 10.
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ImageFrameOptions.DashStyle">
+            <summary>
+            Dash style. Default is Solid.
+            </summary>
+        </member>
+        <member name="P:LazZiya.ImageResize.ImageFrameOptions.DashPattern">
+            <summary>
+            Define custom dash pattern. Dash style must be set to Custom.
+            </summary>
+        </member>
+        <member name="T:LazZiya.ImageResize.ImageFrameShape">
+            <summary>
+            Define the shapre to draw the frame
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.ImageFrameShape.Rectangle">
+            <summary>
+            Rectangle shape
+            </summary>
+        </member>
+        <member name="F:LazZiya.ImageResize.ImageFrameShape.Ellipse">
+            <summary>
+            Rouded or ellipse
+            </summary>
+        </member>
+        <member name="T:LazZiya.ImageResize.ImageMaskExtensions">
+            <summary>
+            Add image mask
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageMaskExtensions.Mask(System.Drawing.Image,System.Drawing.Rectangle,LazZiya.ImageResize.ImageFrameShape)">
+            <summary>
+            Add image mask with the specified paameters
+            </summary>
+            <param name="img"></param>
+            <param name="rectangle"></param>
+            <param name="shape"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LazZiya.ImageResize.ImageMaskExtensionsConditional">
+            <summary>
+            Add image mask
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageMaskExtensionsConditional.MaskIf(System.Drawing.Image,System.Boolean,System.Drawing.Rectangle,LazZiya.ImageResize.ImageFrameShape)">
+            <summary>
+            Add image mask with the specified paameters, depnding on a conditonal parameter
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to apply mask, otherwise return image</param>
+            <param name="rectangle"></param>
+            <param name="shape"></param>
+            <returns></returns>
+        </member>
         <member name="T:LazZiya.ImageResize.ImageResize">
             <summary>
             Resize images
@@ -789,6 +2123,167 @@
             <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
             <returns></returns>
         </member>
+        <member name="T:LazZiya.ImageResize.ImageResizeConditional">
+            <summary>
+            Conditionally resize images depending on a condition token
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.ScaleIf(System.Drawing.Image,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Auto scale image by width or height till longest border (width/height) is equal to new width/height.
+            Final image aspect ratio is equal to original image aspect ratio.
+            If the aspect ratio of new w/h != aspect ratio of original image then 
+            one border will be in different size than the given value in order to keep original aspect ratio
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.ScaleIf(System.Drawing.Image,System.Boolean,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Auto scale image by width or height till longest border (width/height) is equal to new width/height.
+            Final image aspect ratio is equal to original image aspect ratio.
+            If the aspect ratio of new w/h != aspect ratio of original image then 
+            one border will be in different size than the given value in order to keep original aspect ratio
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.ScaleByWidthIf(System.Drawing.Image,System.Boolean,System.Int32)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale image by width and keep same aspect ratio of target image same as the original image.
+            Height will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.ScaleByWidthIf(System.Drawing.Image,System.Boolean,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale image by width and keep same aspect ratio of target image same as the original image.
+            Height will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.ScaleByHeightIf(System.Drawing.Image,System.Boolean,System.Int32)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale image by height and keep same aspect ratio of target image same as the original image.
+            Width will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.ScaleByHeightIf(System.Drawing.Image,System.Boolean,System.Int32,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale image by height and keep same aspect ratio of target image same as the original image.
+            Width will be adjusted automatically
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newHeight"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.ScaleAndCropIf(System.Drawing.Image,System.Boolean,System.Int32,System.Int32,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale target image till shortest border are equal to target value, 
+            then crop the additonal pixels from the longest border.
+            Final image aspect ratio is equal to the given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.ScaleAndCropIf(System.Drawing.Image,System.Boolean,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Scale target image till shortest border are equal to target value, 
+            then crop the additonal pixels from the longest border.
+            Final image aspect ratio is equal to the given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot"></param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.CropIf(System.Drawing.Image,System.Boolean,System.Int32,System.Int32,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Directly crop original image without scaling it.
+            Final image aspect ratio is equal to given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot">target spot to crop and save</param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.CropIf(System.Drawing.Image,System.Boolean,System.Int32,System.Int32,LazZiya.ImageResize.GraphicOptions,LazZiya.ImageResize.TargetSpot)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Directly crop original image without scaling it.
+            Final image aspect ratio is equal to given new width/height
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <param name="spot">target spot to crop and save</param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.ResizeIf(System.Drawing.Image,System.Boolean,System.Drawing.Rectangle,System.Drawing.Rectangle)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Specify custom resize options
+            </summary>
+            <param name="img">the image to resize</param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="source">The coordinates to read as source from the image, 
+            can be the whole image or part of it</param>
+            <param name="target">The coordinates of the target image size</param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageResizeConditional.ResizeIf(System.Drawing.Image,System.Boolean,System.Drawing.Rectangle,System.Drawing.Rectangle,LazZiya.ImageResize.GraphicOptions)">
+            <summary>
+            Do conditional resize if the the condition is true, otherwise return without resizing.
+            Specify custom resize options
+            </summary>
+            <param name="img">the image to resize</param>
+            <param name="condition">true to resize, false will return the img</param>
+            <param name="source">The coordinates to read as source from the image, 
+            can be the whole image or part of it</param>
+            <param name="target">The coordinates of the target image size</param>
+            <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
         <member name="T:LazZiya.ImageResize.ImageWatermark">
             <summary>
             Draw image watermark
@@ -824,6 +2319,49 @@
             then save it to the disc, and read it again with Image.FromFile.</para>
             </summary>
             <param name="img">The original image</param>
+            <param name="wmImage">Watermak image</param>
+            <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
+            <param name="disposeWaterMark">Optional: dispose watermar image after finishing. Default: true</param>
+        </member>
+        <member name="T:LazZiya.ImageResize.ImageWatermarkConditional">
+            <summary>
+            Draw image watermark depending on a conditional parameter
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageWatermarkConditional.AddImageWatermarkIf(System.Drawing.Image,System.Boolean,System.String)">
+            <summary>
+            Draw image watermark if the condition is true, otherwise return without image watermark
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add image watermark, false will return the img</param>
+            <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageWatermarkConditional.AddImageWatermarkIf(System.Drawing.Image,System.Boolean,System.Drawing.Image)">
+            <summary>
+            Draw image watermark if the condition is true, otherwise return without image watermark
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add image watermark, false will return the img</param>
+            <param name="wmImage">Watermark image</param>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageWatermarkConditional.AddImageWatermarkIf(System.Drawing.Image,System.Boolean,System.String,LazZiya.ImageResize.ImageWatermarkOptions)">
+            <summary>
+            Draw image watermark if the condition is true, otherwise return without image watermark
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add image watermark, false will return the img</param>
+            <param name="wmImgPath">Path to the watermark image file e.g. wwwroot\images\watermark.png</param>
+            <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageWatermarkConditional.AddImageWatermarkIf(System.Drawing.Image,System.Boolean,System.Drawing.Image,LazZiya.ImageResize.ImageWatermarkOptions,System.Boolean)">
+            <summary>
+            Draw image watermark if the condition is true, otherwise return without image watermark
+            <para>Notice regarding watermark opacity:</para>
+            <para>If watermark image needs to be resized, first resize the watermark image, 
+            then save it to the disc, and read it again with Image.FromFile.</para>
+            </summary>
+            <param name="img">The original image</param>
+            <param name="condition">true to add image watermark, false will return the img</param>
             <param name="wmImage">Watermak image</param>
             <param name="ops">Image watermark options <see cref="T:LazZiya.ImageResize.ImageWatermarkOptions"/></param>
             <param name="disposeWaterMark">Optional: dispose watermar image after finishing. Default: true</param>
@@ -1080,6 +2618,28 @@
             Add text watermark over the image.
             </summary>
             <param name="img"></param>
+            <param name="text">text to draw over the image</param>
+            <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
+        </member>
+        <member name="T:LazZiya.ImageResize.TextWatermarkConditional">
+            <summary>
+            Add text watermark over the image depending on a conditional parameter.
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.TextWatermarkConditional.AddTextWatermarkIf(System.Drawing.Image,System.Boolean,System.String)">
+            <summary>
+            Add a text watermark if the condition is true, otherwise return without textwatermark.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add text watermark, false will return the img</param>
+            <param name="text"></param>
+        </member>
+        <member name="M:LazZiya.ImageResize.TextWatermarkConditional.AddTextWatermarkIf(System.Drawing.Image,System.Boolean,System.String,LazZiya.ImageResize.TextWatermarkOptions)">
+            <summary>
+            Add a text watermark if the condition is true, otherwise return without textwatermark.
+            </summary>
+            <param name="img"></param>
+            <param name="condition">true to add text watermark, false will return the img</param>
             <param name="text">text to draw over the image</param>
             <param name="ops">Text watermark options <see cref="T:LazZiya.ImageResize.TextWatermarkOptions"/></param>
         </member>
