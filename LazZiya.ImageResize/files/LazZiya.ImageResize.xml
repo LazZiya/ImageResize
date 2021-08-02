@@ -110,7 +110,6 @@
             Save animated gif
             </summary>
             <param name="path"></param>
-            <param name="repeat">Frame delay in milliseconds</param>
         </member>
         <member name="M:LazZiya.ImageResize.Animated.AnimatedImage.Dispose">
             <summary>
@@ -2282,6 +2281,36 @@
             can be the whole image or part of it</param>
             <param name="target">The coordinates of the target image size</param>
             <param name="ops">Graphic options <see cref="T:LazZiya.ImageResize.GraphicOptions"/></param>
+            <returns></returns>
+        </member>
+        <member name="T:LazZiya.ImageResize.ImageRotation">
+            <summary>
+            Image rotation operations
+            </summary>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageRotation.ReserveOriginalRotation(System.Drawing.Image,System.Drawing.Image)">
+            <summary>
+            Keep resized image rotation as the original image
+            </summary>
+            <param name="img"></param>
+            <param name="originalImage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageRotation.RotateFlipImage(System.Drawing.Image,System.Drawing.RotateFlipType)">
+            <summary>
+            Rotate and/or flip the image
+            </summary>
+            <param name="img"></param>
+            <param name="rotateFlipType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LazZiya.ImageResize.ImageRotation.RotateFlipImageIf(System.Drawing.Image,System.Boolean,System.Drawing.RotateFlipType)">
+            <summary>
+            Rotate and/or flip the image
+            </summary>
+            <param name="img"></param>
+            <param name="condition"></param>
+            <param name="rotateFlipType"></param>
             <returns></returns>
         </member>
         <member name="T:LazZiya.ImageResize.ImageWatermark">

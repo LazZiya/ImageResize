@@ -178,7 +178,6 @@ namespace LazZiya.ImageResize.Animated
         /// Save animated gif
         /// </summary>
         /// <param name="path"></param>
-        /// <param name="repeat">Frame delay in milliseconds</param>
         public void SaveAs(string path)
         {
             var e = new AnimatedGifEncoder();
