@@ -110,7 +110,6 @@
             Save animated gif
             </summary>
             <param name="path"></param>
-            <param name="repeat">Frame delay in milliseconds</param>
         </member>
         <member name="M:LazZiya.ImageResize.Animated.AnimatedImage.Dispose">
             <summary>
