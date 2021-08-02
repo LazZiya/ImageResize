@@ -231,11 +231,11 @@ namespace LazZiya.ImageResize
                     using (var ms = new MemoryStream())
                     {
                         outputImage.Save(ms, img.RawFormat);
-                        return Image.FromStream(ms);
+                        return Image.FromStream(ms).ReserveOriginalRotation(img);
                     }
                 }
 
-                return Image.FromHbitmap(outputImage.GetHbitmap());
+                return Image.FromHbitmap(outputImage.GetHbitmap()).ReserveOriginalRotation(img);
             }
         }
     }

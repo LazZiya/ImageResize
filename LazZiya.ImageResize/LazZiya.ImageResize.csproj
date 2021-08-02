@@ -10,22 +10,17 @@
 		<PackageTags>asp.net,core,.net,dotnet,image,resize,text,overlay</PackageTags>
 		<RepositoryUrl>https://github.com/LazZiya/ImageResize</RepositoryUrl>
 		<PackageProjectUrl>https://docs.ziyad.info/en/LazZiya.ImageResize/v4.0/index.md</PackageProjectUrl>
-		<VersionPrefix>4.0.0</VersionPrefix>
-		<VersionSuffix></VersionSuffix>
-		<AssemblyVersion>4.0.0.0</AssemblyVersion>
-		<FileVersion>4.0.0.0</FileVersion>
+		<VersionPrefix>4.1.0</VersionPrefix>
+		<VersionSuffix>beta4</VersionSuffix>
+		<AssemblyVersion>4.1.0.0</AssemblyVersion>
+		<FileVersion>4.1.0.0</FileVersion>
 		<PackageReleaseNotes>
 			Fixed:
-			- Linux support (https://github.com/LazZiya/ImageResize/issues/1)
-			
+			- Rotate the photo #10 (https://github.com/LazZiya/ImageResize/issues/10)
+
 			New Features:
-			- New - "Conditional" resizing methods: The resize will done depending on a conditional parameter.
-			- New - "AddFrame" method: Draw a frame (border) around the image and specify distance, color, etc.
-			- New - "Mask" method: Applies a mask over the image.
-			- New - "AnimatedImage" - Edit animated gif images (resize, text watewrmark, image water etc.)
-			
-			Other updates:
-			- Update ref for System.Drawing.Common https://github.com/dotnet/core/issues/3244
+			- New - "RotateFlipImage" method: rotate or flip images
+			- New - "RotateFlipImageIf" method: conditionally rotate or flip images
 			
 			- See all details in the docs https://docs.ziyad.info
 		</PackageReleaseNotes>
