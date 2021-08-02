@@ -11,7 +11,7 @@
 		<RepositoryUrl>https://github.com/LazZiya/ImageResize</RepositoryUrl>
 		<PackageProjectUrl>https://docs.ziyad.info/en/LazZiya.ImageResize/v4.0/index.md</PackageProjectUrl>
 		<VersionPrefix>4.1.0</VersionPrefix>
-		<VersionSuffix>beta4</VersionSuffix>
+		<VersionSuffix></VersionSuffix>
 		<AssemblyVersion>4.1.0.0</AssemblyVersion>
 		<FileVersion>4.1.0.0</FileVersion>
 		<PackageReleaseNotes>
