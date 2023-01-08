@@ -10,13 +10,13 @@
 		<PackageTags>asp.net,core,.net,dotnet,image,resize,text,overlay</PackageTags>
 		<RepositoryUrl>https://github.com/LazZiya/ImageResize</RepositoryUrl>
 		<PackageProjectUrl>https://docs.ziyad.info/en/LazZiya.ImageResize/v4.0/index.md</PackageProjectUrl>
-		<VersionPrefix>4.1.1</VersionPrefix>
+		<VersionPrefix>4.1.2</VersionPrefix>
 		<VersionSuffix></VersionSuffix>
-		<AssemblyVersion>4.1.1.0</AssemblyVersion>
-		<FileVersion>4.1.1.0</FileVersion>
+		<AssemblyVersion>4.1.2.0</AssemblyVersion>
+		<FileVersion>4.1.2.0</FileVersion>
 		<PackageReleaseNotes>
 			Fixed:
-			- .NET Core Remote Code Execution Vulnerability, https://github.com/LazZiya/ImageResize/security/dependabot/1
+			- Indexed pixel fomrmat exception: https://github.com/LazZiya/ImageResize/issues/14
 			- See all details in the docs https://docs.ziyad.info
 		</PackageReleaseNotes>
 		<PackageIconUrl>https://raw.githubusercontent.com/LazZiya/ImageResize/master/LazZiya.ImageResize/files/icon.png</PackageIconUrl>

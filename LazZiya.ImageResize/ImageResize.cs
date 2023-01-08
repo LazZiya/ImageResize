@@ -198,6 +198,10 @@ namespace LazZiya.ImageResize
             // check for CMYK pixel format to use Format32bppArgb
             // or use the image pixel format
             var pixF = ImageColorFormats.GetColorFormat((Bitmap)img) == ImageColorFormat.Cmyk
+                
+                // fixes : https://github.com/LazZiya/ImageResize/issues/14
+                || ImageColorFormats.GetColorFormat((Bitmap)img) == ImageColorFormat.Indexed
+                
                 ? PixelFormat.Format32bppArgb
                 : img.PixelFormat;
 
