@@ -10,13 +10,13 @@
 		<PackageTags>asp.net,core,.net,dotnet,image,resize,text,overlay</PackageTags>
 		<RepositoryUrl>https://github.com/LazZiya/ImageResize</RepositoryUrl>
 		<PackageProjectUrl>https://docs.ziyad.info/en/LazZiya.ImageResize/v4.0/index.md</PackageProjectUrl>
-		<VersionPrefix>4.1.3</VersionPrefix>
+		<VersionPrefix>4.1.4</VersionPrefix>
 		<VersionSuffix></VersionSuffix>
-		<AssemblyVersion>4.1.3.0</AssemblyVersion>
-		<FileVersion>4.1.3.0</FileVersion>
+		<AssemblyVersion>4.1.4.0</AssemblyVersion>
+		<FileVersion>4.1.4.0</FileVersion>
 		<PackageReleaseNotes>
 			Fixed:
-			- added readme file to with reference to nuget package standards https://learn.microsoft.com/en-us/nuget/nuget-org/package-readme-on-nuget-org#preview-your-readme
+			- Allow frame thickness of 0, so background fill can be applied. https://github.com/LazZiya/ImageResize/issues/17org#preview-your-readme
 			- See all details in the docs https://docs.ziyad.info
 		</PackageReleaseNotes>
 		<PackageIconUrl>https://raw.githubusercontent.com/LazZiya/ImageResize/master/LazZiya.ImageResize/files/icon.png</PackageIconUrl>

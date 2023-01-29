@@ -85,7 +85,7 @@ namespace LazZiya.ImageResize
                         pen.DashPattern = options.DashPattern;
                     }
 
-                    if (options.Thickness > 0)
+                    if (options.Thickness >= 0)
                     {
                         var brush = new SolidBrush(options.FillColor);
                         switch (options.FrameShape)
